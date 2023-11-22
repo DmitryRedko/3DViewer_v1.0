@@ -13,4 +13,5 @@ int s21_calc_complements(matrix_t *A, matrix_t *result);
 int s21_determinant(matrix_t *A, double *result);
 int s21_inverse_matrix(matrix_t *A, matrix_t *result);
 void set_move_matrix(double x, double y, matrix_t *matrix);
+void set_round_matrix(double round, matrix_t *matrix);
 #endif

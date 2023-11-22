@@ -334,3 +334,11 @@ void set_move_matrix(double x, double y, matrix_t *matrix) {
   matrix->matrix[0][2]=x;
   matrix->matrix[1][2]=y;  
 }
+
+void set_round_matrix(double round, matrix_t *matrix) {
+  create_eye(matrix);
+  matrix->matrix[0][0] = cos(round);
+  matrix->matrix[0][1] = sin(round);
+  matrix->matrix[1][0] = -sin(round);
+  matrix->matrix[1][1] = cos(round);
+}
