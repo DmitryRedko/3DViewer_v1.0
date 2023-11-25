@@ -27,9 +27,7 @@ int main(){
 
     //Матрица поворота
     matrix_t round_matrix;
-    s21_create_matrix(3, 3, &round_matrix);
-    set_round_matrix(3.14,&round_matrix);
-    print_matix(&round_matrix);
+\
     
     matrix_t vector1, vector2;
 
@@ -41,7 +39,7 @@ int main(){
     printf("\n");
     print_matix(&vector1);
 
-    s21_mult_matrix(&round_matrix,&vector1,&vector2);
+    s21_mult_matrix(round_matrix,vector1,&vector2);
     printf("\n");
     print_matix(&vector2);
 

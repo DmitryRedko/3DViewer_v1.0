@@ -134,21 +134,21 @@ int s21_mult_number(matrix_t *A, double number, matrix_t *result) {
   return flag;
 }
 
-int s21_mult_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
+int s21_mult_matrix(matrix_t A, matrix_t B, matrix_t *result) {
   int flag = OK;
 
-  if (A == NULL || B == NULL || A->columns != B->rows) {
+  if (A.columns != B.rows) {
     flag = ERROR_CALCULATION;
   }
 
   if (flag == OK) {
     // s21_remove_matrix(result);
-    flag = s21_create_matrix(A->rows, B->columns, result);
-    for (int i = 0; i < A->rows; i++) {
-      for (int j = 0; j < B->columns; j++) {
+    flag = s21_create_matrix(A.rows, B.columns, result);
+    for (int i = 0; i < A.rows; i++) {
+      for (int j = 0; j < B.columns; j++) {
         double sum = 0.0;
-        for (int k = 0; k < A->columns; k++) {
-          sum += A->matrix[i][k] * B->matrix[k][j];
+        for (int k = 0; k < A.columns; k++) {
+          sum += A.matrix[i][k] * B.matrix[k][j];
         }
         result->matrix[i][j] = sum;
       }
@@ -327,18 +327,84 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
   return flag;
 }
 
-void set_move_matrix(double x, double y, matrix_t *matrix) {
-  create_eye(matrix);
-  // x = x;
-  // y = y;
-  matrix->matrix[0][2]=x;
-  matrix->matrix[1][2]=y;  
+void move_operation(double x, double y, double z, matrix_t *vector) {
+  matrix_t move_matrix;
+  s21_create_matrix(4, 4, &move_matrix);
+  create_eye(&move_matrix);
+
+  move_matrix.matrix[0][3] = x;
+  move_matrix.matrix[1][3] = y;
+  move_matrix.matrix[2][3] = z;
+
+  matrix_t homo_vector_coords;
+  s21_create_matrix(4,1, &homo_vector_coords);
+  homo_vector_coords.matrix[0][0] = vector->matrix[0][0];
+  homo_vector_coords.matrix[1][0] = vector->matrix[1][0];
+  homo_vector_coords.matrix[2][0] = vector->matrix[2][0];
+  homo_vector_coords.matrix[3][0] = 1;
+  
+  s21_mult_matrix(move_matrix,homo_vector_coords,&homo_vector_coords);
+
+  vector->matrix[0][0] = homo_vector_coords.matrix[0][0];
+  vector->matrix[1][0] = homo_vector_coords.matrix[1][0];
+  vector->matrix[2][0] = homo_vector_coords.matrix[2][0];
+
+  s21_remove_matrix(&homo_vector_coords);
+  s21_remove_matrix(&move_matrix);
 }
 
-void set_round_matrix(double round, matrix_t *matrix) {
-  create_eye(matrix);
-  matrix->matrix[0][0] = cos(round);
-  matrix->matrix[0][1] = sin(round);
-  matrix->matrix[1][0] = -sin(round);
-  matrix->matrix[1][1] = cos(round);
+void round_operation(double round_x, double round_y, double round_z, matrix_t *vector) {
+  matrix_t round_matrix;
+  s21_create_matrix(3, 3, &round_matrix);
+
+  create_eye(&round_matrix);
+  round_matrix.matrix[1][1] = cos(round_x);
+  round_matrix.matrix[1][2] = -sin(round_x);
+  round_matrix.matrix[2][1] = sin(round_x);
+  round_matrix.matrix[2][2] = cos(round_x);
+
+  s21_mult_matrix(round_matrix,*vector,vector);
+
+  create_eye(&round_matrix);
+  round_matrix.matrix[0][0] = cos(round_y);
+  round_matrix.matrix[0][2] = sin(round_y);
+  round_matrix.matrix[2][0] = -sin(round_y);
+  round_matrix.matrix[2][2] = cos(round_y);
+
+  s21_mult_matrix(round_matrix,*vector,vector);
+
+  create_eye(&round_matrix);
+  round_matrix.matrix[0][0] = cos(round_z);
+  round_matrix.matrix[0][1] = -sin(round_z);
+  round_matrix.matrix[1][0] = sin(round_z);
+  round_matrix.matrix[1][1] = cos(round_z);
+
+  s21_mult_matrix(round_matrix,*vector,vector);
+  s21_remove_matrix(&round_matrix);
+}
+
+void set_zoom_matrix(double zoom_x, double zoom_y, double zoom_z, matrix_t *vector) {
+  matrix_t zoom_matrix;
+  s21_create_matrix(4, 4, &zoom_matrix);
+  create_eye(&zoom_matrix);
+
+  zoom_matrix.matrix[0][0] =zoom_x;
+  zoom_matrix.matrix[1][1] =zoom_y;
+  zoom_matrix.matrix[2][2] =zoom_z;
+
+  matrix_t homo_vector_coords;
+  s21_create_matrix(4,1, &homo_vector_coords);
+  homo_vector_coords.matrix[0][0] = vector->matrix[0][0];
+  homo_vector_coords.matrix[1][0] = vector->matrix[1][0];
+  homo_vector_coords.matrix[2][0] = vector->matrix[2][0];
+  homo_vector_coords.matrix[3][0] = 1;
+  
+  s21_mult_matrix(zoom_matrix,homo_vector_coords,&homo_vector_coords);
+
+  vector->matrix[0][0] = homo_vector_coords.matrix[0][0];
+  vector->matrix[1][0] = homo_vector_coords.matrix[1][0];
+  vector->matrix[2][0] = homo_vector_coords.matrix[2][0];
+
+  s21_remove_matrix(&homo_vector_coords);
+  s21_remove_matrix(&zoom_matrix);
 }
