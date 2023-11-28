@@ -383,7 +383,7 @@ void round_operation(double round_x, double round_y, double round_z, matrix_t *v
   s21_remove_matrix(&round_matrix);
 }
 
-void set_zoom_matrix(double zoom_x, double zoom_y, double zoom_z, matrix_t *vector) {
+void zoom_operation(double zoom_x, double zoom_y, double zoom_z, matrix_t *vector) {
   matrix_t zoom_matrix;
   s21_create_matrix(4, 4, &zoom_matrix);
   create_eye(&zoom_matrix);

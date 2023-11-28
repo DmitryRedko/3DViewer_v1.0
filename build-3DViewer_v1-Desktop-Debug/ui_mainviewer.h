@@ -54,9 +54,9 @@ public:
     QFrame *scale_3;
     QGridLayout *gridLayout_3;
     QLabel *rotate_title_6;
-    QPushButton *out_btn_3;
     QSlider *scale_val_3;
-    QPushButton *in_btn_3;
+    QLabel *label_2;
+    QLabel *label;
     QFrame *rotate_3;
     QGridLayout *gridLayout_4;
     QLabel *rotate_title_3;
@@ -70,19 +70,19 @@ public:
     QHBoxLayout *line_9;
     QLabel *label_9;
     QSlider *rotate_z_val_3;
-    QLabel *header;
     GLWidget *widget;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
     QFrame *frame_9;
     QSpacerItem *horizontalSpacer;
+    QLabel *header;
 
     void setupUi(QMainWindow *MainViewer)
     {
         if (MainViewer->objectName().isEmpty())
             MainViewer->setObjectName(QString::fromUtf8("MainViewer"));
         MainViewer->resize(1000, 600);
-        MainViewer->setStyleSheet(QString::fromUtf8("background-color: rgb(94, 92, 100);"));
+        MainViewer->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";"));
         centralwidget = new QWidget(MainViewer);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout_7 = new QGridLayout(centralwidget);
@@ -94,6 +94,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
         frame->setSizePolicy(sizePolicy);
+        frame->setStyleSheet(QString::fromUtf8("background-color: \"#515259\";"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         gridLayout = new QGridLayout(frame);
@@ -104,7 +105,7 @@ public:
 "color: white;\n"
 "margin-top: 5px;\n"
 "border: 1px solid white;\n"
-"border-radius: 15px;\n"
+"border-radius: 10px;\n"
 "}\n"
 "\n"
 "QLabel {\n"
@@ -201,7 +202,7 @@ public:
         open_file_layer_3->setObjectName(QString::fromUtf8("open_file_layer_3"));
         sizePolicy1.setHeightForWidth(open_file_layer_3->sizePolicy().hasHeightForWidth());
         open_file_layer_3->setSizePolicy(sizePolicy1);
-        open_file_layer_3->setStyleSheet(QString::fromUtf8("background-color: rgb(94, 92, 100);"));
+        open_file_layer_3->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";"));
         open_file_layer_3->setFrameShape(QFrame::StyledPanel);
         open_file_layer_3->setFrameShadow(QFrame::Raised);
         gridLayout_2 = new QGridLayout(open_file_layer_3);
@@ -210,22 +211,28 @@ public:
         pathObj_3->setObjectName(QString::fromUtf8("pathObj_3"));
         pathObj_3->setStyleSheet(QString::fromUtf8("padding-left: 5px;\n"
 "padding-right: 5px;\n"
-"color: rgb(255, 255, 255);"));
+"color: rgb(255, 255, 255);\n"
+"width: 100px;"));
         pathObj_3->setReadOnly(true);
 
         gridLayout_2->addWidget(pathObj_3, 0, 0, 1, 1);
 
         openObjBtn_3 = new QPushButton(open_file_layer_3);
         openObjBtn_3->setObjectName(QString::fromUtf8("openObjBtn_3"));
-        openObjBtn_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	image: url(:/res/assets/img/open.svg);\n"
-"}"));
+        openObjBtn_3->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";\n"
+"border: 1px solid white;\n"
+"width: 80px;\n"
+"color: white;\n"
+"border-radius: 5px;"));
 
         gridLayout_2->addWidget(openObjBtn_3, 0, 1, 1, 1);
 
         renderBtn_3 = new QPushButton(open_file_layer_3);
         renderBtn_3->setObjectName(QString::fromUtf8("renderBtn_3"));
-        renderBtn_3->setStyleSheet(QString::fromUtf8(""));
+        renderBtn_3->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";\n"
+"border: 1px solid white;\n"
+"color: white;\n"
+"border-radius: 5px;"));
 
         gridLayout_2->addWidget(renderBtn_3, 1, 0, 1, 2);
 
@@ -244,7 +251,7 @@ public:
 "color: white;\n"
 "margin-top: 5px;\n"
 "border: 1px solid white;\n"
-"border-radius: 15px;\n"
+"border-radius: 10px;\n"
 "}\n"
 "\n"
 "QLabel {\n"
@@ -271,16 +278,6 @@ public:
 
         gridLayout_3->addWidget(rotate_title_6, 0, 0, 1, 2);
 
-        out_btn_3 = new QPushButton(scale_3);
-        out_btn_3->setObjectName(QString::fromUtf8("out_btn_3"));
-        sizePolicy2.setHeightForWidth(out_btn_3->sizePolicy().hasHeightForWidth());
-        out_btn_3->setSizePolicy(sizePolicy2);
-        out_btn_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"image: url(:/res/assets/img/zoom_out.svg);\n"
-"}"));
-
-        gridLayout_3->addWidget(out_btn_3, 1, 0, 1, 1);
-
         scale_val_3 = new QSlider(scale_3);
         scale_val_3->setObjectName(QString::fromUtf8("scale_val_3"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
@@ -295,16 +292,15 @@ public:
 
         gridLayout_3->addWidget(scale_val_3, 1, 1, 1, 1);
 
-        in_btn_3 = new QPushButton(scale_3);
-        in_btn_3->setObjectName(QString::fromUtf8("in_btn_3"));
-        sizePolicy2.setHeightForWidth(in_btn_3->sizePolicy().hasHeightForWidth());
-        in_btn_3->setSizePolicy(sizePolicy2);
-        in_btn_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"image: url(:/res/assets/img/zoom_in.svg);\n"
-"}\n"
-""));
+        label_2 = new QLabel(scale_3);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        gridLayout_3->addWidget(in_btn_3, 1, 2, 1, 1);
+        gridLayout_3->addWidget(label_2, 1, 2, 1, 1);
+
+        label = new QLabel(scale_3);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout_3->addWidget(label, 1, 0, 1, 1);
 
 
         gridLayout->addWidget(scale_3, 1, 0, 1, 2);
@@ -315,7 +311,7 @@ public:
 "color: white;\n"
 "margin-top: 5px;\n"
 "border: 1px solid white;\n"
-"border-radius: 15px;\n"
+"border-radius: 10px;\n"
 "}\n"
 "\n"
 "QLabel {\n"
@@ -408,21 +404,12 @@ public:
 
         gridLayout_7->addWidget(frame, 0, 1, 3, 1);
 
-        header = new QLabel(centralwidget);
-        header->setObjectName(QString::fromUtf8("header"));
-        sizePolicy2.setHeightForWidth(header->sizePolicy().hasHeightForWidth());
-        header->setSizePolicy(sizePolicy2);
-        QFont font;
-        font.setPointSize(24);
-        font.setBold(true);
-        font.setWeight(75);
-        header->setFont(font);
-        header->setAlignment(Qt::AlignCenter);
-
-        gridLayout_7->addWidget(header, 0, 0, 1, 1);
-
         widget = new GLWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
+"background-color: \"#252628\";\n"
+"border: 1px solid \"#252628\";\n"
+"padding: 5px;"));
 
         gridLayout_7->addWidget(widget, 1, 0, 1, 1);
 
@@ -430,6 +417,7 @@ public:
         frame_8->setObjectName(QString::fromUtf8("frame_8"));
         sizePolicy1.setHeightForWidth(frame_8->sizePolicy().hasHeightForWidth());
         frame_8->setSizePolicy(sizePolicy1);
+        frame_8->setStyleSheet(QString::fromUtf8("background-color: \"#515259\";"));
         frame_8->setFrameShape(QFrame::StyledPanel);
         frame_8->setFrameShadow(QFrame::Raised);
         gridLayout_6 = new QGridLayout(frame_8);
@@ -455,6 +443,24 @@ public:
 
         gridLayout_7->addWidget(frame_8, 2, 0, 1, 1);
 
+        header = new QLabel(centralwidget);
+        header->setObjectName(QString::fromUtf8("header"));
+        sizePolicy2.setHeightForWidth(header->sizePolicy().hasHeightForWidth());
+        header->setSizePolicy(sizePolicy2);
+        QFont font;
+        font.setPointSize(24);
+        font.setBold(true);
+        font.setWeight(75);
+        header->setFont(font);
+        header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
+"\n"
+"border: 5px;\n"
+"padding: 5px;\n"
+""));
+        header->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        gridLayout_7->addWidget(header, 0, 0, 1, 1);
+
         MainViewer->setCentralWidget(centralwidget);
 
         retranslateUi(MainViewer);
@@ -472,13 +478,13 @@ public:
         openObjBtn_3->setText(QCoreApplication::translate("MainViewer", "file", nullptr));
         renderBtn_3->setText(QCoreApplication::translate("MainViewer", "OPEN", nullptr));
         rotate_title_6->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
-        out_btn_3->setText(QString());
-        in_btn_3->setText(QString());
+        label_2->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        label->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
         rotate_title_3->setText(QCoreApplication::translate("MainViewer", "Rotation", nullptr));
         label_7->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
         label_8->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_9->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
-        header->setText(QCoreApplication::translate("MainViewer", "3D-Viewer", nullptr));
+        header->setText(QCoreApplication::translate("MainViewer", "<html><head/><body><p><span style=\" font-style:italic; color:#ffffff;\">\360\237\220\251 3D-Viewer</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

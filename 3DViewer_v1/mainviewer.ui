@@ -14,7 +14,7 @@
    <string>MainViewer</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(94, 92, 100);</string>
+   <string notr="true">background-color: &quot;#737780&quot;;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_7">
@@ -25,6 +25,9 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: &quot;#515259&quot;;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -40,7 +43,7 @@
 color: white;
 margin-top: 5px;
 border: 1px solid white;
-border-radius: 15px;
+border-radius: 10px;
 }
 
 QLabel {
@@ -186,7 +189,7 @@ border: none;
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(94, 92, 100);</string>
+          <string notr="true">background-color: &quot;#737780&quot;;</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -200,7 +203,8 @@ border: none;
             <property name="styleSheet">
              <string notr="true">padding-left: 5px;
 padding-right: 5px;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+width: 100px;</string>
             </property>
             <property name="readOnly">
              <bool>true</bool>
@@ -210,9 +214,11 @@ color: rgb(255, 255, 255);</string>
           <item row="0" column="1">
            <widget class="QPushButton" name="openObjBtn_3">
             <property name="styleSheet">
-             <string notr="true">QPushButton {
-	image: url(:/res/assets/img/open.svg);
-}</string>
+             <string notr="true">background-color: &quot;#737780&quot;;
+border: 1px solid white;
+width: 80px;
+color: white;
+border-radius: 5px;</string>
             </property>
             <property name="text">
              <string>file</string>
@@ -222,7 +228,10 @@ color: rgb(255, 255, 255);</string>
           <item row="1" column="0" colspan="2">
            <widget class="QPushButton" name="renderBtn_3">
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">background-color: &quot;#737780&quot;;
+border: 1px solid white;
+color: white;
+border-radius: 5px;</string>
             </property>
             <property name="text">
              <string>OPEN</string>
@@ -248,7 +257,7 @@ color: rgb(255, 255, 255);</string>
 color: white;
 margin-top: 5px;
 border: 1px solid white;
-border-radius: 15px;
+border-radius: 10px;
 }
 
 QLabel {
@@ -285,24 +294,6 @@ padding-right: 3px;
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QPushButton" name="out_btn_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-image: url(:/res/assets/img/zoom_out.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="1">
            <widget class="QSlider" name="scale_val_3">
             <property name="sizePolicy">
@@ -326,21 +317,16 @@ image: url(:/res/assets/img/zoom_out.svg);
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="QPushButton" name="in_btn_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-image: url(:/res/assets/img/zoom_in.svg);
-}
-</string>
-            </property>
+           <widget class="QLabel" name="label_2">
             <property name="text">
-             <string/>
+             <string>+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>-</string>
             </property>
            </widget>
           </item>
@@ -354,7 +340,7 @@ image: url(:/res/assets/img/zoom_in.svg);
 color: white;
 margin-top: 5px;
 border: 1px solid white;
-border-radius: 15px;
+border-radius: 10px;
 }
 
 QLabel {
@@ -494,31 +480,15 @@ border: none;
       </layout>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="header">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>24</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>3D-Viewer</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+    <item row="1" column="0">
+     <widget class="GLWidget" name="widget" native="true">
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px; 
+background-color: &quot;#252628&quot;;
+border: 1px solid &quot;#252628&quot;;
+padding: 5px;</string>
       </property>
      </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="GLWidget" name="widget" native="true"/>
     </item>
     <item row="2" column="0">
      <widget class="QFrame" name="frame_8">
@@ -527,6 +497,9 @@ border: none;
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: &quot;#515259&quot;;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -572,6 +545,36 @@ border-color: rgb(61, 56, 70);</string>
         </spacer>
        </item>
       </layout>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="header">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px; 
+
+border: 5px;
+padding: 5px;
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;🐩 3D-Viewer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
      </widget>
     </item>
    </layout>
