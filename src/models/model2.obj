@@ -13,7 +13,7 @@ vt 0.000000 0.000000
 vt 1.000000 0.000000
 vt 1.000000 1.000000
 # 4 vertices
-usemtl wood
+# usemtl wood
 # The first number is the point, then the slash, and the second is the texture point
 f 1/1 2/2 3/3 4/4
 # 1 element
