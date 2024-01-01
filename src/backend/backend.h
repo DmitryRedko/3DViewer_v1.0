@@ -20,5 +20,6 @@ typedef struct matrix_struct {
 
 #include "operations/s21_arithmetic.h"
 #include "operations/s21_common.h"
+#include "parser/s21_parser.h"
 
 #endif
