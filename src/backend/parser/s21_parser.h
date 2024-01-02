@@ -7,6 +7,10 @@
 #define MAX_NORMALS 1000
 #define MAX_FACES 1000
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 typedef struct {
     float x, y, z;
 } Vertex;

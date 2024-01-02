@@ -1,7 +1,4 @@
 #include "s21_parser.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 ObjData parse_obj(const char *file_path) {
     ObjData objData;
@@ -26,6 +23,9 @@ ObjData parse_obj(const char *file_path) {
             if (strcmp(token, "v") == 0) {
                 sscanf(line, "v %f %f %f", &objData.vertices[objData.vertexCount].x,
                     &objData.vertices[objData.vertexCount].y, &objData.vertices[objData.vertexCount].z);
+                printf("%s\n",line);
+                printf("v %f %f %f\n", objData.vertices[objData.vertexCount].x,
+                        objData.vertices[objData.vertexCount].y, objData.vertices[objData.vertexCount].z);
                 objData.vertexCount++;
             } else if (strcmp(token, "vt") == 0) {
                 sscanf(line, "vt %f %f", &objData.textures[objData.textureCount].u,

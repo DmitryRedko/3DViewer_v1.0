@@ -30,7 +30,7 @@
 #include "./parser/s21_parser.h"
 
 int main() {
-    const char *file_path = "../models/model1.obj";
+    const char *file_path = "/home/dmitry/Desktop/School21/Viewer/src/models/model1.obj";
     ObjData objData = parse_obj(file_path);
 
     // Используем данные, собранные из файла .obj
