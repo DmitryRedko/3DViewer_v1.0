@@ -56,6 +56,7 @@ ObjData parse_obj(const char *file_path) {
                     next = strtok(NULL, " ");
                     objData.normals[objData.normalCount].z = atof(next);
                     objData.normalCount++;
+                    // printf("objData.noramlCount = %d\n", objData.normalCount);
                 }
             } else if (strcmp(token, "f") == 0) {
                 // Faces parsing
@@ -71,6 +72,8 @@ ObjData parse_obj(const char *file_path) {
                     objData.faces[objData.faceCount].vnIndex[i] = indices[i][2];
                 }
                 objData.faceCount++;
+                // printf("objData.faceCount = %d\n", objData.faceCount);
+
             }
         }
     }

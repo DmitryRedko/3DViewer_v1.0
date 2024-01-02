@@ -15,6 +15,7 @@ public:
     void initializeGL();
     void paintGL();
     void resizeGL(int w, int h);
+    void example_drawAxis();
 
     // Add a function to set the parsed OBJ data
     void setObjData(ObjData objData);

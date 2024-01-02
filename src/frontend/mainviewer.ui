@@ -18,6 +18,35 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_7">
+    <item row="0" column="0">
+     <widget class="QLabel" name="header">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px; 
+
+border: 5px;
+padding: 5px;
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;🐩 3D-Viewer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="1" rowspan="3">
      <widget class="QFrame" name="frame">
       <property name="sizePolicy">
@@ -480,16 +509,6 @@ border: none;
       </layout>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="GLWidget" name="widget" native="true">
-      <property name="styleSheet">
-       <string notr="true">border-radius: 10px; 
-background-color: &quot;#252628&quot;;
-border: 1px solid &quot;#252628&quot;;
-padding: 5px;</string>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="0">
      <widget class="QFrame" name="frame_8">
       <property name="sizePolicy">
@@ -547,37 +566,21 @@ border-color: rgb(61, 56, 70);</string>
       </layout>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="header">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>24</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
+    <item row="1" column="0">
+     <widget class="GLWidget" name="widget" native="true">
       <property name="styleSheet">
        <string notr="true">border-radius: 10px; 
-
-border: 5px;
-padding: 5px;
-</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;🐩 3D-Viewer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+background-color: &quot;#252628&quot;;
+border: 1px solid &quot;#252628&quot;;
+padding: 5px;</string>
       </property>
      </widget>
     </item>
    </layout>
+   <zorder>frame</zorder>
+   <zorder>frame_8</zorder>
+   <zorder>header</zorder>
+   <zorder>widget</zorder>
   </widget>
  </widget>
  <customwidgets>
