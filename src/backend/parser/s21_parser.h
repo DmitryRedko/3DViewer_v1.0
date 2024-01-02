@@ -2,10 +2,10 @@
 #define OBJ_PARSER
 
 #define MAX_LINE_LENGTH 256
-#define MAX_VERTICES 1000
-#define MAX_TEXTURES 1000
-#define MAX_NORMALS 1000
-#define MAX_FACES 1000
+#define MAX_VERTICES 10000
+#define MAX_TEXTURES 10000
+#define MAX_NORMALS 10000
+#define MAX_FACES 10000
 
 #include <stdio.h>
 #include <stdlib.h>
