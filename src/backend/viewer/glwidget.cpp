@@ -78,7 +78,7 @@ void GLWidget::example_drawAxis()
 void GLWidget::paintGL() {
 
     // const char *file_path = "/home/dmitry/Desktop/School21/Viewer/src/models/model2.obj";
-    const char *file_path = "../models/katana.obj";
+    const char *file_path = "../models/cube.obj";
     ObjData objData = parse_obj(file_path);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -98,13 +98,16 @@ void GLWidget::paintGL() {
     glTranslatef(0.0f, 0.0f, -5.0f);
 
     glBegin(GL_TRIANGLES);
+    printf("faceCount %d\n", objData.faceCount);
     for (int i = 0; i < objData.faceCount; ++i) {
         for (int j = 0; j < 3; ++j) {
             int vIndex = objData.faces[i].vIndex[j] - 1; // Массивы в .obj начинаются с 1
             int vnIndex = objData.faces[i].vnIndex[j] - 1;
 
             glNormal3f(objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
+            printf("glNormal3f %f %f %f\n", objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
             glVertex3f(objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
+            printf("glVertex3f %f %f %f\n", objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
             // glNormal3f(ndc(objData.normals[vnIndex].x), ndc(objData.normals[vnIndex].y), ndc(objData.normals[vnIndex].z));
             // glVertex3f(ndc(objData.vertices[vIndex].x), ndc(objData.vertices[vIndex].y), ndc(objData.vertices[vIndex].z));
         }
