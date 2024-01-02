@@ -4,6 +4,9 @@
 
 GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
     timer.start(16);
+//Что - то с обласью видимости. Тут парсится и отображется нормально. Если эти результаты вывестив PaintGL, то там пусто.
+// Попробовал прямо в PaintGL заполнить вершины. Теперь данные в PaintGL видно, но при этом они не отображаются
+    
 //    const char *file_path = "/home/dmitry/Desktop/School21/Viewer/src/models/katana.obj";
 //    ObjData objData = parse_obj(file_path);
 
@@ -46,8 +49,9 @@ void GLWidget::initializeGL() {
 
 void GLWidget::paintGL() {
 
-    const char *file_path = "/home/dmitry/Desktop/School21/Viewer/src/models/model2.obj";
-    ObjData objData = parse_obj(file_path);
+// Вот если этого не будет, то данные в этой фунции не видн
+//    const char *file_path = "/home/dmitry/Desktop/School21/Viewer/src/models/model1.obj";
+//    ObjData objData = parse_obj(file_path);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
