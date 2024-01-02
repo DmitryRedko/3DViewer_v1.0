@@ -49,6 +49,115 @@ inline float ndc(float f)
     return f / 250.0f - 1.0f;
 }
 
+void GLWidget::example_drawCube()
+{
+static const GLfloat LightAmbient[]=  { 0.25f, 0.25f, 0.25f, 1.0f };    // Ambient Light Values
+static const GLfloat LightDiffuse[]=  { 0.1f, 0.1f, 0.1f, 1.0f };    // Diffuse Light Values
+static const GLfloat LightPosition[]= { 0.0f, 0.0f, 2.0f, 1.0f };    // Light Position
+
+glPushAttrib(GL_COLOR_BUFFER_BIT | GL_CURRENT_BIT | GL_ENABLE_BIT | GL_LIGHTING_BIT | GL_POLYGON_BIT);
+
+glColor4f(0.2f,0.35f,0.3f,0.75f);         // Full Brightness, 50% Alpha ( NEW )
+glBlendFunc(GL_ONE,GL_ONE_MINUS_SRC_ALPHA);       // Blending Function For Translucency Based On Source Alpha
+glEnable(GL_BLEND);
+
+glShadeModel(GL_SMOOTH);
+
+glEnable(GL_LIGHTING);
+glDisable(GL_LIGHT0);
+glEnable(GL_LIGHT1);
+glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
+glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);
+glLightfv(GL_LIGHT1, GL_POSITION, LightPosition);
+glEnable(GL_COLOR_MATERIAL);
+
+glScalef(0.25,0.25, 0.25);
+glTranslatef(0,0, 1);
+
+glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+glBegin(GL_QUADS);
+// Front Face
+glNormal3f( 0.0f, 0.0f, 1.0f);    // Normal Pointing Towards Viewer
+glVertex3f(-1.0f, -1.0f,  1.0f);  // Point 1 (Front)
+glVertex3f( 1.0f, -1.0f,  1.0f);  // Point 2 (Front)
+glVertex3f( 1.0f,  1.0f,  1.0f);  // Point 3 (Front)
+glVertex3f(-1.0f,  1.0f,  1.0f);  // Point 4 (Front)
+// Back Face
+glNormal3f( 0.0f, 0.0f,-1.0f);    // Normal Pointing Away From Viewer
+glVertex3f(-1.0f, -1.0f, -1.0f);  // Point 1 (Back)
+glVertex3f(-1.0f,  1.0f, -1.0f);  // Point 2 (Back)
+glVertex3f( 1.0f,  1.0f, -1.0f);  // Point 3 (Back)
+glVertex3f( 1.0f, -1.0f, -1.0f);  // Point 4 (Back)
+// Top Face
+glNormal3f( 0.0f, 1.0f, 0.0f);    // Normal Pointing Up
+glVertex3f(-1.0f,  1.0f, -1.0f);  // Point 1 (Top)
+glVertex3f(-1.0f,  1.0f,  1.0f);  // Point 2 (Top)
+glVertex3f( 1.0f,  1.0f,  1.0f);  // Point 3 (Top)
+glVertex3f( 1.0f,  1.0f, -1.0f);  // Point 4 (Top)
+// Bottom Face
+glNormal3f( 0.0f,-1.0f, 0.0f);    // Normal Pointing Down
+glVertex3f(-1.0f, -1.0f, -1.0f);  // Point 1 (Bottom)
+glVertex3f( 1.0f, -1.0f, -1.0f);  // Point 2 (Bottom)
+glVertex3f( 1.0f, -1.0f,  1.0f);  // Point 3 (Bottom)
+glVertex3f(-1.0f, -1.0f,  1.0f);  // Point 4 (Bottom)
+// Right face
+glNormal3f( 1.0f, 0.0f, 0.0f);    // Normal Pointing Right
+glVertex3f( 1.0f, -1.0f, -1.0f);  // Point 1 (Right)
+glVertex3f( 1.0f,  1.0f, -1.0f);  // Point 2 (Right)
+glVertex3f( 1.0f,  1.0f,  1.0f);  // Point 3 (Right)
+glVertex3f( 1.0f, -1.0f,  1.0f);  // Point 4 (Right)
+// Left Face
+glNormal3f(-1.0f, 0.0f, 0.0f);    // Normal Pointing Left
+glVertex3f(-1.0f, -1.0f, -1.0f);  // Point 1 (Left)
+glVertex3f(-1.0f, -1.0f,  1.0f);  // Point 2 (Left)
+glVertex3f(-1.0f,  1.0f,  1.0f);  // Point 3 (Left)
+glVertex3f(-1.0f,  1.0f, -1.0f);  // Point 4 (Left)
+glEnd();
+
+glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+glColor4f(0.2f,0.65f,0.3f,0.35f); // Full Brightness, 50% Alpha ( NEW )
+glBegin(GL_QUADS);
+// Front Face
+glNormal3f( 0.0f, 0.0f, 1.0f);    // Normal Pointing Towards Viewer
+glVertex3f(-1.0f, -1.0f,  1.0f);  // Point 1 (Front)
+glVertex3f( 1.0f, -1.0f,  1.0f);  // Point 2 (Front)
+glVertex3f( 1.0f,  1.0f,  1.0f);  // Point 3 (Front)
+glVertex3f(-1.0f,  1.0f,  1.0f);  // Point 4 (Front)
+// Back Face
+glNormal3f( 0.0f, 0.0f,-1.0f);    // Normal Pointing Away From Viewer
+glVertex3f(-1.0f, -1.0f, -1.0f);  // Point 1 (Back)
+glVertex3f(-1.0f,  1.0f, -1.0f);  // Point 2 (Back)
+glVertex3f( 1.0f,  1.0f, -1.0f);  // Point 3 (Back)
+glVertex3f( 1.0f, -1.0f, -1.0f);  // Point 4 (Back)
+// Top Face
+glNormal3f( 0.0f, 1.0f, 0.0f);    // Normal Pointing Up
+glVertex3f(-1.0f,  1.0f, -1.0f);  // Point 1 (Top)
+glVertex3f(-1.0f,  1.0f,  1.0f);  // Point 2 (Top)
+glVertex3f( 1.0f,  1.0f,  1.0f);  // Point 3 (Top)
+glVertex3f( 1.0f,  1.0f, -1.0f);  // Point 4 (Top)
+// Bottom Face
+glNormal3f( 0.0f,-1.0f, 0.0f);    // Normal Pointing Down
+glVertex3f(-1.0f, -1.0f, -1.0f);  // Point 1 (Bottom)
+glVertex3f( 1.0f, -1.0f, -1.0f);  // Point 2 (Bottom)
+glVertex3f( 1.0f, -1.0f,  1.0f);  // Point 3 (Bottom)
+glVertex3f(-1.0f, -1.0f,  1.0f);  // Point 4 (Bottom)
+// Right face
+glNormal3f( 1.0f, 0.0f, 0.0f);    // Normal Pointing Right
+glVertex3f( 1.0f, -1.0f, -1.0f);  // Point 1 (Right)
+glVertex3f( 1.0f,  1.0f, -1.0f);  // Point 2 (Right)
+glVertex3f( 1.0f,  1.0f,  1.0f);  // Point 3 (Right)
+glVertex3f( 1.0f, -1.0f,  1.0f);  // Point 4 (Right)
+// Left Face
+glNormal3f(-1.0f, 0.0f, 0.0f);    // Normal Pointing Left
+glVertex3f(-1.0f, -1.0f, -1.0f);  // Point 1 (Left)
+glVertex3f(-1.0f, -1.0f,  1.0f);  // Point 2 (Left)
+glVertex3f(-1.0f,  1.0f,  1.0f);  // Point 3 (Left)
+glVertex3f(-1.0f,  1.0f, -1.0f);  // Point 4 (Left)
+glEnd();
+
+glPopAttrib();
+}
+
 void GLWidget::example_drawAxis()
 {
     glLineWidth(1.0f); // устанавливаю ширину линии приближённо в пикселях
@@ -95,26 +204,29 @@ void GLWidget::paintGL() {
 
     example_drawAxis(); // рисование осей координат
 
-    glTranslatef(0.0f, 0.0f, -5.0f);
+    // glTranslatef(0.0f, 0.0f, -5.0f);
 
     glBegin(GL_TRIANGLES);
-    printf("faceCount %d\n", objData.faceCount);
-    for (int i = 0; i < objData.faceCount; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            int vIndex = objData.faces[i].vIndex[j] - 1; // Массивы в .obj начинаются с 1
-            int vnIndex = objData.faces[i].vnIndex[j] - 1;
+    // printf("faceCount %d\n", objData.faceCount);
+    // for (int i = 0; i < objData.faceCount; ++i) {
+    //     for (int j = 0; j < 3; ++j) {
+    //         int vIndex = objData.faces[i].vIndex[j] - 1; // Массивы в .obj начинаются с 1
+    //         int vnIndex = objData.faces[i].vnIndex[j] - 1;
 
-            glNormal3f(objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
-            printf("glNormal3f %f %f %f\n", objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
-            glVertex3f(objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
-            printf("glVertex3f %f %f %f\n", objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
-            // glNormal3f(ndc(objData.normals[vnIndex].x), ndc(objData.normals[vnIndex].y), ndc(objData.normals[vnIndex].z));
-            // glVertex3f(ndc(objData.vertices[vIndex].x), ndc(objData.vertices[vIndex].y), ndc(objData.vertices[vIndex].z));
-        }
-    }
+    //         glNormal3f(objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
+    //         printf("glNormal3f %f %f %f\n", objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
+    //         glVertex3f(objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
+    //         printf("glVertex3f %f %f %f\n", objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
+    //         // glNormal3f(ndc(objData.normals[vnIndex].x), ndc(objData.normals[vnIndex].y), ndc(objData.normals[vnIndex].z));
+    //         // glVertex3f(ndc(objData.vertices[vIndex].x), ndc(objData.vertices[vIndex].y), ndc(objData.vertices[vIndex].z));
+    //     }
+    // }
     glEnd();
 
     glFlush();
+
+    // Отрисовка куба
+    example_drawCube();
 
 }
 
