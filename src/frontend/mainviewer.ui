@@ -29,6 +29,7 @@
       <property name="font">
        <font>
         <pointsize>24</pointsize>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -567,7 +568,7 @@ border-color: rgb(61, 56, 70);</string>
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="GLWidget" name="widget" native="true">
+     <widget class="GLWidget" name="GLwidget" native="true">
       <property name="styleSheet">
        <string notr="true">border-radius: 10px; 
 background-color: &quot;#252628&quot;;
@@ -580,7 +581,7 @@ padding: 5px;</string>
    <zorder>frame</zorder>
    <zorder>frame_8</zorder>
    <zorder>header</zorder>
-   <zorder>widget</zorder>
+   <zorder>GLwidget</zorder>
   </widget>
  </widget>
  <customwidgets>

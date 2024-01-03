@@ -2,6 +2,7 @@
 #define MAINVIEWER_H
 
 #include <QMainWindow>
+#include "glwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainViewer; }
@@ -17,5 +18,10 @@ public:
 
 private:
     Ui::MainViewer *ui;
+    GLWidget *myGLW;
+
+private slots:
+    void updateLabelText(int value);
+    void on_rotate_x_valueChanged(int value);
 };
 #endif // MAINVIEWER_H
