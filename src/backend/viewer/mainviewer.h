@@ -23,5 +23,12 @@ private:
 private slots:
     void updateLabelText(int value);
     void on_rotate_x_valueChanged(int value);
+    void on_rotate_y_valueChanged(int value);
+    void on_rotate_z_valueChanged(int value);
+    void on_zoom_scale_valueChanged(int value);
+    void on_move_x_valueChanged(int value);
+    void on_move_y_valueChanged(int value);
+    void on_move_z_valueChanged(int value);
+    void on_reset_model_released();
 };
 #endif // MAINVIEWER_H

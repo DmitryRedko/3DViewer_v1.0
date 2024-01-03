@@ -17,13 +17,20 @@ public:
     void resizeGL(int w, int h);
     void example_drawAxis();
     void example_drawCube();
+    void draw_model();
 
     // Add a function to set the parsed OBJ data
     void setObjData(ObjData objData);
 
 public slots:
+    void function_zoom_scale(int value); // Declare the slot in GLWidget
     void function_rotate_x(int value); // Declare the slot in GLWidget
-    float xRot;
+    void function_rotate_y(int value); // Declare the slot in GLWidget
+    void function_rotate_z(int value); // Declare the slot in GLWidget
+    void function_move_x(int value); // Declare the slot in GLWidget
+    void function_move_y(int value); // Declare the slot in GLWidget
+    void function_move_z(int value); // Declare the slot in GLWidget
+    float scale = 1.0f, xRot = 0.0f, yRot = 0.0f, zRot = 0.0f, xMov = 0.0f, yMov = 0.0f, zMov = 0.0f;
 
 
 private:

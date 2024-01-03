@@ -52,12 +52,6 @@ public:
     QLineEdit *pathLine;
     QPushButton *fileBtm;
     QPushButton *pathBtm;
-    QFrame *zoom;
-    QGridLayout *gridLayout_3;
-    QLabel *rotate_title;
-    QSlider *zoom_scale;
-    QLabel *label_plus;
-    QLabel *label_minus;
     QFrame *rotate;
     QGridLayout *gridLayout_4;
     QLabel *rotate_title_3;
@@ -71,11 +65,18 @@ public:
     QHBoxLayout *line_9;
     QLabel *label_9;
     QSlider *rotate_z;
+    QFrame *zoom;
+    QGridLayout *gridLayout_3;
+    QLabel *rotate_title;
+    QSlider *zoom_scale;
+    QLabel *label_plus;
+    QLabel *label_minus;
+    QPushButton *reset_model;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
     QFrame *frame_2;
     QSpacerItem *horizontalSpacer;
-    GLWidget *widget;
+    GLWidget *GLwidget;
 
     void setupUi(QMainWindow *MainViewer)
     {
@@ -216,7 +217,7 @@ public:
         gridLayout_5->addLayout(verticalLayout, 1, 0, 1, 1);
 
 
-        gridLayout->addWidget(translate, 3, 0, 1, 2);
+        gridLayout->addWidget(translate, 4, 0, 1, 2);
 
         open_file = new QFrame(frame);
         open_file->setObjectName(QString::fromUtf8("open_file"));
@@ -258,69 +259,6 @@ public:
 
 
         gridLayout->addWidget(open_file, 0, 0, 1, 2);
-
-        zoom = new QFrame(frame);
-        zoom->setObjectName(QString::fromUtf8("zoom"));
-        zoom->setEnabled(true);
-        sizePolicy.setHeightForWidth(zoom->sizePolicy().hasHeightForWidth());
-        zoom->setSizePolicy(sizePolicy);
-        zoom->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"color: white;\n"
-"margin-top: 5px;\n"
-"border: 1px solid white;\n"
-"border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLabel {\n"
-"margin-top: 0;\n"
-"border: none;\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"	background-color: rgba(255, 255, 255, 0);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"padding-top: 3px;\n"
-"padding-right: 3px;\n"
-"}"));
-        zoom->setFrameShape(QFrame::StyledPanel);
-        zoom->setFrameShadow(QFrame::Raised);
-        gridLayout_3 = new QGridLayout(zoom);
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        rotate_title = new QLabel(zoom);
-        rotate_title->setObjectName(QString::fromUtf8("rotate_title"));
-        sizePolicy2.setHeightForWidth(rotate_title->sizePolicy().hasHeightForWidth());
-        rotate_title->setSizePolicy(sizePolicy2);
-
-        gridLayout_3->addWidget(rotate_title, 0, 0, 1, 2);
-
-        zoom_scale = new QSlider(zoom);
-        zoom_scale->setObjectName(QString::fromUtf8("zoom_scale"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(zoom_scale->sizePolicy().hasHeightForWidth());
-        zoom_scale->setSizePolicy(sizePolicy3);
-        zoom_scale->setMinimum(1);
-        zoom_scale->setMaximum(200);
-        zoom_scale->setValue(50);
-        zoom_scale->setOrientation(Qt::Horizontal);
-
-        gridLayout_3->addWidget(zoom_scale, 1, 1, 1, 1);
-
-        label_plus = new QLabel(zoom);
-        label_plus->setObjectName(QString::fromUtf8("label_plus"));
-
-        gridLayout_3->addWidget(label_plus, 1, 2, 1, 1);
-
-        label_minus = new QLabel(zoom);
-        label_minus->setObjectName(QString::fromUtf8("label_minus"));
-
-        gridLayout_3->addWidget(label_minus, 1, 0, 1, 1);
-
-
-        gridLayout->addWidget(zoom, 1, 0, 1, 2);
 
         rotate = new QFrame(frame);
         rotate->setObjectName(QString::fromUtf8("rotate"));
@@ -383,7 +321,7 @@ public:
         rotate_y->setObjectName(QString::fromUtf8("rotate_y"));
         rotate_y->setMinimum(-360);
         rotate_y->setMaximum(360);
-        rotate_y->setSingleStep(0);
+        rotate_y->setSingleStep(1);
         rotate_y->setOrientation(Qt::Horizontal);
 
         line_8->addWidget(rotate_y);
@@ -404,7 +342,7 @@ public:
         rotate_z->setObjectName(QString::fromUtf8("rotate_z"));
         rotate_z->setMinimum(-360);
         rotate_z->setMaximum(360);
-        rotate_z->setSingleStep(0);
+        rotate_z->setSingleStep(1);
         rotate_z->setOrientation(Qt::Horizontal);
 
         line_9->addWidget(rotate_z);
@@ -416,7 +354,78 @@ public:
         gridLayout_4->addLayout(verticalLayout_2, 1, 0, 1, 1);
 
 
-        gridLayout->addWidget(rotate, 2, 0, 1, 2);
+        gridLayout->addWidget(rotate, 3, 0, 1, 2);
+
+        zoom = new QFrame(frame);
+        zoom->setObjectName(QString::fromUtf8("zoom"));
+        zoom->setEnabled(true);
+        sizePolicy.setHeightForWidth(zoom->sizePolicy().hasHeightForWidth());
+        zoom->setSizePolicy(sizePolicy);
+        zoom->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"color: white;\n"
+"margin-top: 5px;\n"
+"border: 1px solid white;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"margin-top: 0;\n"
+"border: none;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"padding-top: 3px;\n"
+"padding-right: 3px;\n"
+"}"));
+        zoom->setFrameShape(QFrame::StyledPanel);
+        zoom->setFrameShadow(QFrame::Raised);
+        gridLayout_3 = new QGridLayout(zoom);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        rotate_title = new QLabel(zoom);
+        rotate_title->setObjectName(QString::fromUtf8("rotate_title"));
+        sizePolicy2.setHeightForWidth(rotate_title->sizePolicy().hasHeightForWidth());
+        rotate_title->setSizePolicy(sizePolicy2);
+
+        gridLayout_3->addWidget(rotate_title, 0, 0, 1, 2);
+
+        zoom_scale = new QSlider(zoom);
+        zoom_scale->setObjectName(QString::fromUtf8("zoom_scale"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(zoom_scale->sizePolicy().hasHeightForWidth());
+        zoom_scale->setSizePolicy(sizePolicy3);
+        zoom_scale->setMinimum(1);
+        zoom_scale->setMaximum(300);
+        zoom_scale->setSingleStep(1);
+        zoom_scale->setPageStep(1);
+        zoom_scale->setValue(100);
+        zoom_scale->setOrientation(Qt::Horizontal);
+
+        gridLayout_3->addWidget(zoom_scale, 1, 1, 1, 1);
+
+        label_plus = new QLabel(zoom);
+        label_plus->setObjectName(QString::fromUtf8("label_plus"));
+
+        gridLayout_3->addWidget(label_plus, 1, 2, 1, 1);
+
+        label_minus = new QLabel(zoom);
+        label_minus->setObjectName(QString::fromUtf8("label_minus"));
+
+        gridLayout_3->addWidget(label_minus, 1, 0, 1, 1);
+
+
+        gridLayout->addWidget(zoom, 2, 0, 1, 2);
+
+        reset_model = new QPushButton(frame);
+        reset_model->setObjectName(QString::fromUtf8("reset_model"));
+        reset_model->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout->addWidget(reset_model, 1, 0, 1, 2);
 
 
         gridLayout_7->addWidget(frame, 0, 1, 3, 1);
@@ -451,20 +460,20 @@ public:
 
         gridLayout_7->addWidget(frame_8, 2, 0, 1, 1);
 
-        widget = new GLWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
+        GLwidget = new GLWidget(centralwidget);
+        GLwidget->setObjectName(QString::fromUtf8("GLwidget"));
+        GLwidget->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
 "background-color: \"#252628\";\n"
 "border: 1px solid \"#252628\";\n"
 "padding: 5px;"));
 
-        gridLayout_7->addWidget(widget, 1, 0, 1, 1);
+        gridLayout_7->addWidget(GLwidget, 1, 0, 1, 1);
 
         MainViewer->setCentralWidget(centralwidget);
         frame->raise();
         frame_8->raise();
         header->raise();
-        widget->raise();
+        GLwidget->raise();
 
         retranslateUi(MainViewer);
 
@@ -481,13 +490,14 @@ public:
         label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
         fileBtm->setText(QCoreApplication::translate("MainViewer", "file", nullptr));
         pathBtm->setText(QCoreApplication::translate("MainViewer", "OPEN", nullptr));
-        rotate_title->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
-        label_plus->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
-        label_minus->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
         rotate_title_3->setText(QCoreApplication::translate("MainViewer", "Rotation", nullptr));
         label_7->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
         label_8->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_9->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
+        rotate_title->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
+        label_plus->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        label_minus->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
+        reset_model->setText(QCoreApplication::translate("MainViewer", "Reset model", nullptr));
     } // retranslateUi
 
 };
