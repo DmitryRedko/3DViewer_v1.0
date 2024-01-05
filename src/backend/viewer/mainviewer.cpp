@@ -7,6 +7,7 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
 {
     ui->setupUi(this);
     myGLW = new GLWidget;
+
    connect(ui->zoom_scale, &QSlider::valueChanged, myGLW, &GLWidget::function_zoom_scale);
     connect(ui->rotate_x, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_x);
 //    connect(ui->rotate_y, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_y);
@@ -30,13 +31,13 @@ void MainViewer::on_rotate_x_valueChanged()
 }
 
 
-//void MainViewer::on_rotate_y_valueChanged()
-//{
-//    ui->rotate_title_3->setText("Rotate: x = " + QString::number(ui->rotate_x->value())
-//                                     + " y = " + QString::number(ui->rotate_y->value())
-//                                     + " z = " + QString::number(ui->rotate_z->value()));
-//    ui->GLwidget->update();
-//}
+void MainViewer::on_rotate_y_valueChanged()
+{
+    ui->rotate_title_3->setText("Rotate: x = " + QString::number(ui->rotate_x->value())
+                                     + " y = " + QString::number(ui->rotate_y->value())
+                                     + " z = " + QString::number(ui->rotate_z->value()));
+    ui->GLwidget->update();
+}
 
 
 //void MainViewer::on_rotate_z_valueChanged()
@@ -115,9 +116,9 @@ void MainViewer::on_openBtm_clicked()
             strncpy(model_name, charFileName, sizeof(ui->GLwidget->model_name) - 1);
             model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0'; // Убедимся, что строка завершается нулевым символом
         }
-
+        ui->GLwidget->welcome_flag = 1;
         ui->GLwidget->initializeGLmodel();
-        on_reset_model_released();
+//        on_reset_model_released();
     }
 }
 

@@ -6,6 +6,7 @@
 #include <string.h>
 #include "../backend.h"
 
-ObjData parse_obj(const char *file_path, double *parse_flag);
+ObjData parse_obj(const char *file_path, int *parse_flag);
+void clear_obj_data(ObjData *objData);
 
 #endif 

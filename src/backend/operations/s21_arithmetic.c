@@ -419,9 +419,9 @@ void move_operation(double x, double y, double z, ObjData *data, ObjData base_da
 
 void zoom_operation(double zoom_x, double zoom_y, double zoom_z, ObjData *data, ObjData base_data){
     for (int i = 0; i < data->vertexCount; ++i) {
-        data->vertices[i].x = base_data.vertices[i].x * zoom_x;
-        data->vertices[i].y = base_data.vertices[i].y * zoom_y;
-        data->vertices[i].z = base_data.vertices[i].z * zoom_z;
+        data->vertices[i].x = base_data.vertices[i].x * zoom_x/100;
+        data->vertices[i].y = base_data.vertices[i].y * zoom_y/100;
+        data->vertices[i].z = base_data.vertices[i].z * zoom_z/100;
     }
 }
 
