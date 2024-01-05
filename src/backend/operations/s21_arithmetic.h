@@ -1,6 +1,9 @@
 #ifndef S21_ARITHMETIC
 #define S21_ARITHMETIC
 
+#include "../backend.h"
+#include <math.h> // Include math library for trigonometric functions
+
 int s21_create_matrix(int rows, int columns, matrix_t *result);
 void s21_remove_matrix(matrix_t *A);
 int s21_eq_matrix(matrix_t *A, matrix_t *B);
@@ -12,8 +15,13 @@ int s21_transpose(matrix_t *A, matrix_t *result);
 int s21_calc_complements(matrix_t *A, matrix_t *result);
 int s21_determinant(matrix_t *A, double *result);
 int s21_inverse_matrix(matrix_t *A, matrix_t *result);
-void move_operation(double x, double y, double z, matrix_t *vector);
-void round_operation(double round_x, double round_y, double round_z, matrix_t *vector);
-void zoom_operation(double zoom_x, double zoom_y, double zoom_z, matrix_t *vector);
+
+// void move_operation(double x, double y, double z, matrix_t *vector);
+// void round_operation(double round_x, double round_y, double round_z, matrix_t *vector);
+// void zoom_operation(double zoom_x, double zoom_y, double zoom_z, matrix_t *vector);
+
+void rotate_operation(double round_x, double round_y, double round_z, ObjData *data, ObjData base_data);
+void zoom_operation(double zoom_x, double zoom_y, double zoom_z, ObjData *data, ObjData base_data);
+void move_operation(double x, double y, double z, ObjData *data, ObjData base_data);
 
 #endif

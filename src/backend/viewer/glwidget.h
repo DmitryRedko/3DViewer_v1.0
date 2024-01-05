@@ -5,7 +5,7 @@
 #include <QTimer>
 
 extern "C" {
-#include "../parser/s21_parser.h" // Include your OBJ parser header
+#include "../backend.h"
 }
 
 class GLWidget : public QGLWidget
@@ -26,19 +26,20 @@ public:
     double parse_flag = 0;
 
 public slots:
-    void function_zoom_scale(int value); // Declare the slot in GLWidget
+//    void function_zoom_scale(int value); // Declare the slot in GLWidget
     void function_rotate_x(int value); // Declare the slot in GLWidget
-    void function_rotate_y(int value); // Declare the slot in GLWidget
-    void function_rotate_z(int value); // Declare the slot in GLWidget
-    void function_move_x(int value); // Declare the slot in GLWidget
-    void function_move_y(int value); // Declare the slot in GLWidget
-    void function_move_z(int value); // Declare the slot in GLWidget
+//    void function_rotate_y(int value); // Declare the slot in GLWidget
+//    void function_rotate_z(int value); // Declare the slot in GLWidget
+//    void function_move_x(int value); // Declare the slot in GLWidget
+//    void function_move_y(int value); // Declare the slot in GLWidget
+//    void function_move_z(int value); // Declare the slot in GLWidget
     float scale = 1.0f, xRot = 0.0f, yRot = 0.0f, zRot = 0.0f, xMov = 0.0f, yMov = 0.0f, zMov = 0.0f;
 
 
 private:
     QTimer timer;
     ObjData objData; // Store parsed OBJ data here
+    ObjData baseobjData; // Store parsed OBJ data here
 };
 
 #endif // GLWIDGET_H

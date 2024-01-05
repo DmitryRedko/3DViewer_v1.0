@@ -17,6 +17,7 @@ SOURCES += \
     mainviewer.cpp
 
 HEADERS += \
+    ../backend.h \
     ../operations/s21_arithmetic.h \
     ../operations/s21_common.h \
     ../parser/s21_parser.h \
