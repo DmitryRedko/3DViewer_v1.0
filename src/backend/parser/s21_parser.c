@@ -9,17 +9,24 @@
 #define MAX_NORMALS 10000
 #define MAX_FACES 10000
 
-ObjData parse_obj(const char *file_path) {
+ObjData parse_obj(const char *file_path, double *parse_flag) {
     ObjData objData;
     objData.vertexCount = 0;
     objData.textureCount = 0;
     objData.normalCount = 0;
     objData.faceCount = 0;
 
+    if (strstr(file_path, ".obj") == NULL) {
+        fprintf(stderr, "File does not have .obj extension.\n");
+        *parse_flag = 1;
+        return objData;
+    }
+
     FILE *file = fopen(file_path, "r");
     if (file == NULL) {
         fprintf(stderr, "Unable to open file.\n");
-        exit(EXIT_FAILURE);
+        *parse_flag = 1;
+        return objData;
     }
 
     char line[MAX_LINE_LENGTH];

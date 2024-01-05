@@ -35,6 +35,6 @@ typedef struct {
     int vertexCount, textureCount, normalCount, faceCount;
 } ObjData;
 
-ObjData parse_obj(const char *file_path);
+ObjData parse_obj(const char *file_path, double *parse_flag);
 
 #endif 

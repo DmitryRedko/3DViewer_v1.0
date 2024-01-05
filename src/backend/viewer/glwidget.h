@@ -18,9 +18,12 @@ public:
     void example_drawAxis();
     void example_drawCube();
     void draw_model();
-
+    void initializeGLmodel();
     // Add a function to set the parsed OBJ data
     void setObjData(ObjData objData);
+    char model_name[100] = " ";
+    double welcome_flag = 0;
+    double parse_flag = 0;
 
 public slots:
     void function_zoom_scale(int value); // Declare the slot in GLWidget
