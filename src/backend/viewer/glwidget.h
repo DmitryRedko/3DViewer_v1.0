@@ -18,6 +18,7 @@ public:
     void example_drawAxis();
     void example_drawCube();
     void draw_model();
+    void draw_model1();
 
     // Add a function to set the parsed OBJ data
     void setObjData(ObjData objData);

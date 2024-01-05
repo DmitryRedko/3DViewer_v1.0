@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LINE_LENGTH 256
-#define MAX_VERTICES 10000
-#define MAX_TEXTURES 10000
-#define MAX_NORMALS 10000
-#define MAX_FACES 10000
+#define MAX_LINE_LENGTH 1000
+#define MAX_VERTICES 200000
+#define MAX_TEXTURES 200000
+#define MAX_NORMALS 200000
+#define MAX_FACES 200000
 
 ObjData parse_obj(const char *file_path) {
     ObjData objData;

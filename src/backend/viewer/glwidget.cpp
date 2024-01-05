@@ -6,7 +6,7 @@ GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent), xRot(0.0f) {
 
     connect(&timer, SIGNAL(timeout()), this, SLOT(updateGL()));
     // const char *file_path = "/home/dmitry/Desktop/School21/Viewer/src/models/model2.obj";
-    const char *file_path = "../models/katana2.obj";
+    const char *file_path = "../models/cube.obj";
     objData = parse_obj(file_path);
 }
 
@@ -24,11 +24,11 @@ void GLWidget::initializeGL() {
 
 void GLWidget::paintGL() {
 
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-//    glMatrixMode(GL_MODELVIEW); // устанавливает положение и ориентацию матрице моделирования
+   // glMatrixMode(GL_MODELVIEW); // устанавливает положение и ориентацию матрице моделирования
 
-//    glLoadIdentity(); // загружает единичную матрицу моделирования
+   // glLoadIdentity(); // загружает единичную матрицу моделирования
 
 //    // последовательные преобразования
 //    printf("%f",xRot);
@@ -40,11 +40,11 @@ void GLWidget::paintGL() {
 //   //  glTranslatef(xTra, yTra, zTra);    // трансляция
 //   // glScalef(xSca, ySca, zSca);        // масштабирование по осям
 
-//    // example_drawAxis(); // рисование осей координат
+//    //example_drawAxis(); // рисование осей координат
 
 //    // glTranslatef(0.0f, 0.0f, -5.0f);
 
-//    glBegin(GL_TRIANGLES);
+   glBegin(GL_TRIANGLES);
 //    // printf("faceCount %d\n", objData.faceCount);
 //    for (int i = 0; i < objData.faceCount; ++i) {
 //        for (int j = 0; j < 3; ++j) {
@@ -67,8 +67,37 @@ void GLWidget::paintGL() {
 //    // example_drawCube();
 //    // glRotatef(0.2,1,1,1);
 
-    draw_model();
+    example_drawAxis(); // рисование осей координат
+    draw_model1();
 
+}
+
+void GLWidget::example_drawAxis()
+{
+    glLineWidth(2.0f); // устанавливаю ширину линии приближённо в пикселях
+    // до вызова здесь команды ширина была равна 1 пикселю по умолчанию
+
+    glColor4f(1.00f, 0.00f, 0.00f, 1.0f); // устанавливается цвет последующих примитивов
+    // ось x красного цвета
+    glBegin(GL_LINES); // построение линии
+    glVertex3f( 1.0f,  0.0f,  0.0f); // первая точка
+    glVertex3f(-1.0f,  0.0f,  0.0f); // вторая точка
+    glEnd();
+
+    QColor halfGreen(0, 128, 0, 255);
+    qglColor(halfGreen);
+    glBegin(GL_LINES);
+    // ось y зеленого цвета
+    glVertex3f( 0.0f,  1.0f,  0.0f);
+    glVertex3f( 0.0f, -1.0f,  0.0f);
+
+    glColor4f(0.00f, 0.00f, 1.00f, 1.0f);
+    // ось z синего цвета
+    glVertex3f( 0.0f,  0.0f,  1.0f);
+    glVertex3f( 0.0f,  0.0f, -1.0f);
+    glEnd();
+
+    glColor4f(255.00f, 255.00f, 255.00f, 0.0f);
 }
 
 void GLWidget::draw_model() {
@@ -81,12 +110,56 @@ void GLWidget::draw_model() {
 
             //            glNormal3f(objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
             // printf("glNormal3f %f %f %f\n", objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
+            glColor4f(1.00f * j , j*1.0f, j*1.00f, j*1.0f);
             glVertex3f(objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
             // printf("glVertex3f %f %f %f\n", objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
             // glNormal3f(ndc(objData.normals[vnIndex].x), ndc(objData.normals[vnIndex].y), ndc(objData.normals[vnIndex].z));
             // glVertex3f(ndc(objData.vertices[vIndex].x), ndc(objData.vertices[vIndex].y), ndc(objData.vertices[vIndex].z));
         }
     }
+
+    glEnd();
+
+    glFlush();
+}
+
+void GLWidget::draw_model1() {
+    // glClearColor(0, 0, 0, 1);
+    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glVertexPointer(3, GL_FLAT, 0,
+                    objData.vertices);
+
+    // glMatrixMode(GL_POINTS);
+    glMatrixMode(GL_PROJECTION);
+
+    glLoadIdentity();
+
+    glEnable(GL_POINT_SMOOTH); // сглаживание отрисовки точек
+    glPointSize(5);
+    printf("vertexCount %d\n", objData.vertexCount);
+    glDrawArrays(GL_POINTS, 0, objData.vertexCount);
+
+
+
+    // glBegin(GL_TRIANGLES);
+
+    // printf("faceCount %d\n", objData.faceCount);
+    // for (int i = 0; i < objData.faceCount; ++i) {
+    //     for (int j = 0; j < 3; ++j) {
+    //         int vIndex = objData.faces[i].vIndex[j] - 1; // Массивы в .obj начинаются с 1
+    //         //            int vnIndex = objData.faces[i].vnIndex[j] - 1;
+
+    //         //            glNormal3f(objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
+    //         // printf("glNormal3f %f %f %f\n", objData.normals[vnIndex].x, objData.normals[vnIndex].y, objData.normals[vnIndex].z);
+    //         glColor4f(1.00f * j , j*1.0f, j*1.00f, j*1.0f);
+    //         glVertex3f(objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
+    //         // printf("glVertex3f %f %f %f\n", objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
+    //         // glNormal3f(ndc(objData.normals[vnIndex].x), ndc(objData.normals[vnIndex].y), ndc(objData.normals[vnIndex].z));
+    //         // glVertex3f(ndc(objData.vertices[vIndex].x), ndc(objData.vertices[vIndex].y), ndc(objData.vertices[vIndex].z));
+    //     }
+    // }
+
     glEnd();
 
     glFlush();
