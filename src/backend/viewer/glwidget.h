@@ -26,7 +26,7 @@ public:
     double parse_flag = 0;
 
 public slots:
-//    void function_zoom_scale(int value); // Declare the slot in GLWidget
+   void function_zoom_scale(int value); // Declare the slot in GLWidget
     void function_rotate_x(int value); // Declare the slot in GLWidget
 //    void function_rotate_y(int value); // Declare the slot in GLWidget
 //    void function_rotate_z(int value); // Declare the slot in GLWidget

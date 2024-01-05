@@ -7,7 +7,7 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
 {
     ui->setupUi(this);
     myGLW = new GLWidget;
-//    connect(ui->zoom_scale, &QSlider::valueChanged, myGLW, &GLWidget::function_zoom_scale);
+   connect(ui->zoom_scale, &QSlider::valueChanged, myGLW, &GLWidget::function_zoom_scale);
     connect(ui->rotate_x, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_x);
 //    connect(ui->rotate_y, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_y);
 //    connect(ui->rotate_z, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_z);
@@ -26,7 +26,7 @@ void MainViewer::on_rotate_x_valueChanged()
     ui->rotate_title_3->setText("Rotate: x = " + QString::number(ui->rotate_x->value())
                                      + " y = " + QString::number(ui->rotate_y->value())
                                      + " z = " + QString::number(ui->rotate_z->value()));
-//    ui->GLwidget->update();
+   ui->GLwidget->update();
 }
 
 
@@ -48,11 +48,11 @@ void MainViewer::on_rotate_x_valueChanged()
 //}
 
 
-//void MainViewer::on_zoom_scale_valueChanged()
-//{
-//    ui->rotate_title->setText("Zoom: " + QString::number(ui->zoom_scale->value()));
-//    ui->GLwidget->update();
-//}
+void MainViewer::on_zoom_scale_valueChanged()
+{
+   ui->rotate_title->setText("Zoom: " + QString::number(ui->zoom_scale->value()));
+   ui->GLwidget->update();
+}
 
 
 //void MainViewer::on_move_x_valueChanged()
