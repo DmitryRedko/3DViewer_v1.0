@@ -17,8 +17,6 @@ SOURCES += \
 
 HEADERS += \
     ../backend.h \
-    ../operations/s21_arithmetic.h \
-    ../parser/s21_parser.h \
     glwidget.h \
     mainviewer.h
 

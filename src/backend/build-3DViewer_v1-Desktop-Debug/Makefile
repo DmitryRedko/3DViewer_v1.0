@@ -142,8 +142,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../viewer/3DViewer_v1.pro ../backend.h \
-		../operations/s21_arithmetic.h \
-		../parser/s21_parser.h \
 		../viewer/glwidget.h \
 		../viewer/mainviewer.h ../operations/s21_arithmetic.c \
 		../parser/s21_parser.c \
@@ -336,7 +334,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../backend.h ../operations/s21_arithmetic.h ../parser/s21_parser.h ../viewer/glwidget.h ../viewer/mainviewer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../backend.h ../viewer/glwidget.h ../viewer/mainviewer.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../operations/s21_arithmetic.c ../parser/s21_parser.c ../viewer/glwidget.cpp ../viewer/main.cpp ../viewer/mainviewer.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../frontend/mainviewer.ui $(DISTDIR)/
 
@@ -376,9 +374,6 @@ compiler_moc_header_clean:
 moc_mainviewer.cpp: ../viewer/mainviewer.h \
 		../viewer/glwidget.h \
 		../backend.h \
-		../operations/s21_arithmetic.h \
-		../operations/s21_common.h \
-		../parser/s21_parser.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/dmitry/Desktop/School21/Viewer/New3DViewer/src/backend/build-3DViewer_v1-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/dmitry/Desktop/School21/Viewer/New3DViewer/src/backend/viewer -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../viewer/mainviewer.h -o moc_mainviewer.cpp
@@ -393,10 +388,7 @@ compiler_uic_clean:
 ui_mainviewer.h: ../../frontend/mainviewer.ui \
 		/usr/lib/qt5/bin/uic \
 		../viewer/glwidget.h \
-		../backend.h \
-		../operations/s21_arithmetic.h \
-		../operations/s21_common.h \
-		../parser/s21_parser.h
+		../backend.h
 	/usr/lib/qt5/bin/uic ../../frontend/mainviewer.ui -o ui_mainviewer.h
 
 compiler_yacc_decl_make_all:
@@ -409,39 +401,25 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-s21_arithmetic.o: ../operations/s21_arithmetic.c ../operations/s21_common.h \
-		../backend.h \
-		../operations/s21_arithmetic.h \
-		../parser/s21_parser.h
+s21_arithmetic.o: ../operations/s21_arithmetic.c ../backend.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_arithmetic.o ../operations/s21_arithmetic.c
 
-s21_parser.o: ../parser/s21_parser.c ../backend.h \
-		../operations/s21_arithmetic.h \
-		../operations/s21_common.h \
-		../parser/s21_parser.h
+s21_parser.o: ../parser/s21_parser.c ../backend.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_parser.o ../parser/s21_parser.c
 
 glwidget.o: ../viewer/glwidget.cpp ../viewer/glwidget.h \
-		../backend.h \
-		../operations/s21_arithmetic.h \
-		../operations/s21_common.h \
-		../parser/s21_parser.h
+		../backend.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o glwidget.o ../viewer/glwidget.cpp
 
 main.o: ../viewer/main.cpp ../viewer/mainviewer.h \
 		../viewer/glwidget.h \
 		../backend.h \
-		../operations/s21_arithmetic.h \
-		../operations/s21_common.h \
 		../parser/s21_parser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../viewer/main.cpp
 
 mainviewer.o: ../viewer/mainviewer.cpp ../viewer/mainviewer.h \
 		../viewer/glwidget.h \
 		../backend.h \
-		../operations/s21_arithmetic.h \
-		../operations/s21_common.h \
-		../parser/s21_parser.h \
 		ui_mainviewer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainviewer.o ../viewer/mainviewer.cpp
 

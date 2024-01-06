@@ -1,9 +1,10 @@
-#ifndef S21_BACKEND
-#define S21_BACKEND
+#ifndef OBJ_PARSER
+#define OBJ_PARSER
 
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct matrix_struct {
   double** matrix;
@@ -12,10 +13,10 @@ typedef struct matrix_struct {
 } matrix_t;
 
 #define MAX_LINE_LENGTH 256
-#define MAX_VERTICES 10000
-#define MAX_TEXTURES 10000
-#define MAX_NORMALS 10000
-#define MAX_FACES 10000
+#define MAX_VERTICES 300000
+#define MAX_TEXTURES 10
+#define MAX_NORMALS 10
+#define MAX_FACES 10
 
 typedef struct {
     float x, y, z;
@@ -41,17 +42,9 @@ typedef struct {
     int vertexCount, textureCount, normalCount, faceCount;
 } ObjData;
 
-
-
-#define OK 0
-#define ERROR_INVALID_MATRIX 1
-#define ERROR_CALCULATION 2
-
-#define SUCCESS 1
-#define FAILURE 0
-
-#include "operations/s21_arithmetic.h"
-#include "operations/s21_common.h"
-#include "parser/s21_parser.h"
+void rotate_operation(double round_x, double round_y, double round_z, ObjData *data, ObjData *base_data);
+void zoom_operation(double zoom_x, double zoom_y, double zoom_z, ObjData *data, ObjData *base_data);
+void move_operation(double x, double y, double z, ObjData *data, ObjData *base_data);
+ObjData parse_obj(const char *file_path, double *parse_flag);
 
 #endif
