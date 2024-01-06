@@ -35,5 +35,7 @@ private slots:
     void on_openBtm_clicked();
     void on_point_size_scale_valueChanged(int value);
     void on_line_width_scale_valueChanged(int value);
+    void on_line_type_toggled(bool checked);
+    void on_line_type_stateChanged(int arg1);
 };
 #endif // MAINVIEWER_H

@@ -76,10 +76,14 @@ void GLWidget::draw_model() {
 void GLWidget::draw_model_lines() {
     // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glEnable(GL_LINE_STIPPLE);
-    glLineStipple(1, 0x00FF);
-    // glEnable(GL_LINE_SMOOTH);
-
+    if (line_type == 1) {
+        glDisable(GL_LINE_SMOOTH);
+        glEnable(GL_LINE_STIPPLE);
+        glLineStipple(1, 0x00FF);
+    } else {
+        glDisable(GL_LINE_STIPPLE);
+        glEnable(GL_LINE_SMOOTH);
+    }
     glLineWidth(line_width);
     glColor3ub(255,0,0); // красный
 

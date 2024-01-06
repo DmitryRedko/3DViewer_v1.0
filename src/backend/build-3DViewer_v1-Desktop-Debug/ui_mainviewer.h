@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -62,10 +63,10 @@ public:
     QLabel *rotate_title_3;
     QFrame *zoom;
     QGridLayout *gridLayout_3;
-    QLabel *label_minus;
+    QSlider *zoom_scale;
     QLabel *label_plus;
     QLabel *rotate_title;
-    QSlider *zoom_scale;
+    QLabel *label_minus;
     QFrame *translate;
     QGridLayout *gridLayout_5;
     QVBoxLayout *verticalLayout;
@@ -81,10 +82,11 @@ public:
     QLabel *translate_title;
     QFrame *zoom_3;
     QGridLayout *gridLayout_11;
-    QLabel *label_minus_5;
+    QLabel *line_width_title;
     QSlider *line_width_scale;
     QLabel *label_plus_5;
-    QLabel *line_width_title;
+    QLabel *label_minus_5;
+    QCheckBox *line_type;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
     QFrame *frame_2;
@@ -436,10 +438,18 @@ public:
         zoom->setFrameShadow(QFrame::Raised);
         gridLayout_3 = new QGridLayout(zoom);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        label_minus = new QLabel(zoom);
-        label_minus->setObjectName(QString::fromUtf8("label_minus"));
+        zoom_scale = new QSlider(zoom);
+        zoom_scale->setObjectName(QString::fromUtf8("zoom_scale"));
+        sizePolicy5.setHeightForWidth(zoom_scale->sizePolicy().hasHeightForWidth());
+        zoom_scale->setSizePolicy(sizePolicy5);
+        zoom_scale->setMinimum(1);
+        zoom_scale->setMaximum(300);
+        zoom_scale->setSingleStep(1);
+        zoom_scale->setPageStep(1);
+        zoom_scale->setValue(100);
+        zoom_scale->setOrientation(Qt::Horizontal);
 
-        gridLayout_3->addWidget(label_minus, 1, 0, 1, 1);
+        gridLayout_3->addWidget(zoom_scale, 1, 1, 1, 1);
 
         label_plus = new QLabel(zoom);
         label_plus->setObjectName(QString::fromUtf8("label_plus"));
@@ -453,18 +463,10 @@ public:
 
         gridLayout_3->addWidget(rotate_title, 0, 0, 1, 2);
 
-        zoom_scale = new QSlider(zoom);
-        zoom_scale->setObjectName(QString::fromUtf8("zoom_scale"));
-        sizePolicy5.setHeightForWidth(zoom_scale->sizePolicy().hasHeightForWidth());
-        zoom_scale->setSizePolicy(sizePolicy5);
-        zoom_scale->setMinimum(1);
-        zoom_scale->setMaximum(300);
-        zoom_scale->setSingleStep(1);
-        zoom_scale->setPageStep(1);
-        zoom_scale->setValue(100);
-        zoom_scale->setOrientation(Qt::Horizontal);
+        label_minus = new QLabel(zoom);
+        label_minus->setObjectName(QString::fromUtf8("label_minus"));
 
-        gridLayout_3->addWidget(zoom_scale, 1, 1, 1, 1);
+        gridLayout_3->addWidget(label_minus, 1, 0, 1, 1);
 
 
         gridLayout->addWidget(zoom, 3, 0, 1, 2);
@@ -594,10 +596,12 @@ public:
         zoom_3->setFrameShadow(QFrame::Raised);
         gridLayout_11 = new QGridLayout(zoom_3);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
-        label_minus_5 = new QLabel(zoom_3);
-        label_minus_5->setObjectName(QString::fromUtf8("label_minus_5"));
+        line_width_title = new QLabel(zoom_3);
+        line_width_title->setObjectName(QString::fromUtf8("line_width_title"));
+        sizePolicy2.setHeightForWidth(line_width_title->sizePolicy().hasHeightForWidth());
+        line_width_title->setSizePolicy(sizePolicy2);
 
-        gridLayout_11->addWidget(label_minus_5, 1, 0, 1, 1);
+        gridLayout_11->addWidget(line_width_title, 0, 0, 1, 2);
 
         line_width_scale = new QSlider(zoom_3);
         line_width_scale->setObjectName(QString::fromUtf8("line_width_scale"));
@@ -617,15 +621,19 @@ public:
 
         gridLayout_11->addWidget(label_plus_5, 1, 2, 1, 1);
 
-        line_width_title = new QLabel(zoom_3);
-        line_width_title->setObjectName(QString::fromUtf8("line_width_title"));
-        sizePolicy2.setHeightForWidth(line_width_title->sizePolicy().hasHeightForWidth());
-        line_width_title->setSizePolicy(sizePolicy2);
+        label_minus_5 = new QLabel(zoom_3);
+        label_minus_5->setObjectName(QString::fromUtf8("label_minus_5"));
 
-        gridLayout_11->addWidget(line_width_title, 0, 0, 1, 2);
+        gridLayout_11->addWidget(label_minus_5, 1, 0, 1, 1);
+
+        line_type = new QCheckBox(zoom_3);
+        line_type->setObjectName(QString::fromUtf8("line_type"));
+        line_type->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_11->addWidget(line_type, 0, 2, 1, 1);
 
 
-        gridLayout->addWidget(zoom_3, 2, 0, 1, 1);
+        gridLayout->addWidget(zoom_3, 2, 0, 1, 2);
 
 
         gridLayout_7->addWidget(frame, 0, 1, 3, 1);
@@ -685,16 +693,17 @@ public:
         label_8->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_9->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
         rotate_title_3->setText(QCoreApplication::translate("MainViewer", "Rotation", nullptr));
-        label_minus->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
         label_plus->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
         rotate_title->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
+        label_minus->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
         label_16->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
         label_17->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
         translate_title->setText(QCoreApplication::translate("MainViewer", "Move", nullptr));
-        label_minus_5->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
-        label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
         line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
+        label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        label_minus_5->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
+        line_type->setText(QCoreApplication::translate("MainViewer", "stipple", nullptr));
     } // retranslateUi
 
 };

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainViewer_t {
-    QByteArrayData data[15];
-    char stringdata0[317];
+    QByteArrayData data[19];
+    char stringdata0[377];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,7 +46,11 @@ QT_MOC_LITERAL(10, 207, 18), // "on_fileBtm_clicked"
 QT_MOC_LITERAL(11, 226, 18), // "on_openBtm_clicked"
 QT_MOC_LITERAL(12, 245, 32), // "on_point_size_scale_valueChanged"
 QT_MOC_LITERAL(13, 278, 5), // "value"
-QT_MOC_LITERAL(14, 284, 32) // "on_line_width_scale_valueChanged"
+QT_MOC_LITERAL(14, 284, 32), // "on_line_width_scale_valueChanged"
+QT_MOC_LITERAL(15, 317, 20), // "on_line_type_toggled"
+QT_MOC_LITERAL(16, 338, 7), // "checked"
+QT_MOC_LITERAL(17, 346, 25), // "on_line_type_stateChanged"
+QT_MOC_LITERAL(18, 372, 4) // "arg1"
 
     },
     "MainViewer\0on_rotate_x_valueChanged\0"
@@ -57,7 +61,9 @@ QT_MOC_LITERAL(14, 284, 32) // "on_line_width_scale_valueChanged"
     "on_move_z_valueChanged\0on_reset_model_released\0"
     "on_fileBtm_clicked\0on_openBtm_clicked\0"
     "on_point_size_scale_valueChanged\0value\0"
-    "on_line_width_scale_valueChanged"
+    "on_line_width_scale_valueChanged\0"
+    "on_line_type_toggled\0checked\0"
+    "on_line_type_stateChanged\0arg1"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +73,7 @@ static const uint qt_meta_data_MainViewer[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,18 +81,20 @@ static const uint qt_meta_data_MainViewer[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   74,    2, 0x08 /* Private */,
-       3,    0,   75,    2, 0x08 /* Private */,
-       4,    0,   76,    2, 0x08 /* Private */,
-       5,    0,   77,    2, 0x08 /* Private */,
-       6,    0,   78,    2, 0x08 /* Private */,
-       7,    0,   79,    2, 0x08 /* Private */,
-       8,    0,   80,    2, 0x08 /* Private */,
-       9,    0,   81,    2, 0x08 /* Private */,
-      10,    0,   82,    2, 0x08 /* Private */,
-      11,    0,   83,    2, 0x08 /* Private */,
-      12,    1,   84,    2, 0x08 /* Private */,
-      14,    1,   87,    2, 0x08 /* Private */,
+       1,    0,   84,    2, 0x08 /* Private */,
+       3,    0,   85,    2, 0x08 /* Private */,
+       4,    0,   86,    2, 0x08 /* Private */,
+       5,    0,   87,    2, 0x08 /* Private */,
+       6,    0,   88,    2, 0x08 /* Private */,
+       7,    0,   89,    2, 0x08 /* Private */,
+       8,    0,   90,    2, 0x08 /* Private */,
+       9,    0,   91,    2, 0x08 /* Private */,
+      10,    0,   92,    2, 0x08 /* Private */,
+      11,    0,   93,    2, 0x08 /* Private */,
+      12,    1,   94,    2, 0x08 /* Private */,
+      14,    1,   97,    2, 0x08 /* Private */,
+      15,    1,  100,    2, 0x08 /* Private */,
+      17,    1,  103,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -101,6 +109,8 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void, QMetaType::Bool,   16,
+    QMetaType::Void, QMetaType::Int,   18,
 
        0        // eod
 };
@@ -123,6 +133,8 @@ void MainViewer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->on_openBtm_clicked(); break;
         case 10: _t->on_point_size_scale_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 11: _t->on_line_width_scale_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: _t->on_line_type_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 13: _t->on_line_type_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -157,13 +169,13 @@ int MainViewer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 14)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }

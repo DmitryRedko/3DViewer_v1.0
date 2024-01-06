@@ -7,8 +7,6 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
 {
     ui->setupUi(this);
     myGLW = new GLWidget;
-
-
 }
 
 MainViewer::~MainViewer()
@@ -146,4 +144,27 @@ void MainViewer::on_line_width_scale_valueChanged(int value)
     ui->GLwidget->line_width = value;
     ui->GLwidget->update();
 }
+
+
+void MainViewer::on_line_type_toggled(bool checked)
+{
+    printf("\nchecked %d\n", checked);
+    if (checked == 1) {
+        ui->GLwidget->line_type = 1;
+    } else {
+       ui->GLwidget->line_type = 2;
+    }
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_line_type_stateChanged(int arg1)
+{
+    // printf("\narg1 %d\n", arg1);
+    // if (arg1 == 0) {
+    //     ui->GLwidget->line_type = GL_LINE;
+    // }
+    // ui->GLwidget->update();
+}
+
 
