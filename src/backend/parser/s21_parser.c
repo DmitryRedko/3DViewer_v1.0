@@ -10,7 +10,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
     // objData.normalCount = 0;
     objData.faceCount = 0;
 
-    objData.vertices = malloc(MAX_VERTICES * sizeof(Vertex));
+    objData.vertices = malloc(sizeof(Vertex));
 
     if (strstr(file_path, ".obj") == NULL) {
         fprintf(stderr, "File does not have .obj extension.\n");
@@ -40,7 +40,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
                     next = strtok(NULL, " ");
                     objData.vertices[objData.vertexCount].z = atof(next);
                     objData.vertexCount++;
-                    // objData.vertices = realloc(objData.vertices, (objData.vertexCount + 1) * 3 * sizeof(float));
+                    objData.vertices = realloc(objData.vertices, (objData.vertexCount + 1) * sizeof(Vertex));
                     // printf("objData.vertexCount %d\n", objData.vertexCount);
                 }
 //            } else if (strcmp(token, "vt") == 0) {
@@ -84,4 +84,17 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
 
     fclose(file);
     return objData;
+}
+
+void model_destructor(ObjData *objData) {
+    if (objData != NULL) {
+        if (objData->vertices != NULL) {
+            free(objData->vertices);
+            objData->vertices = NULL;
+        }
+        if (objData->faces != NULL) {
+            free(objData->faces);
+            objData->faces = NULL;
+        }
+    }
 }
