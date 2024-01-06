@@ -21,15 +21,9 @@ void MainViewer::on_rotate_x_valueChanged()
     ui->rotate_title_3->setText("Rotate: x = " + QString::number(ui->rotate_x->value())
                                      + " y = " + QString::number(ui->rotate_y->value())
                                      + " z = " + QString::number(ui->rotate_z->value()));
-    qDebug() << "Before transformations - X: " << ui->GLwidget->objData.vertices[0].x
-                     << ", Y: " << ui->GLwidget->objData.vertices[0].y
-                     << ", Z: " << ui->GLwidget->objData.vertices[0].z;
-
+    ui->GLwidget->xRot = ui->rotate_x->value();
     ui->GLwidget->apply_transform();
     ui->GLwidget->update();
-    qDebug() << "After transformations - X: " << ui->GLwidget->objData.vertices[0].x
-                     << ", Y: " << ui->GLwidget->objData.vertices[0].y
-                     << ", Z: " << ui->GLwidget->objData.vertices[0].z;
 }
 
 
@@ -38,6 +32,8 @@ void MainViewer::on_rotate_y_valueChanged()
     ui->rotate_title_3->setText("Rotate: x = " + QString::number(ui->rotate_x->value())
                                      + " y = " + QString::number(ui->rotate_y->value())
                                      + " z = " + QString::number(ui->rotate_z->value()));
+    ui->GLwidget->yRot = ui->rotate_y->value();
+    ui->GLwidget->apply_transform();
     ui->GLwidget->update();
 }
 
@@ -47,6 +43,8 @@ void MainViewer::on_rotate_z_valueChanged()
     ui->rotate_title_3->setText("Rotate: x = " + QString::number(ui->rotate_x->value())
                                      + " y = " + QString::number(ui->rotate_y->value())
                                      + " z = " + QString::number(ui->rotate_z->value()));
+    ui->GLwidget->zRot = ui->rotate_z->value();
+    ui->GLwidget->apply_transform();
     ui->GLwidget->update();
 }
 
@@ -54,7 +52,6 @@ void MainViewer::on_rotate_z_valueChanged()
 void MainViewer::on_zoom_scale_valueChanged()
 {
     ui->rotate_title->setText("Zoom: " + QString::number(ui->zoom_scale->value()));
-
     ui->GLwidget->scale = ui->zoom_scale->value();
     ui->GLwidget->apply_transform();
     ui->GLwidget->update();
@@ -67,6 +64,8 @@ void MainViewer::on_move_x_valueChanged()
     ui->translate_title->setText("Move: x = " + QString::number(ui->move_x->value()) +
                                  " y = " + QString::number(ui->move_y->value()) +
                                  " z = " + QString::number(ui->move_z->value()));
+    ui->GLwidget->xMov = ui->move_x->value();
+    ui->GLwidget->apply_transform();
     ui->GLwidget->update();
 }
 
@@ -76,6 +75,8 @@ void MainViewer::on_move_y_valueChanged()
     ui->translate_title->setText("Move: x = " + QString::number(ui->move_x->value()) +
                                  " y = " + QString::number(ui->move_y->value()) +
                                  " z = " + QString::number(ui->move_z->value()));
+    ui->GLwidget->yMov = ui->move_y->value();
+    ui->GLwidget->apply_transform();
     ui->GLwidget->update();
 }
 
@@ -85,6 +86,8 @@ void MainViewer::on_move_z_valueChanged()
     ui->translate_title->setText("Move: x = " + QString::number(ui->move_x->value()) +
                                  " y = " + QString::number(ui->move_y->value()) +
                                  " z = " + QString::number(ui->move_z->value()));
+    ui->GLwidget->zMov = ui->move_z->value();
+    ui->GLwidget->apply_transform();
     ui->GLwidget->update();
 }
 

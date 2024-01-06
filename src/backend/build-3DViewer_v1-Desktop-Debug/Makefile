@@ -53,13 +53,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../operations/s21_arithmetic.c \
-		../operations/s21_common.c \
 		../parser/s21_parser.c \
 		../viewer/glwidget.cpp \
 		../viewer/main.cpp \
 		../viewer/mainviewer.cpp moc_mainviewer.cpp
 OBJECTS       = s21_arithmetic.o \
-		s21_common.o \
 		s21_parser.o \
 		glwidget.o \
 		main.o \
@@ -145,11 +143,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../viewer/3DViewer_v1.pro ../backend.h \
 		../operations/s21_arithmetic.h \
-		../operations/s21_common.h \
 		../parser/s21_parser.h \
 		../viewer/glwidget.h \
 		../viewer/mainviewer.h ../operations/s21_arithmetic.c \
-		../operations/s21_common.c \
 		../parser/s21_parser.c \
 		../viewer/glwidget.cpp \
 		../viewer/main.cpp \
@@ -340,8 +336,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../backend.h ../operations/s21_arithmetic.h ../operations/s21_common.h ../parser/s21_parser.h ../viewer/glwidget.h ../viewer/mainviewer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../operations/s21_arithmetic.c ../operations/s21_common.c ../parser/s21_parser.c ../viewer/glwidget.cpp ../viewer/main.cpp ../viewer/mainviewer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../backend.h ../operations/s21_arithmetic.h ../parser/s21_parser.h ../viewer/glwidget.h ../viewer/mainviewer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../operations/s21_arithmetic.c ../parser/s21_parser.c ../viewer/glwidget.cpp ../viewer/main.cpp ../viewer/mainviewer.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../frontend/mainviewer.ui $(DISTDIR)/
 
 
@@ -419,13 +415,10 @@ s21_arithmetic.o: ../operations/s21_arithmetic.c ../operations/s21_common.h \
 		../parser/s21_parser.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_arithmetic.o ../operations/s21_arithmetic.c
 
-s21_common.o: ../operations/s21_common.c ../operations/s21_common.h \
-		../backend.h \
+s21_parser.o: ../parser/s21_parser.c ../backend.h \
 		../operations/s21_arithmetic.h \
+		../operations/s21_common.h \
 		../parser/s21_parser.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_common.o ../operations/s21_common.c
-
-s21_parser.o: ../parser/s21_parser.c ../parser/s21_parser.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_parser.o ../parser/s21_parser.c
 
 glwidget.o: ../viewer/glwidget.cpp ../viewer/glwidget.h \

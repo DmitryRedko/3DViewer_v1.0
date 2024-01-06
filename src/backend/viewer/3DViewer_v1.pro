@@ -10,7 +10,6 @@ CONFIG += c++11
 
 SOURCES += \
     ../operations/s21_arithmetic.c \
-    ../operations/s21_common.c \
     ../parser/s21_parser.c \
     glwidget.cpp \
     main.cpp \
@@ -19,7 +18,6 @@ SOURCES += \
 HEADERS += \
     ../backend.h \
     ../operations/s21_arithmetic.h \
-    ../operations/s21_common.h \
     ../parser/s21_parser.h \
     glwidget.h \
     mainviewer.h

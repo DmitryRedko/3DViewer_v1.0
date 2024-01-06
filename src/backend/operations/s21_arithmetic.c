@@ -5,9 +5,9 @@
 
 void move_operation(double x, double y, double z, ObjData *data, ObjData *base_data){
     for (int i = 0; i < data->vertexCount; ++i) {
-        data->vertices[i].x = base_data->vertices[i].x + x;
-        data->vertices[i].y = base_data->vertices[i].y + y;
-        data->vertices[i].z = base_data->vertices[i].z + z;
+        data->vertices[i].x = base_data->vertices[i].x + x/100;
+        data->vertices[i].y = base_data->vertices[i].y + y/100;
+        data->vertices[i].z = base_data->vertices[i].z + z/100;
     }
 }
 
