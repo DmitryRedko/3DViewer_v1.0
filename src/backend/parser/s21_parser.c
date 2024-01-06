@@ -75,6 +75,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
                }
 
                objData.faces[objData.faceCount] = vertex;
+               printf("vertex in faces %d\n", vertex);
                objData.faceCount++;
                objData.faces = realloc(objData.faces, (objData.faceCount + 1) * sizeof(unsigned int));
             }

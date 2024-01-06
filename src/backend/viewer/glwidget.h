@@ -17,6 +17,7 @@ public:
     void paintGL();
     void resizeGL(int w, int h);
     void draw_model();
+    void draw_model_lines();
     void initializeGLmodel();
     void apply_transform();
     char model_name[100] = " ";
