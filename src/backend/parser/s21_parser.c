@@ -86,6 +86,27 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
         }
     }
 
+    for (int i = objData.faceCount; i > 0; i--) {
+        // printf("%d ", objData.faces[i]);
+        objData.faces[i] = objData.faces[i - 1];
+    }
+
+    for (int i = objData.vertexCount; i > 0; i--) {
+        // printf("%d ", objData.faces[i]);
+        objData.vertices[i].x = objData.vertices[i - 1].x;
+        objData.vertices[i].y = objData.vertices[i - 1].y;
+        objData.vertices[i].z = objData.vertices[i - 1].z;
+    }
+
+
+    for (int i = 1; i <= objData.vertexCount; i++) {
+        printf("%f ", objData.vertices[i].x);
+        printf("%f ", objData.vertices[i].y);
+        printf("%f\n", objData.vertices[i].z);
+        // objData.faceCount[i] = objData.faceCount[i - 1];
+    }
+
+
     fclose(file);
     return objData;
 }
