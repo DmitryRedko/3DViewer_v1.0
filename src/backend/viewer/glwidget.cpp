@@ -8,6 +8,7 @@
 GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
 
     initializeGLmodel();
+    updateGLmodel(objData);
 
 }
 
@@ -33,10 +34,25 @@ void GLWidget::initializeGLmodel() {
     }
 }
 
+void GLWidget::updateGLmodel(ObjData objDataArg) {
+    qDebug() << "update GL model...";
+    objData = objDataArg;
+
+    if (parse_flag == 0) {
+        draw_model();
+    } else {
+        const char defaultModel[] = "../frontend/default_models/error.obj";
+        objData = parse_obj(defaultModel, &parse_flag);
+        baseData = parse_obj(defaultModel, &parse_flag);
+        parse_flag = 0;
+    }
+}
+
+
+
 void GLWidget::initializeGL() {
     qDebug() << "Initializing GL...";
     glClearColor(0.2, 0.2, 0.2, 1);
-
 }
 
 void GLWidget::paintGL() {
@@ -76,17 +92,16 @@ void GLWidget::resizeGL(int w, int h) {
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+
 }
 
 
 void GLWidget::function_zoom_scale(int value) {
     scale = static_cast<float>(value)/100; // Update xRot with the slider value
-    apply_transform();
 }
 
 void GLWidget::function_rotate_x(int value) {
     xRot = static_cast<float>(value); // Update xRot with the slider value
-    apply_transform();
 }
 
 void GLWidget::function_rotate_y(int value) {
@@ -114,15 +129,25 @@ void GLWidget::function_move_z(int value) {
     apply_transform();
 }
 
+
 void GLWidget::apply_transform() {
     qDebug() << "apply_transform...";
+//    qDebug() << "Before transformations - X: " << baseData.vertices[0].x
+//                 << ", Y: " << baseData.vertices[0].y
+//                 << ", Z: " << baseData.vertices[0].z;
+
     move_operation(xMov, yMov, zMov, &objData, baseData);
     rotate_operation(xRot, yRot, zRot, &objData, objData);
     zoom_operation(scale, scale, scale, &objData, objData);
-    initializeGL();
-//    resizeGL(w,h);
-//    draw_model();
+
+    updateGLmodel(objData);
+//    qDebug() << "After transformations - X: " << objData.vertices[0].x
+//                 << ", Y: " << objData.vertices[0].y
+//                 << ", Z: " << objData.vertices[0].z;
 }
+
+
+
 
 
 

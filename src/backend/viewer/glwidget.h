@@ -13,18 +13,18 @@ class GLWidget : public QGLWidget
 {
 public:
     explicit GLWidget(QWidget *parent = nullptr);
-    void initializeGL();
-    void paintGL();
-    void resizeGL(int w, int h);
-    void example_drawAxis();
-    void example_drawCube();
+    void initializeGL() override;
+    void paintGL() override;
+    void resizeGL(int w, int h) override;
     void draw_model();
     void initializeGLmodel();
-    // Add a function to set the parsed OBJ data
-    void setObjData(ObjData objData);
+    void updateGLmodel(ObjData objData);
+    void apply_transform();
     char model_name[100] = " ";
     double welcome_flag = 0;
     double parse_flag = 0;
+    ObjData objData; // Store parsed OBJ data here
+    ObjData baseData; // Store parsed OBJ data here
 
 public slots:
     void function_zoom_scale(int value); // Declare the slot in GLWidget
@@ -39,9 +39,6 @@ public slots:
 
 private:
     QTimer timer;
-    ObjData objData; // Store parsed OBJ data here
-    ObjData baseData; // Store parsed OBJ data here
-    void apply_transform();
 
 };
 

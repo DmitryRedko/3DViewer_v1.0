@@ -26,7 +26,7 @@ void rotate_operation(double round_x, double round_y, double round_z, ObjData *d
     double rad_round_x = round_x * 3.14 / 180.0;
     double rad_round_y = round_y * 3.14 / 180.0;
     double rad_round_z = round_z * 3.14 / 180.0;
-//    printf("\n\n%f %f %f %f\n",rad_round_x,round_x,cos(rad_round_x),cos(round_x));
+    printf("\n\n%f %f %f %f\n",rad_round_x,round_x,cos(rad_round_x),cos(round_x));
 
     // Rotation matrix around x-axis
     double rot_x[3][3] = {
@@ -49,13 +49,13 @@ void rotate_operation(double round_x, double round_y, double round_z, ObjData *d
         {0, 0, 1}
     };
 
-//    printf("Rotation Matrix X:\n");
-//    for (int i = 0; i < 3; ++i) {
-//        for (int j = 0; j < 3; ++j) {
-//            printf("%f\t", rot_x[i][j]);
-//        }
-//        printf("\n");
-//    }
+    printf("Rotation Matrix X:\n");
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            printf("%f\t", rot_x[i][j]);
+        }
+        printf("\n");
+    }
 
 printf("\nOriginal: %f %f %f\n", data->vertices[0].x, data->vertices[0].y, data->vertices[0].z);
     // Apply rotations to each vertex in ObjData

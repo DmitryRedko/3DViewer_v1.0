@@ -1,7 +1,7 @@
 #include "mainviewer.h"
 #include "ui_mainviewer.h"
 #include <QFileDialog>
-
+#include <QDebug>
 
 MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainViewer)
 {
@@ -27,7 +27,16 @@ void MainViewer::on_rotate_x_valueChanged()
     ui->rotate_title_3->setText("Rotate: x = " + QString::number(ui->rotate_x->value())
                                      + " y = " + QString::number(ui->rotate_y->value())
                                      + " z = " + QString::number(ui->rotate_z->value()));
+    qDebug() << "Before transformations - X: " << ui->GLwidget->objData.vertices[0].x
+                     << ", Y: " << ui->GLwidget->objData.vertices[0].y
+                     << ", Z: " << ui->GLwidget->objData.vertices[0].z;
+
+    ui->GLwidget->updateGLmodel(ui->GLwidget->objData);
+    ui->GLwidget->apply_transform();
     ui->GLwidget->update();
+    qDebug() << "After transformations - X: " << ui->GLwidget->objData.vertices[0].x
+                     << ", Y: " << ui->GLwidget->objData.vertices[0].y
+                     << ", Z: " << ui->GLwidget->objData.vertices[0].z;
 }
 
 
@@ -52,7 +61,11 @@ void MainViewer::on_rotate_z_valueChanged()
 void MainViewer::on_zoom_scale_valueChanged()
 {
     ui->rotate_title->setText("Zoom: " + QString::number(ui->zoom_scale->value()));
+
+    ui->GLwidget->scale = ui->zoom_scale->value();
+    ui->GLwidget->apply_transform();
     ui->GLwidget->update();
+
 }
 
 
@@ -114,7 +127,7 @@ void MainViewer::on_openBtm_clicked()
         char* model_name = ui->GLwidget->model_name; // Получаем указатель на массив
         if (charFileName != nullptr) {
             strncpy(model_name, charFileName, sizeof(ui->GLwidget->model_name) - 1);
-            model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0'; // Убедимся, что строка завершается нулевым символом
+            model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
         }
 
         ui->GLwidget->initializeGLmodel();
