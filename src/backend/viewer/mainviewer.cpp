@@ -7,13 +7,7 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
 {
     ui->setupUi(this);
     myGLW = new GLWidget;
-    connect(ui->zoom_scale, &QSlider::valueChanged, myGLW, &GLWidget::function_zoom_scale);
-    connect(ui->rotate_x, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_x);
-    connect(ui->rotate_y, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_y);
-    connect(ui->rotate_z, &QSlider::valueChanged, myGLW, &GLWidget::function_rotate_z);
-    connect(ui->move_x, &QSlider::valueChanged, myGLW, &GLWidget::function_move_x);
-    connect(ui->move_y, &QSlider::valueChanged, myGLW, &GLWidget::function_move_y);
-    connect(ui->move_z, &QSlider::valueChanged, myGLW, &GLWidget::function_move_z);
+
 
 }
 
@@ -31,7 +25,6 @@ void MainViewer::on_rotate_x_valueChanged()
                      << ", Y: " << ui->GLwidget->objData.vertices[0].y
                      << ", Z: " << ui->GLwidget->objData.vertices[0].z;
 
-    ui->GLwidget->updateGLmodel(ui->GLwidget->objData);
     ui->GLwidget->apply_transform();
     ui->GLwidget->update();
     qDebug() << "After transformations - X: " << ui->GLwidget->objData.vertices[0].x
