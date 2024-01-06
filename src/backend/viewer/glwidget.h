@@ -20,8 +20,8 @@ public:
     void initializeGLmodel();
     void apply_transform();
     char model_name[100] = " ";
-    double welcome_flag = 0;
-    double parse_flag = 0;
+    int welcome_flag = 0;
+    int parse_flag = 0;
     ObjData objData;
     ObjData baseData;
     float scale = 100.0, xRot = 0.0f, yRot = 0.0f, zRot = 0.0f, xMov = 0.0f, yMov = 0.0f, zMov = 0.0f;

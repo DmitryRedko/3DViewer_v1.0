@@ -12,12 +12,16 @@ GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
 void GLWidget::initializeGLmodel() {
     if (welcome_flag == 0) {
         const char defaultModel[] = "../frontend/default_models/welcome.obj";
+        // const char defaultModel[] = "../models/water.obj";
         objData = parse_obj(defaultModel, &parse_flag);
-        baseData = objData;
+        // baseData = objData;
+        baseData = parse_obj(defaultModel, &parse_flag);
+        printf("baseData vertexCount %d\n", baseData.vertexCount);
         welcome_flag = 1;
     } else {
         objData = parse_obj(model_name, &parse_flag);
-        baseData = objData;
+        // baseData = objData;
+        baseData = parse_obj(model_name, &parse_flag);
     }
 
     if (parse_flag == 0) {
@@ -25,7 +29,8 @@ void GLWidget::initializeGLmodel() {
     } else {
         const char defaultModel[] = "../frontend/default_models/error.obj";
         objData = parse_obj(defaultModel, &parse_flag);
-        baseData = objData;
+        // baseData = objData;
+        baseData = parse_obj(defaultModel, &parse_flag);
         parse_flag = 0;
     }
 }
@@ -55,6 +60,9 @@ void GLWidget::paintGL() {
 
 void GLWidget::draw_model() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glPointSize(3);
+    glEnable(GL_POINT_SMOOTH);
 
     glVertexPointer(3, GL_FLOAT, 0, objData.vertices);
     glEnableClientState(GL_VERTEX_ARRAY);

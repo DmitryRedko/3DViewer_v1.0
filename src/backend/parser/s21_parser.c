@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-ObjData parse_obj(const char *file_path, double *parse_flag) {
+ObjData parse_obj(const char *file_path, int *parse_flag) {
     ObjData objData;
     objData.vertexCount = 0;
-    objData.textureCount = 0;
-    objData.normalCount = 0;
+    // objData.textureCount = 0;
+    // objData.normalCount = 0;
     objData.faceCount = 0;
+
+    objData.vertices = malloc(MAX_VERTICES * sizeof(Vertex));
 
     if (strstr(file_path, ".obj") == NULL) {
         fprintf(stderr, "File does not have .obj extension.\n");
@@ -25,6 +27,7 @@ ObjData parse_obj(const char *file_path, double *parse_flag) {
 
     char line[MAX_LINE_LENGTH];
     while (fgets(line, sizeof(line), file)) {
+        // printf("line: %s", line);e
         char *token = strtok(line, " ");
         if (token != NULL) {
             if (strcmp(token, "v") == 0) {
@@ -37,6 +40,8 @@ ObjData parse_obj(const char *file_path, double *parse_flag) {
                     next = strtok(NULL, " ");
                     objData.vertices[objData.vertexCount].z = atof(next);
                     objData.vertexCount++;
+                    // objData.vertices = realloc(objData.vertices, (objData.vertexCount + 1) * 3 * sizeof(float));
+                    // printf("objData.vertexCount %d\n", objData.vertexCount);
                 }
 //            } else if (strcmp(token, "vt") == 0) {
 //                // Texture coordinates parsing
