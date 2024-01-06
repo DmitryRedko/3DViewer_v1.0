@@ -39,7 +39,8 @@ typedef struct {
     // Texture textures[MAX_TEXTURES];
     // Normal normals[MAX_NORMALS];
     unsigned int *faces;
-    unsigned int vertexCount, faceCount;
+    unsigned int *textures;
+    unsigned int vertexCount, faceCount, textureCount;
 } ObjData;
 
 void rotate_operation(double round_x, double round_y, double round_z, ObjData *data, ObjData *base_data);

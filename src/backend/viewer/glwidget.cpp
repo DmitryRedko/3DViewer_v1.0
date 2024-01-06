@@ -13,7 +13,7 @@ GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
 void GLWidget::initializeGLmodel() {
     if (welcome_flag == 0) {
         // const char defaultModel[] = "../frontend/default_models/welcome.obj";
-        const char defaultModel[] = "../models/cube.obj";
+        const char defaultModel[] = "../models/surf1.obj";
         objData = parse_obj(defaultModel, &parse_flag);
         // baseData = objData;
         baseData = parse_obj(defaultModel, &parse_flag);
@@ -43,6 +43,7 @@ void GLWidget::initializeGL() {
 
 void GLWidget::paintGL() {
     draw_model();
+    draw_model_lines();
 }
 
 //void GLWidget::draw_model() {
@@ -70,8 +71,6 @@ void GLWidget::draw_model() {
     glColor3ub(255,255,0); // желтый
     glDrawArrays(GL_POINTS, 0, objData.vertexCount);
     // glDisableClientState(GL_VERTEX_ARRAY);
-
-    draw_model_lines();
 }
 
 void GLWidget::draw_model_lines() {
@@ -84,9 +83,10 @@ void GLWidget::draw_model_lines() {
     glLineWidth(1);
     glColor3ub(255,0,0); // красный
 
-    glIndexPointer(GL_INT, 2, objData.faces);
-    glEnableClientState(GL_INDEX_ARRAY);
+    // glIndexPointer(GL_INT, 2, objData.faces);
+    // glEnableClientState(GL_INDEX_ARRAY);
     // glDrawElements(GL_LINES, objData.faceCount, GL_UNSIGNED_INT, objData.faceCount);
+
     glDrawElements(GL_LINE_STRIP, objData.faceCount, GL_UNSIGNED_INT, reinterpret_cast<const GLvoid*>(objData.faces));
 
     // glDisableClientState(GL_INDEX_ARRAY);

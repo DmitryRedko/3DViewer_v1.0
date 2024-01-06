@@ -6,7 +6,7 @@
 ObjData parse_obj(const char *file_path, int *parse_flag) {
     ObjData objData;
     objData.vertexCount = 0;
-    // objData.textureCount = 0;
+    objData.textureCount = 0;
     // objData.normalCount = 0;
     objData.faceCount = 0;
 
