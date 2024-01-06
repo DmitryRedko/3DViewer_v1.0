@@ -43,7 +43,9 @@ void GLWidget::initializeGL() {
 
 void GLWidget::paintGL() {
     draw_model();
-    draw_model_lines();
+    if (draw_lines == 1) {
+        draw_model_lines();
+    }
 }
 
 //void GLWidget::draw_model() {

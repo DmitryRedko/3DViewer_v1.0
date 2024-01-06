@@ -158,13 +158,14 @@ void MainViewer::on_line_type_toggled(bool checked)
 }
 
 
-void MainViewer::on_line_type_stateChanged(int arg1)
+void MainViewer::on_no_lines_toggled(bool checked)
 {
-    // printf("\narg1 %d\n", arg1);
-    // if (arg1 == 0) {
-    //     ui->GLwidget->line_type = GL_LINE;
-    // }
-    // ui->GLwidget->update();
+    printf("\nchecked %d\n", checked);
+    if (checked == 1) {
+        ui->GLwidget->draw_lines = 0;
+    } else {
+        ui->GLwidget->draw_lines = 1;
+    }
+    ui->GLwidget->update();
 }
-
 

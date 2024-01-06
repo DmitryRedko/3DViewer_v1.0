@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainViewer_t {
-    QByteArrayData data[19];
-    char stringdata0[377];
+    QByteArrayData data[18];
+    char stringdata0[366];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,8 +49,7 @@ QT_MOC_LITERAL(13, 278, 5), // "value"
 QT_MOC_LITERAL(14, 284, 32), // "on_line_width_scale_valueChanged"
 QT_MOC_LITERAL(15, 317, 20), // "on_line_type_toggled"
 QT_MOC_LITERAL(16, 338, 7), // "checked"
-QT_MOC_LITERAL(17, 346, 25), // "on_line_type_stateChanged"
-QT_MOC_LITERAL(18, 372, 4) // "arg1"
+QT_MOC_LITERAL(17, 346, 19) // "on_no_lines_toggled"
 
     },
     "MainViewer\0on_rotate_x_valueChanged\0"
@@ -63,7 +62,7 @@ QT_MOC_LITERAL(18, 372, 4) // "arg1"
     "on_point_size_scale_valueChanged\0value\0"
     "on_line_width_scale_valueChanged\0"
     "on_line_type_toggled\0checked\0"
-    "on_line_type_stateChanged\0arg1"
+    "on_no_lines_toggled"
 };
 #undef QT_MOC_LITERAL
 
@@ -110,7 +109,7 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Bool,   16,
-    QMetaType::Void, QMetaType::Int,   18,
+    QMetaType::Void, QMetaType::Bool,   16,
 
        0        // eod
 };
@@ -134,7 +133,7 @@ void MainViewer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->on_point_size_scale_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 11: _t->on_line_width_scale_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 12: _t->on_line_type_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 13: _t->on_line_type_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 13: _t->on_no_lines_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }

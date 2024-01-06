@@ -82,11 +82,12 @@ public:
     QLabel *translate_title;
     QFrame *zoom_3;
     QGridLayout *gridLayout_11;
+    QLabel *label_minus_5;
+    QLabel *label_plus_5;
     QLabel *line_width_title;
     QSlider *line_width_scale;
-    QLabel *label_plus_5;
-    QLabel *label_minus_5;
     QCheckBox *line_type;
+    QCheckBox *no_lines;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
     QFrame *frame_2;
@@ -596,6 +597,16 @@ public:
         zoom_3->setFrameShadow(QFrame::Raised);
         gridLayout_11 = new QGridLayout(zoom_3);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        label_minus_5 = new QLabel(zoom_3);
+        label_minus_5->setObjectName(QString::fromUtf8("label_minus_5"));
+
+        gridLayout_11->addWidget(label_minus_5, 3, 0, 1, 1);
+
+        label_plus_5 = new QLabel(zoom_3);
+        label_plus_5->setObjectName(QString::fromUtf8("label_plus_5"));
+
+        gridLayout_11->addWidget(label_plus_5, 3, 3, 1, 1);
+
         line_width_title = new QLabel(zoom_3);
         line_width_title->setObjectName(QString::fromUtf8("line_width_title"));
         sizePolicy2.setHeightForWidth(line_width_title->sizePolicy().hasHeightForWidth());
@@ -614,23 +625,19 @@ public:
         line_width_scale->setValue(1);
         line_width_scale->setOrientation(Qt::Horizontal);
 
-        gridLayout_11->addWidget(line_width_scale, 1, 1, 1, 1);
-
-        label_plus_5 = new QLabel(zoom_3);
-        label_plus_5->setObjectName(QString::fromUtf8("label_plus_5"));
-
-        gridLayout_11->addWidget(label_plus_5, 1, 2, 1, 1);
-
-        label_minus_5 = new QLabel(zoom_3);
-        label_minus_5->setObjectName(QString::fromUtf8("label_minus_5"));
-
-        gridLayout_11->addWidget(label_minus_5, 1, 0, 1, 1);
+        gridLayout_11->addWidget(line_width_scale, 3, 1, 1, 1);
 
         line_type = new QCheckBox(zoom_3);
         line_type->setObjectName(QString::fromUtf8("line_type"));
         line_type->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
 
-        gridLayout_11->addWidget(line_type, 0, 2, 1, 1);
+        gridLayout_11->addWidget(line_type, 0, 3, 1, 1);
+
+        no_lines = new QCheckBox(zoom_3);
+        no_lines->setObjectName(QString::fromUtf8("no_lines"));
+        no_lines->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_11->addWidget(no_lines, 0, 2, 1, 1);
 
 
         gridLayout->addWidget(zoom_3, 2, 0, 1, 2);
@@ -700,10 +707,11 @@ public:
         label_17->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
         translate_title->setText(QCoreApplication::translate("MainViewer", "Move", nullptr));
-        line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
-        label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
         label_minus_5->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
+        label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
         line_type->setText(QCoreApplication::translate("MainViewer", "stipple", nullptr));
+        no_lines->setText(QCoreApplication::translate("MainViewer", "no lines", nullptr));
     } // retranslateUi
 
 };
