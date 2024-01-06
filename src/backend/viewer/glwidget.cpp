@@ -84,8 +84,8 @@ void GLWidget::draw_model_lines() {
     glLineWidth(1);
     glColor3ub(255,0,0); // красный
 
-    // glIndexPointer(GL_INT, 2, objData.faces);
-    // glEnableClientState(GL_INDEX_ARRAY);
+    glIndexPointer(GL_INT, 2, objData.faces);
+    glEnableClientState(GL_INDEX_ARRAY);
     // glDrawElements(GL_LINES, objData.faceCount, GL_UNSIGNED_INT, objData.faceCount);
     glDrawElements(GL_LINE_STRIP, objData.faceCount, GL_UNSIGNED_INT, reinterpret_cast<const GLvoid*>(objData.faces));
 
