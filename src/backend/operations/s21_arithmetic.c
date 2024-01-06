@@ -4,7 +4,7 @@
 
 
 void move_operation(double x, double y, double z, ObjData *data, ObjData *base_data){
-    for (int i = 1; i <= data->vertexCount; ++i) {
+    for (int i = 0; i <= data->vertexCount; ++i) {
         data->vertices[i].x = base_data->vertices[i].x + x/100;
         data->vertices[i].y = base_data->vertices[i].y + y/100;
         data->vertices[i].z = base_data->vertices[i].z + z/100;
@@ -14,7 +14,7 @@ void move_operation(double x, double y, double z, ObjData *data, ObjData *base_d
 
 
 void zoom_operation(double zoom_x, double zoom_y, double zoom_z, ObjData *data, ObjData *base_data){
-    for (int i = 1; i <= data->vertexCount; ++i) {
+    for (int i = 0; i <= data->vertexCount; ++i) {
         data->vertices[i].x = base_data->vertices[i].x * zoom_x/100;
         data->vertices[i].y = base_data->vertices[i].y * zoom_y/100;
         data->vertices[i].z = base_data->vertices[i].z * zoom_z/100;
@@ -50,7 +50,7 @@ void rotate_operation(double round_x, double round_y, double round_z, ObjData *d
     };
 
     // Apply rotations to each vertex in ObjData
-    for (int i = 1; i <= data->vertexCount; ++i) {
+    for (int i = 0; i <= data->vertexCount; ++i) {
         double x = base_data->vertices[i].x;
         double y = base_data->vertices[i].y;
         double z = base_data->vertices[i].z;

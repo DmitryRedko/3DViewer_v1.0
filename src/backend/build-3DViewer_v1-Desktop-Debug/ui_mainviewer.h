@@ -289,7 +289,7 @@ public:
         sizePolicy5.setVerticalStretch(0);
         sizePolicy5.setHeightForWidth(point_size_scale->sizePolicy().hasHeightForWidth());
         point_size_scale->setSizePolicy(sizePolicy5);
-        point_size_scale->setMinimum(0);
+        point_size_scale->setMinimum(1);
         point_size_scale->setMaximum(25);
         point_size_scale->setSingleStep(1);
         point_size_scale->setPageStep(1);
