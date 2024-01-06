@@ -132,9 +132,18 @@ void MainViewer::on_openBtm_clicked()
 }
 
 
-void MainViewer::on_zoom_scale_4_valueChanged(int value)
+void MainViewer::on_point_size_scale_valueChanged(int value)
 {
+    ui->point_size_title->setText("Point size: " + QString::number(ui->point_size_scale->value()));
     ui->GLwidget->point_size = value;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_line_width_scale_valueChanged(int value)
+{
+    ui->line_width_title->setText("Line width: " + QString::number(ui->line_width_scale->value()));
+    ui->GLwidget->line_width = value;
     ui->GLwidget->update();
 }
 

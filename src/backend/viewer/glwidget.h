@@ -27,6 +27,7 @@ public:
     ObjData baseData;
     float scale = 100.0, xRot = 0.0f, yRot = 0.0f, zRot = 0.0f, xMov = 0.0f, yMov = 0.0f, zMov = 0.0f;
     int point_size = 5;
+    int line_width = 1;
 };
 
 #endif // GLWIDGET_H

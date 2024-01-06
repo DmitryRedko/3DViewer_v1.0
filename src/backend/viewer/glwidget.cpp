@@ -80,7 +80,7 @@ void GLWidget::draw_model_lines() {
     glLineStipple(1, 0x00FF);
     // glEnable(GL_LINE_SMOOTH);
 
-    glLineWidth(1);
+    glLineWidth(line_width);
     glColor3ub(255,0,0); // красный
 
     // glIndexPointer(GL_INT, 2, objData.faces);
