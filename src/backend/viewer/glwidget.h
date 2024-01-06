@@ -3,9 +3,10 @@
 
 #include <QGLWidget>
 #include <QTimer>
+#include <GL/glut.h>
 
 extern "C" {
-#include "../backend.h"
+#include "../backend.h" // Include your OBJ parser header
 }
 
 class GLWidget : public QGLWidget
@@ -18,31 +19,30 @@ public:
     void example_drawAxis();
     void example_drawCube();
     void draw_model();
-
+    void initializeGLmodel();
+    // Add a function to set the parsed OBJ data
     void setObjData(ObjData objData);
     char model_name[100] = " ";
-    int parse_flag = 0;
-    int welcome_flag = 0;
-
-    void initializeGLmodel();
-
-
+    double welcome_flag = 0;
+    double parse_flag = 0;
 
 public slots:
     void function_zoom_scale(int value); // Declare the slot in GLWidget
     void function_rotate_x(int value); // Declare the slot in GLWidget
     void function_rotate_y(int value); // Declare the slot in GLWidget
-//    void function_rotate_z(int value); // Declare the slot in GLWidget
-//    void function_move_x(int value); // Declare the slot in GLWidget
-//    void function_move_y(int value); // Declare the slot in GLWidget
-//    void function_move_z(int value); // Declare the slot in GLWidget
+    void function_rotate_z(int value); // Declare the slot in GLWidget
+    void function_move_x(int value); // Declare the slot in GLWidget
+    void function_move_y(int value); // Declare the slot in GLWidget
+    void function_move_z(int value); // Declare the slot in GLWidget
     float scale = 1.0f, xRot = 0.0f, yRot = 0.0f, zRot = 0.0f, xMov = 0.0f, yMov = 0.0f, zMov = 0.0f;
 
 
 private:
     QTimer timer;
     ObjData objData; // Store parsed OBJ data here
-    ObjData baseobjData; // Store parsed OBJ data here
+    ObjData baseData; // Store parsed OBJ data here
+    void apply_transform();
+
 };
 
 #endif // GLWIDGET_H

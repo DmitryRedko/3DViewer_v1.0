@@ -2,7 +2,6 @@
 #define S21_COMMON_H
 
 #include "../backend.h"
-
 void s21_init_matrix(double value, matrix_t *A);
 void s21_fill_matrix(matrix_t *A, double value);
 void s21_fill_matrix_by_list(matrix_t *matrix, double *list);

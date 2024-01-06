@@ -9,7 +9,7 @@
 #define MAX_NORMALS 10000
 #define MAX_FACES 10000
 
-ObjData parse_obj(const char *file_path, int *parse_flag) {
+ObjData parse_obj(const char *file_path, double *parse_flag) {
     ObjData objData;
     objData.vertexCount = 0;
     objData.textureCount = 0;
@@ -88,19 +88,3 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
     fclose(file);
     return objData;
 }
-
-
-void clear_obj_data(ObjData *objData) {
-    // Устанавливаем счетчики в ноль
-    objData->vertexCount = 0;
-    objData->textureCount = 0;
-    objData->normalCount = 0;
-    objData->faceCount = 0;
-
-    // Обнуляем массивы вершин, текстур, нормалей и граней
-    memset(objData->vertices, 0, sizeof(objData->vertices));
-    memset(objData->textures, 0, sizeof(objData->textures));
-    memset(objData->normals, 0, sizeof(objData->normals));
-    memset(objData->faces, 0, sizeof(objData->faces));
-}
-
