@@ -28,7 +28,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
 
     char line[MAX_LINE_LENGTH];
     while (fgets(line, sizeof(line), file)) {
-        // printf("line: %s", line);e
+        // printf("line: %s", line);
         char *token = strtok(line, " ");
         if (token != NULL) {
             if (strcmp(token, "v") == 0) {
@@ -69,15 +69,19 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
                // int indices[3][3]; // vIndex/vtIndex/vnIndex
                unsigned int vertex, texture, normal;
 
-               for (int i = 0; i < 3; ++i) {
-                   char *next = strtok(NULL, " ");
-                   sscanf(next, "%d/%d/%d", &vertex, &texture, &normal);
-               }
+               char *next = strtok(NULL, " ");
+               while (next != NULL) {
+                       // printf("vertex %s\n", next);
+                       vertex = atoi(next);
 
-               objData.faces[objData.faceCount] = vertex;
-               printf("vertex in faces %d\n", vertex);
-               objData.faceCount++;
-               objData.faces = realloc(objData.faces, (objData.faceCount + 1) * sizeof(unsigned int));
+                       objData.faces[objData.faceCount] = vertex;
+                       // printf("faces %d\n", objData.faces[objData.faceCount]);
+                       objData.faceCount++;
+                       objData.faces = realloc(objData.faces, (objData.faceCount + 1) * sizeof(unsigned int));
+
+                       // next = strtok(NULL, "/");
+                       next = strtok(NULL, " ");
+               }
             }
         }
     }
