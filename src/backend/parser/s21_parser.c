@@ -98,7 +98,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
         objData.vertices[i].z = objData.vertices[i - 1].z;
     }
 
-
+    printf("\nVerticies from index 1\n");
     for (int i = 1; i <= objData.vertexCount; i++) {
         printf("%f ", objData.vertices[i].x);
         printf("%f ", objData.vertices[i].y);
@@ -106,6 +106,10 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
         // objData.faceCount[i] = objData.faceCount[i - 1];
     }
 
+    printf("\nFaces from index 1\n");
+    for (int i = 1; i <= objData.faceCount; i++) {
+        printf("%d ", objData.faces[i]);
+    }
 
     fclose(file);
     return objData;

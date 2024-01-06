@@ -17,7 +17,7 @@ void GLWidget::initializeGLmodel() {
         objData = parse_obj(defaultModel, &parse_flag);
         // baseData = objData;
         baseData = parse_obj(defaultModel, &parse_flag);
-        printf("baseData vertexCount %d\n", baseData.vertexCount);
+        // printf("baseData vertexCount %d\n", baseData.vertexCount);
         welcome_flag = 1;
     } else {
         objData = parse_obj(model_name, &parse_flag);
@@ -77,16 +77,16 @@ void GLWidget::draw_model() {
 void GLWidget::draw_model_lines() {
     // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // glEnable(GL_LINE_STIPPLE);
-    // glLineStipple(1, 0x00FF);
-    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1, 0x00FF);
+    // glEnable(GL_LINE_SMOOTH);
 
     glLineWidth(1);
     glColor3ub(255,0,0); // красный
 
     // glIndexPointer(GL_INT, 2, objData.faces);
     // glEnableClientState(GL_INDEX_ARRAY);
-    // glDrawElements(GL_LINES, objData.faceCount * 2, GL_UNSIGNED_INT, objData.faceCount);
+    // glDrawElements(GL_LINES, objData.faceCount, GL_UNSIGNED_INT, objData.faceCount);
     glDrawElements(GL_LINE_STRIP, objData.faceCount, GL_UNSIGNED_INT, reinterpret_cast<const GLvoid*>(objData.faces));
 
     // glDisableClientState(GL_INDEX_ARRAY);
