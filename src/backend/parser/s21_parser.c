@@ -11,6 +11,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
     objData.faceCount = 0;
 
     objData.vertices = malloc(sizeof(Vertex));
+    objData.faces = malloc(sizeof(unsigned int));
 
     if (strstr(file_path, ".obj") == NULL) {
         fprintf(stderr, "File does not have .obj extension.\n");
@@ -63,21 +64,19 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
 //                    objData.normals[objData.normalCount].z = atof(next);
 //                    objData.normalCount++;
 //                }
-//            } else if (strcmp(token, "f") == 0) {
-//                // Faces parsing
-//                int indices[3][3]; // vIndex/vtIndex/vnIndex
-//                for (int i = 0; i < 3; ++i) {
-//                    char *next = strtok(NULL, " ");
-//                    sscanf(next, "%d/%d/%d", &indices[i][0], &indices[i][1], &indices[i][2]);
-//                }
+           } else if (strcmp(token, "f") == 0) {
+               // Faces parsing
+               // int indices[3][3]; // vIndex/vtIndex/vnIndex
+               unsigned int vertex, texture, normal;
 
-//                for (int i = 0; i < 3; ++i) {
-//                    objData.faces[objData.faceCount].vIndex[i] = indices[i][0];
-//                    objData.faces[objData.faceCount].vtIndex[i] = indices[i][1];
-//                    objData.faces[objData.faceCount].vnIndex[i] = indices[i][2];
-//                }
-//                objData.faceCount++;
+               for (int i = 0; i < 3; ++i) {
+                   char *next = strtok(NULL, " ");
+                   sscanf(next, "%d/%d/%d", &vertex, &texture, &normal);
+               }
 
+               objData.faces[objData.faceCount] = vertex;
+               objData.faceCount++;
+               objData.faces = realloc(objData.faces, (objData.faceCount + 1) * sizeof(unsigned int));
             }
         }
     }
