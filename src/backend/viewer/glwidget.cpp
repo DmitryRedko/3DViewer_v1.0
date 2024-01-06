@@ -13,7 +13,7 @@ GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
 void GLWidget::initializeGLmodel() {
     if (welcome_flag == 0) {
         // const char defaultModel[] = "../frontend/default_models/welcome.obj";
-        const char defaultModel[] = "../models/surf1.obj";
+        const char defaultModel[] = "../models/cube2.obj";
         objData = parse_obj(defaultModel, &parse_flag);
         // baseData = objData;
         baseData = parse_obj(defaultModel, &parse_flag);
@@ -63,7 +63,7 @@ void GLWidget::paintGL() {
 void GLWidget::draw_model() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glPointSize(5);
+    glPointSize(point_size);
     glEnable(GL_POINT_SMOOTH);
 
     glVertexPointer(3, GL_FLOAT, 0, objData.vertices);

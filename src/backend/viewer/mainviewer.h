@@ -33,5 +33,6 @@ private slots:
     void on_reset_model_released();
     void on_fileBtm_clicked();
     void on_openBtm_clicked();
+    void on_zoom_scale_4_valueChanged(int value);
 };
 #endif // MAINVIEWER_H

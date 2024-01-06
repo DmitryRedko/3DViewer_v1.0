@@ -131,3 +131,10 @@ void MainViewer::on_openBtm_clicked()
     }
 }
 
+
+void MainViewer::on_zoom_scale_4_valueChanged(int value)
+{
+    ui->GLwidget->point_size = value;
+    ui->GLwidget->update();
+}
+

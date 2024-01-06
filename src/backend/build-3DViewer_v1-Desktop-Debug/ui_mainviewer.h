@@ -37,23 +37,10 @@ public:
     QGridLayout *gridLayout;
     QFrame *zoom;
     QGridLayout *gridLayout_3;
+    QLabel *label_minus;
+    QLabel *label_plus;
     QLabel *rotate_title;
     QSlider *zoom_scale;
-    QLabel *label_plus;
-    QLabel *label_minus;
-    QFrame *translate;
-    QGridLayout *gridLayout_5;
-    QLabel *translate_title;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *line_16;
-    QLabel *label_16;
-    QSlider *move_x;
-    QHBoxLayout *line_17;
-    QLabel *label_17;
-    QSlider *move_y;
-    QHBoxLayout *line_18;
-    QLabel *label_18;
-    QSlider *move_z;
     QFrame *open_file;
     QGridLayout *gridLayout_2;
     QPushButton *fileBtm;
@@ -62,7 +49,6 @@ public:
     QPushButton *reset_model;
     QFrame *rotate;
     QGridLayout *gridLayout_4;
-    QLabel *rotate_title_3;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *line_7;
     QLabel *label_7;
@@ -73,6 +59,26 @@ public:
     QHBoxLayout *line_9;
     QLabel *label_9;
     QSlider *rotate_z;
+    QLabel *rotate_title_3;
+    QFrame *translate;
+    QGridLayout *gridLayout_5;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *line_16;
+    QLabel *label_16;
+    QSlider *move_x;
+    QHBoxLayout *line_17;
+    QLabel *label_17;
+    QSlider *move_y;
+    QHBoxLayout *line_18;
+    QLabel *label_18;
+    QSlider *move_z;
+    QLabel *translate_title;
+    QFrame *zoom_2;
+    QGridLayout *gridLayout_10;
+    QLabel *label_minus_4;
+    QSlider *zoom_scale_4;
+    QLabel *label_plus_4;
+    QLabel *rotate_title_5;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
     QFrame *frame_2;
@@ -98,7 +104,6 @@ public:
         QFont font;
         font.setPointSize(24);
         font.setBold(true);
-        font.setWeight(75);
         header->setFont(font);
         header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
 "\n"
@@ -159,6 +164,16 @@ public:
         zoom->setFrameShadow(QFrame::Raised);
         gridLayout_3 = new QGridLayout(zoom);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        label_minus = new QLabel(zoom);
+        label_minus->setObjectName(QString::fromUtf8("label_minus"));
+
+        gridLayout_3->addWidget(label_minus, 1, 0, 1, 1);
+
+        label_plus = new QLabel(zoom);
+        label_plus->setObjectName(QString::fromUtf8("label_plus"));
+
+        gridLayout_3->addWidget(label_plus, 1, 2, 1, 1);
+
         rotate_title = new QLabel(zoom);
         rotate_title->setObjectName(QString::fromUtf8("rotate_title"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Maximum);
@@ -185,114 +200,8 @@ public:
 
         gridLayout_3->addWidget(zoom_scale, 1, 1, 1, 1);
 
-        label_plus = new QLabel(zoom);
-        label_plus->setObjectName(QString::fromUtf8("label_plus"));
-
-        gridLayout_3->addWidget(label_plus, 1, 2, 1, 1);
-
-        label_minus = new QLabel(zoom);
-        label_minus->setObjectName(QString::fromUtf8("label_minus"));
-
-        gridLayout_3->addWidget(label_minus, 1, 0, 1, 1);
-
 
         gridLayout->addWidget(zoom, 2, 0, 1, 2);
-
-        translate = new QFrame(frame);
-        translate->setObjectName(QString::fromUtf8("translate"));
-        translate->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"color: white;\n"
-"margin-top: 5px;\n"
-"border: 1px solid white;\n"
-"border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLabel {\n"
-"margin-top: 0;\n"
-"border: none;\n"
-"}"));
-        translate->setFrameShape(QFrame::StyledPanel);
-        translate->setFrameShadow(QFrame::Raised);
-        gridLayout_5 = new QGridLayout(translate);
-        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        translate_title = new QLabel(translate);
-        translate_title->setObjectName(QString::fromUtf8("translate_title"));
-        sizePolicy2.setHeightForWidth(translate_title->sizePolicy().hasHeightForWidth());
-        translate_title->setSizePolicy(sizePolicy2);
-
-        gridLayout_5->addWidget(translate_title, 0, 0, 1, 1);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(-1, 5, -1, -1);
-        line_16 = new QHBoxLayout();
-        line_16->setObjectName(QString::fromUtf8("line_16"));
-        line_16->setContentsMargins(0, -1, -1, -1);
-        label_16 = new QLabel(translate);
-        label_16->setObjectName(QString::fromUtf8("label_16"));
-        label_16->setStyleSheet(QString::fromUtf8("	color: rgba(255, 255, 255, 102);"));
-
-        line_16->addWidget(label_16);
-
-        move_x = new QSlider(translate);
-        move_x->setObjectName(QString::fromUtf8("move_x"));
-        move_x->setMinimum(-100);
-        move_x->setMaximum(100);
-        move_x->setValue(0);
-        move_x->setOrientation(Qt::Horizontal);
-
-        line_16->addWidget(move_x);
-
-
-        verticalLayout->addLayout(line_16);
-
-        line_17 = new QHBoxLayout();
-        line_17->setObjectName(QString::fromUtf8("line_17"));
-        line_17->setContentsMargins(0, -1, -1, -1);
-        label_17 = new QLabel(translate);
-        label_17->setObjectName(QString::fromUtf8("label_17"));
-        label_17->setStyleSheet(QString::fromUtf8("	color: rgba(255, 255, 255, 102);"));
-
-        line_17->addWidget(label_17);
-
-        move_y = new QSlider(translate);
-        move_y->setObjectName(QString::fromUtf8("move_y"));
-        move_y->setMinimum(-100);
-        move_y->setMaximum(100);
-        move_y->setValue(0);
-        move_y->setOrientation(Qt::Horizontal);
-
-        line_17->addWidget(move_y);
-
-
-        verticalLayout->addLayout(line_17);
-
-        line_18 = new QHBoxLayout();
-        line_18->setObjectName(QString::fromUtf8("line_18"));
-        line_18->setContentsMargins(0, -1, -1, -1);
-        label_18 = new QLabel(translate);
-        label_18->setObjectName(QString::fromUtf8("label_18"));
-        label_18->setStyleSheet(QString::fromUtf8("	color: rgba(255, 255, 255, 102);"));
-
-        line_18->addWidget(label_18);
-
-        move_z = new QSlider(translate);
-        move_z->setObjectName(QString::fromUtf8("move_z"));
-        move_z->setMinimum(-100);
-        move_z->setMaximum(100);
-        move_z->setValue(0);
-        move_z->setOrientation(Qt::Horizontal);
-
-        line_18->addWidget(move_z);
-
-
-        verticalLayout->addLayout(line_18);
-
-
-        gridLayout_5->addLayout(verticalLayout, 1, 0, 1, 1);
-
-
-        gridLayout->addWidget(translate, 4, 0, 1, 2);
 
         open_file = new QFrame(frame);
         open_file->setObjectName(QString::fromUtf8("open_file"));
@@ -413,13 +322,6 @@ public:
         rotate->setFrameShadow(QFrame::Raised);
         gridLayout_4 = new QGridLayout(rotate);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        rotate_title_3 = new QLabel(rotate);
-        rotate_title_3->setObjectName(QString::fromUtf8("rotate_title_3"));
-        sizePolicy2.setHeightForWidth(rotate_title_3->sizePolicy().hasHeightForWidth());
-        rotate_title_3->setSizePolicy(sizePolicy2);
-
-        gridLayout_4->addWidget(rotate_title_3, 0, 0, 1, 1);
-
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(-1, 5, -1, -1);
@@ -489,8 +391,173 @@ public:
 
         gridLayout_4->addLayout(verticalLayout_2, 1, 0, 1, 1);
 
+        rotate_title_3 = new QLabel(rotate);
+        rotate_title_3->setObjectName(QString::fromUtf8("rotate_title_3"));
+        sizePolicy2.setHeightForWidth(rotate_title_3->sizePolicy().hasHeightForWidth());
+        rotate_title_3->setSizePolicy(sizePolicy2);
+
+        gridLayout_4->addWidget(rotate_title_3, 0, 0, 1, 1);
+
 
         gridLayout->addWidget(rotate, 3, 0, 1, 2);
+
+        translate = new QFrame(frame);
+        translate->setObjectName(QString::fromUtf8("translate"));
+        translate->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"color: white;\n"
+"margin-top: 5px;\n"
+"border: 1px solid white;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"margin-top: 0;\n"
+"border: none;\n"
+"}"));
+        translate->setFrameShape(QFrame::StyledPanel);
+        translate->setFrameShadow(QFrame::Raised);
+        gridLayout_5 = new QGridLayout(translate);
+        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(-1, 5, -1, -1);
+        line_16 = new QHBoxLayout();
+        line_16->setObjectName(QString::fromUtf8("line_16"));
+        line_16->setContentsMargins(0, -1, -1, -1);
+        label_16 = new QLabel(translate);
+        label_16->setObjectName(QString::fromUtf8("label_16"));
+        label_16->setStyleSheet(QString::fromUtf8("	color: rgba(255, 255, 255, 102);"));
+
+        line_16->addWidget(label_16);
+
+        move_x = new QSlider(translate);
+        move_x->setObjectName(QString::fromUtf8("move_x"));
+        move_x->setMinimum(-100);
+        move_x->setMaximum(100);
+        move_x->setValue(0);
+        move_x->setOrientation(Qt::Horizontal);
+
+        line_16->addWidget(move_x);
+
+
+        verticalLayout->addLayout(line_16);
+
+        line_17 = new QHBoxLayout();
+        line_17->setObjectName(QString::fromUtf8("line_17"));
+        line_17->setContentsMargins(0, -1, -1, -1);
+        label_17 = new QLabel(translate);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+        label_17->setStyleSheet(QString::fromUtf8("	color: rgba(255, 255, 255, 102);"));
+
+        line_17->addWidget(label_17);
+
+        move_y = new QSlider(translate);
+        move_y->setObjectName(QString::fromUtf8("move_y"));
+        move_y->setMinimum(-100);
+        move_y->setMaximum(100);
+        move_y->setValue(0);
+        move_y->setOrientation(Qt::Horizontal);
+
+        line_17->addWidget(move_y);
+
+
+        verticalLayout->addLayout(line_17);
+
+        line_18 = new QHBoxLayout();
+        line_18->setObjectName(QString::fromUtf8("line_18"));
+        line_18->setContentsMargins(0, -1, -1, -1);
+        label_18 = new QLabel(translate);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+        label_18->setStyleSheet(QString::fromUtf8("	color: rgba(255, 255, 255, 102);"));
+
+        line_18->addWidget(label_18);
+
+        move_z = new QSlider(translate);
+        move_z->setObjectName(QString::fromUtf8("move_z"));
+        move_z->setMinimum(-100);
+        move_z->setMaximum(100);
+        move_z->setValue(0);
+        move_z->setOrientation(Qt::Horizontal);
+
+        line_18->addWidget(move_z);
+
+
+        verticalLayout->addLayout(line_18);
+
+
+        gridLayout_5->addLayout(verticalLayout, 1, 0, 1, 1);
+
+        translate_title = new QLabel(translate);
+        translate_title->setObjectName(QString::fromUtf8("translate_title"));
+        sizePolicy2.setHeightForWidth(translate_title->sizePolicy().hasHeightForWidth());
+        translate_title->setSizePolicy(sizePolicy2);
+
+        gridLayout_5->addWidget(translate_title, 0, 0, 1, 1);
+
+
+        gridLayout->addWidget(translate, 5, 0, 1, 2);
+
+        zoom_2 = new QFrame(frame);
+        zoom_2->setObjectName(QString::fromUtf8("zoom_2"));
+        zoom_2->setEnabled(true);
+        sizePolicy.setHeightForWidth(zoom_2->sizePolicy().hasHeightForWidth());
+        zoom_2->setSizePolicy(sizePolicy);
+        zoom_2->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"color: white;\n"
+"margin-top: 5px;\n"
+"border: 1px solid white;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"margin-top: 0;\n"
+"border: none;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"padding-top: 3px;\n"
+"padding-right: 3px;\n"
+"}"));
+        zoom_2->setFrameShape(QFrame::StyledPanel);
+        zoom_2->setFrameShadow(QFrame::Raised);
+        gridLayout_10 = new QGridLayout(zoom_2);
+        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
+        label_minus_4 = new QLabel(zoom_2);
+        label_minus_4->setObjectName(QString::fromUtf8("label_minus_4"));
+
+        gridLayout_10->addWidget(label_minus_4, 1, 0, 1, 1);
+
+        zoom_scale_4 = new QSlider(zoom_2);
+        zoom_scale_4->setObjectName(QString::fromUtf8("zoom_scale_4"));
+        sizePolicy3.setHeightForWidth(zoom_scale_4->sizePolicy().hasHeightForWidth());
+        zoom_scale_4->setSizePolicy(sizePolicy3);
+        zoom_scale_4->setMinimum(1);
+        zoom_scale_4->setMaximum(20);
+        zoom_scale_4->setSingleStep(1);
+        zoom_scale_4->setPageStep(1);
+        zoom_scale_4->setValue(5);
+        zoom_scale_4->setOrientation(Qt::Horizontal);
+
+        gridLayout_10->addWidget(zoom_scale_4, 1, 1, 1, 1);
+
+        label_plus_4 = new QLabel(zoom_2);
+        label_plus_4->setObjectName(QString::fromUtf8("label_plus_4"));
+
+        gridLayout_10->addWidget(label_plus_4, 1, 2, 1, 1);
+
+        rotate_title_5 = new QLabel(zoom_2);
+        rotate_title_5->setObjectName(QString::fromUtf8("rotate_title_5"));
+        sizePolicy2.setHeightForWidth(rotate_title_5->sizePolicy().hasHeightForWidth());
+        rotate_title_5->setSizePolicy(sizePolicy2);
+
+        gridLayout_10->addWidget(rotate_title_5, 0, 0, 1, 2);
+
+
+        gridLayout->addWidget(zoom_2, 1, 0, 1, 2);
 
 
         gridLayout_7->addWidget(frame, 0, 1, 3, 1);
@@ -540,20 +607,23 @@ public:
     {
         MainViewer->setWindowTitle(QCoreApplication::translate("MainViewer", "MainViewer", nullptr));
         header->setText(QCoreApplication::translate("MainViewer", "<html><head/><body><p><span style=\" font-style:italic; color:#ffffff;\">\360\237\220\251 3D-Viewer</span></p></body></html>", nullptr));
-        rotate_title->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
-        label_plus->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
         label_minus->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
-        translate_title->setText(QCoreApplication::translate("MainViewer", "Move", nullptr));
-        label_16->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
-        label_17->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
-        label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
+        label_plus->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        rotate_title->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
         fileBtm->setText(QCoreApplication::translate("MainViewer", "file", nullptr));
         openBtm->setText(QCoreApplication::translate("MainViewer", "OPEN", nullptr));
         reset_model->setText(QCoreApplication::translate("MainViewer", "RESET MODEL", nullptr));
-        rotate_title_3->setText(QCoreApplication::translate("MainViewer", "Rotation", nullptr));
         label_7->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
         label_8->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_9->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
+        rotate_title_3->setText(QCoreApplication::translate("MainViewer", "Rotation", nullptr));
+        label_16->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
+        label_17->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
+        label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
+        translate_title->setText(QCoreApplication::translate("MainViewer", "Move", nullptr));
+        label_minus_4->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
+        label_plus_4->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        rotate_title_5->setText(QCoreApplication::translate("MainViewer", "Point size", nullptr));
     } // retranslateUi
 
 };
