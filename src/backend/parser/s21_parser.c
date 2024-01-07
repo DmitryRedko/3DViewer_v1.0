@@ -44,14 +44,9 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
                 //     objData.vertices = realloc(objData.vertices, (objData.vertexCount + 1) * sizeof(float));
                 //     // printf("objData.vertexCount %d\n", objData.vertexCount);
                 // }
-                short xyz_num = 0;
                 while (next != NULL) {
                     objData.vertices[objData.vertexCount] = atof(next);
-                    xyz_num++;
-                    if (xyz_num % 3 == 0) {
-                        objData.vertexCount++;
-                        xyz_num = 0;
-                    }
+                    objData.vertexCount++;
                     objData.vertices = realloc(objData.vertices, (objData.vertexCount + 1) * sizeof(float));
                     next = strtok(NULL, " ");
                 }
