@@ -10,27 +10,64 @@ GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
     initializeGLmodel();
 }
 
+void GLWidget::normalize_model(ObjData *data) {
+    float maxX = -10000000;
+    float maxY = -10000000;
+    float maxZ = -10000000;
+    float minX = 10000000;
+    float minY = 10000000;
+    float minZ = 10000000;
+    float maxVal = -100000000;
+
+    for(unsigned int i = 0; i < data->vertexCount*3; i=i+3){
+        if (data->vertices[i] > maxX)
+            maxX = data->vertices[i];
+        if (data->vertices[i+1] > maxY)
+            maxY = data->vertices[i+1];
+        if (data->vertices[i+2] > maxZ)
+            maxZ = data->vertices[i+2];
+
+        if (data->vertices[i] < minX)
+            minX = data->vertices[i];
+        if (data->vertices[i+1] < minY)
+            minY = data->vertices[i+1];
+        if (data->vertices[i+2] < minZ)
+            minZ = data->vertices[i+2];
+    }
+    float moveX = -(maxX + minX)/2;
+    float moveY = -(maxY + minY)/2;
+    float moveZ = -(maxZ + minZ)/2;
+    move_operation(moveX*100,moveY*100,moveZ*100,data,data);
+
+    for(unsigned int i = 0; i < data->vertexCount*3; i = i+3){
+        if (data->vertices[i] > maxVal)
+            maxVal = data->vertices[i];
+        if (data->vertices[i+1] > maxVal)
+            maxVal = data->vertices[i+1];
+    }
+
+    zoom_operation(1.3*scale/maxVal, 1.3*scale/maxVal, 1.3*scale/maxVal, data, data);
+
+}
+
 void GLWidget::initializeGLmodel() {
     if (welcome_flag == 0) {
-        // const char defaultModel[] = "../frontend/default_models/welcome.obj";
         const char defaultModel[] = "../models/cube.obj";
         objData = parse_obj(defaultModel, &parse_flag);
-        // baseData = objData;
         baseData = parse_obj(defaultModel, &parse_flag);
-        // printf("baseData vertexCount %d\n", baseData.vertexCount);
         welcome_flag = 1;
     } else {
         objData = parse_obj(model_name, &parse_flag);
-        // baseData = objData;
         baseData = parse_obj(model_name, &parse_flag);
     }
 
     if (parse_flag == 0) {
+        normalize_model(&baseData);
+        normalize_model(&objData);
         draw_model();
     } else {
         const char defaultModel[] = "../frontend/default_models/error.obj";
         objData = parse_obj(defaultModel, &parse_flag);
-        // baseData = objData;
         baseData = parse_obj(defaultModel, &parse_flag);
         parse_flag = 0;
     }
@@ -104,7 +141,7 @@ void GLWidget::resizeGL(int w, int h) {
 }
 
 void GLWidget::apply_transform() {
-    move_operation(xMov, yMov, zMov, &objData, &baseData);
+    move_operation(xMov/scale*250, yMov/scale*250, zMov/scale*250, &objData, &baseData);
     rotate_operation(xRot, yRot, zRot, &objData, &objData);
     zoom_operation(scale, scale, scale, &objData, &objData);
 }

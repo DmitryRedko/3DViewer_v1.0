@@ -20,7 +20,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "glwidget.h"
@@ -90,8 +89,6 @@ public:
     QLabel *header;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
-    QSpacerItem *horizontalSpacer;
-    QFrame *frame_2;
     QLabel *model_name_and_props;
 
     void setupUi(QMainWindow *MainViewer)
@@ -636,6 +633,7 @@ public:
         QFont font;
         font.setPointSize(24);
         font.setBold(true);
+        font.setWeight(75);
         header->setFont(font);
         header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
 "\n"
@@ -655,27 +653,11 @@ public:
         frame_8->setFrameShadow(QFrame::Raised);
         gridLayout_6 = new QGridLayout(frame_8);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
-
-        gridLayout_6->addItem(horizontalSpacer, 0, 1, 1, 1);
-
-        frame_2 = new QFrame(frame_8);
-        frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
-        frame_2->setSizePolicy(sizePolicy6);
-        frame_2->setStyleSheet(QString::fromUtf8("border-color: rgb(94, 92, 100);\n"
-"border-color: rgb(61, 56, 70);"));
-        frame_2->setFrameShape(QFrame::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Raised);
-        model_name_and_props = new QLabel(frame_2);
+        model_name_and_props = new QLabel(frame_8);
         model_name_and_props->setObjectName(QString::fromUtf8("model_name_and_props"));
-        model_name_and_props->setGeometry(QRect(0, 0, 811, 16));
         model_name_and_props->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
 
-        gridLayout_6->addWidget(frame_2, 0, 0, 1, 1);
+        gridLayout_6->addWidget(model_name_and_props, 0, 0, 1, 1);
 
 
         gridLayout_7->addWidget(frame_8, 2, 0, 1, 1);
