@@ -35,7 +35,7 @@ typedef struct {
 // } Face;
 
 typedef struct {
-    Vertex *vertices;
+    float *vertices;
     // Texture textures[MAX_TEXTURES];
     // Normal normals[MAX_NORMALS];
     unsigned int *faces;

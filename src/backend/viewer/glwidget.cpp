@@ -13,7 +13,7 @@ GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
 void GLWidget::initializeGLmodel() {
     if (welcome_flag == 0) {
         // const char defaultModel[] = "../frontend/default_models/welcome.obj";
-        const char defaultModel[] = "../models/cube2.obj";
+        const char defaultModel[] = "../models/cube.obj";
         objData = parse_obj(defaultModel, &parse_flag);
         // baseData = objData;
         baseData = parse_obj(defaultModel, &parse_flag);
