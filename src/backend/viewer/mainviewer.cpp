@@ -125,6 +125,9 @@ void MainViewer::on_openBtm_clicked()
             model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
         }
 
+        ui->GLwidget->initializeGLmodel();
+        on_reset_model_released();
+
         QString file_name = ui->pathLine->text();
         ui->model_name_and_props->setText("Model name: " +
                                           QFileInfo(file_name).fileName() +
@@ -133,9 +136,6 @@ void MainViewer::on_openBtm_clicked()
                                           " vertices and " +
                                           QString::number(ui->GLwidget->objData.faceCount) +
                                           " faces");
-
-        ui->GLwidget->initializeGLmodel();
-        on_reset_model_released();
     }
 }
 
