@@ -10,7 +10,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
     // objData.normalCount = 0;
     objData.faceCount = 0;
 
-    objData.vertices = malloc(sizeof(Vertex));
+    objData.vertices = malloc(sizeof(float));
     objData.faces = malloc(sizeof(unsigned int));
 
     if (strstr(file_path, ".obj") == NULL) {
@@ -25,7 +25,6 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
         *parse_flag = 1;
         return objData;
     }
-
     char line[MAX_LINE_LENGTH];
     while (fgets(line, sizeof(line), file)) {
         // printf("line: %s", line);
@@ -34,95 +33,57 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
             if (strcmp(token, "v") == 0) {
                 // Vertex parsing
                 char *next = strtok(NULL, " ");
-                // if (next != NULL) {
-                //     objData.vertices[objData.vertexCount] = atof(next);
-                //     next = strtok(NULL, " ");
-                //     // objData.vertices[objData.vertexCount] = atof(next);
-                //     // next = strtok(NULL, " ");
-                //     // objData.vertices[objData.vertexCount] = atof(next);
-                //     objData.vertexCount++;
-                //     objData.vertices = realloc(objData.vertices, (objData.vertexCount + 1) * sizeof(float));
-                //     // printf("objData.vertexCount %d\n", objData.vertexCount);
-                // }
+
                 while (next != NULL) {
                     objData.vertices[objData.vertexCount] = atof(next);
                     objData.vertexCount++;
                     objData.vertices = realloc(objData.vertices, (objData.vertexCount + 1) * sizeof(float));
                     next = strtok(NULL, " ");
                 }
-
-//            } else if (strcmp(token, "vt") == 0) {
-//                // Texture coordinates parsing
-//                char *next = strtok(NULL, " ");
-//                if (next != NULL) {
-//                    objData.textures[objData.textureCount].u = atof(next);
-//                    next = strtok(NULL, " ");
-//                    objData.textures[objData.textureCount].v = atof(next);
-//                    objData.textureCount++;
-//                }
-//            } else if (strcmp(token, "vn") == 0) {
-//                // Normals parsing
-//                char *next = strtok(NULL, " ");
-//                if (next != NULL) {
-//                    objData.normals[objData.normalCount].x = atof(next);
-//                    next = strtok(NULL, " ");
-//                    objData.normals[objData.normalCount].y = atof(next);
-//                    next = strtok(NULL, " ");
-//                    objData.normals[objData.normalCount].z = atof(next);
-//                    objData.normalCount++;
-//                }
            } else if (strcmp(token, "f") == 0) {
                // Faces parsing
                // int indices[3][3]; // vIndex/vtIndex/vnIndex
-               unsigned int vertex, texture, normal;
-
+               unsigned int vertex;
                char *next = strtok(NULL, " ");
+
+//               printf("vertex %s\n", next);
+
                while (next != NULL) {
-                       // printf("vertex %s\n", next);
-                       vertex = atoi(next);
+//                   printf("vertex %s\n", next);
+                   vertex = atoi(next);
 
-                       objData.faces[objData.faceCount] = vertex;
-                       // printf("faces %d\n", objData.faces[objData.faceCount]);
-                       objData.faceCount++;
-                       objData.faces = realloc(objData.faces, (objData.faceCount + 1) * sizeof(unsigned int));
+//                   printf("faces %d\n", objData.faces[objData.faceCount]);
+                   objData.faces[objData.faceCount] = vertex - 1;
+                   objData.faceCount++;
+                   objData.faces = realloc(objData.faces, (objData.faceCount + 1) * sizeof(unsigned int));
+//                   objData.faces[objData.faceCount] = vertex;
 
-                       // next = strtok(NULL, "/");
-                       next = strtok(NULL, " ");
+                   // next = strtok(NULL, "/");
+                   next = strtok(NULL, " ");
                }
             }
         }
     }
-
-    for (int i = objData.faceCount; i > 0; i--) {
-        // printf("%d ", objData.faces[i]);
-        objData.faces[i] = objData.faces[i - 1];
-    }
-
-    for (int i = objData.vertexCount; i > 0; i--) {
-        // printf("%d ", objData.faces[i]);
-        objData.vertices[i] = objData.vertices[i - 1];
-        // objData.vertices[i].y = objData.vertices[i - 1].y;
-        // objData.vertices[i].z = objData.vertices[i - 1].z;
-    }
-
     // printf("vertex array size %d %d\n", sizeof(objData.vertices), sizeof(Vertex));
     // printf("faces array size %d %d\n", sizeof(objData.faces), sizeof(unsigned int));
 
-    printf("\n%d Verticies from index 1\n", objData.vertexCount);
-    for (int i = 1; i <= objData.vertexCount; i++) {
-        printf("%f ", objData.vertices[i]);
-        if (i % 3 == 0) printf("\n");
-        // printf("%f ", objData.vertices[i].y);
-        // printf("%f\n", objData.vertices[i].z);
-        // objData.faceCount[i] = objData.faceCount[i - 1];
-    }
+//    printf("\n%d Verticies from index 1\n", objData.vertexCount/3);
+//    for (unsigned int i = 0; i < objData.vertexCount; i++) {
+//        printf("%f ", objData.vertices[i]);
+//        // printf("%f ", objData.vertices[i].y);
+//        // printf("%f\n", objData.vertices[i].z);
+//        // objData.faceCount[i] = objData.faceCount[i - 1];
+//    }
 
-    printf("\n%d Faces from index 1\n", objData.faceCount);
-    for (int i = 1; i <= objData.faceCount; i++) {
-        printf("%d ", objData.faces[i]);
-    }
+//    printf("\n%d Faces from index 1\n", objData.faceCount);
+//    for (unsigned int i = 0; i < objData.faceCount; i++) {
+//        printf("%d ", objData.faces[i]);/
+//    }
+
+    objData.vertexCount = objData.vertexCount/3;
 
     fclose(file);
+//    objData.vertices[0] = 0.0;
     return objData;
 }
 
