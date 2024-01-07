@@ -13,7 +13,7 @@ GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent) {
 void GLWidget::initializeGLmodel() {
     if (welcome_flag == 0) {
         // const char defaultModel[] = "../frontend/default_models/welcome.obj";
-        const char defaultModel[] = "../models/plate.obj";
+        const char defaultModel[] = "../models/cube.obj";
         objData = parse_obj(defaultModel, &parse_flag);
         // baseData = objData;
         baseData = parse_obj(defaultModel, &parse_flag);
@@ -39,31 +39,23 @@ void GLWidget::initializeGLmodel() {
 
 void GLWidget::initializeGL() {
     glClearColor(0.2, 0.2, 0.2, 1);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void GLWidget::paintGL() {
-    draw_model();
     if (draw_lines == 1) {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         draw_model_lines();
+        draw_model();
+    }
+    else{
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        draw_model();
     }
 }
 
-//void GLWidget::draw_model() {
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//    glBegin(GL_LINES);
-//    glClearColor(0.2, 0.2, 0.2, 1);
-
-//    for (int i = 0; i < objData.vertexCount; ++i) {
-//        for (int j = 0; j < 3; ++j) {
-//            int vIndex = objData.faces[i].vIndex[j] - 1;
-//            glVertex3f(objData.vertices[vIndex].x, objData.vertices[vIndex].y, objData.vertices[vIndex].z);
-//        }
-//    }
-//    glEnd();
-//}
 
 void GLWidget::draw_model() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glPointSize(point_size);
     glEnable(GL_POINT_SMOOTH);
@@ -76,8 +68,11 @@ void GLWidget::draw_model() {
 }
 
 void GLWidget::draw_model_lines() {
-    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST); // Включить z-буферизацию для удаления скрытых граней
+    glEnable(GL_CULL_FACE); // Включить back-face culling для удаления невидимых граней
 
+    glCullFace(GL_BACK); // Оставить только грани, обращенные наружу
+    glFrontFace(GL_CCW); // Указать порядок обхода вершин для передней грани (CCW - против часовой стрелки)
     if (line_type == 1) {
         glDisable(GL_LINE_SMOOTH);
         glEnable(GL_LINE_STIPPLE);
@@ -91,7 +86,7 @@ void GLWidget::draw_model_lines() {
 
     // glIndexPointer(GL_INT, 2, objData.faces);
     // glEnableClientState(GL_INDEX_ARRAY);
-     glDrawElements(GL_LINES, objData.faceCount, GL_UNSIGNED_INT, objData.faces);
+     glDrawElements(GL_QUADS, objData.faceCount, GL_UNSIGNED_INT, objData.faces);
 
 //    glDrawElements(GL_LINE_STRIP, objData.faceCount, GL_UNSIGNED_INT, reinterpret_cast<const GLvoid*>(objData.faces));
 
@@ -100,6 +95,12 @@ void GLWidget::draw_model_lines() {
 
 void GLWidget::resizeGL(int w, int h) {
     glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45,(float)w/h, 0.01, 100.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(0,0,5,0,0,0,0,1,0);
 }
 
 void GLWidget::apply_transform() {
