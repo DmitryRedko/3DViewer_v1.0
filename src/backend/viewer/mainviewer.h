@@ -21,7 +21,6 @@ private:
     Ui::MainViewer *ui;
     GLWidget *myGLW;
 
-
 private slots:
     void on_rotate_x_valueChanged();
     void on_rotate_y_valueChanged();

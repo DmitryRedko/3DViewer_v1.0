@@ -91,6 +91,7 @@ public:
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
     QFrame *frame_2;
+    QLabel *model_name_and_props;
     QSpacerItem *horizontalSpacer;
 
     void setupUi(QMainWindow *MainViewer)
@@ -665,6 +666,10 @@ public:
 "border-color: rgb(61, 56, 70);"));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
+        model_name_and_props = new QLabel(frame_2);
+        model_name_and_props->setObjectName(QString::fromUtf8("model_name_and_props"));
+        model_name_and_props->setGeometry(QRect(0, 0, 351, 16));
+        model_name_and_props->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
 
         gridLayout_6->addWidget(frame_2, 0, 0, 1, 1);
 
@@ -712,6 +717,7 @@ public:
         line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
         line_type->setText(QCoreApplication::translate("MainViewer", "stipple", nullptr));
         no_lines->setText(QCoreApplication::translate("MainViewer", "no lines", nullptr));
+        model_name_and_props->setText(QCoreApplication::translate("MainViewer", "Model name and properties", nullptr));
     } // retranslateUi
 
 };

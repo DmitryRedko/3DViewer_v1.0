@@ -858,6 +858,22 @@ border-color: rgb(61, 56, 70);</string>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <widget class="QLabel" name="model_name_and_props">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>351</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="text">
+           <string>Model name and properties</string>
+          </property>
+         </widget>
         </widget>
        </item>
        <item row="0" column="1">

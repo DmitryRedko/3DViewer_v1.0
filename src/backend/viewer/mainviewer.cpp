@@ -2,6 +2,7 @@
 #include "ui_mainviewer.h"
 #include <QFileDialog>
 #include <QDebug>
+#include <string.h>
 
 MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainViewer)
 {
@@ -123,6 +124,15 @@ void MainViewer::on_openBtm_clicked()
             strncpy(model_name, charFileName, sizeof(ui->GLwidget->model_name) - 1);
             model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
         }
+
+        QString file_name = ui->pathLine->text();
+        ui->model_name_and_props->setText("Model name: " +
+                                          QFileInfo(file_name).fileName() +
+                                          " with " +
+                                          QString::number(ui->GLwidget->objData.vertexCount) +
+                                          " vertices and " +
+                                          QString::number(ui->GLwidget->objData.faceCount) +
+                                          " faces");
 
         ui->GLwidget->initializeGLmodel();
         on_reset_model_released();
