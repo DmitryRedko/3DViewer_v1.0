@@ -32,7 +32,6 @@ class Ui_MainViewer
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout_7;
-    QLabel *header;
     GLWidget *GLwidget;
     QFrame *frame;
     QGridLayout *gridLayout;
@@ -88,42 +87,23 @@ public:
     QSlider *line_width_scale;
     QCheckBox *line_type;
     QCheckBox *no_lines;
+    QLabel *header;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
+    QSpacerItem *horizontalSpacer;
     QFrame *frame_2;
     QLabel *model_name_and_props;
-    QSpacerItem *horizontalSpacer;
 
     void setupUi(QMainWindow *MainViewer)
     {
         if (MainViewer->objectName().isEmpty())
             MainViewer->setObjectName(QString::fromUtf8("MainViewer"));
-        MainViewer->resize(1051, 665);
+        MainViewer->resize(1161, 733);
         MainViewer->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";"));
         centralwidget = new QWidget(MainViewer);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout_7 = new QGridLayout(centralwidget);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        header = new QLabel(centralwidget);
-        header->setObjectName(QString::fromUtf8("header"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(header->sizePolicy().hasHeightForWidth());
-        header->setSizePolicy(sizePolicy);
-        QFont font;
-        font.setPointSize(24);
-        font.setBold(true);
-        header->setFont(font);
-        header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
-"\n"
-"border: 5px;\n"
-"padding: 5px;\n"
-""));
-        header->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-
-        gridLayout_7->addWidget(header, 0, 0, 1, 1);
-
         GLwidget = new GLWidget(centralwidget);
         GLwidget->setObjectName(QString::fromUtf8("GLwidget"));
         GLwidget->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
@@ -135,11 +115,11 @@ public:
 
         frame = new QFrame(centralwidget);
         frame->setObjectName(QString::fromUtf8("frame"));
-        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
-        frame->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
+        frame->setSizePolicy(sizePolicy);
         frame->setStyleSheet(QString::fromUtf8("background-color: \"#515259\";"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
@@ -147,11 +127,11 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         open_file = new QFrame(frame);
         open_file->setObjectName(QString::fromUtf8("open_file"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Maximum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(open_file->sizePolicy().hasHeightForWidth());
-        open_file->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(open_file->sizePolicy().hasHeightForWidth());
+        open_file->setSizePolicy(sizePolicy1);
         open_file->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";"));
         open_file->setFrameShape(QFrame::StyledPanel);
         open_file->setFrameShadow(QFrame::Raised);
@@ -159,11 +139,11 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         fileBtm = new QPushButton(open_file);
         fileBtm->setObjectName(QString::fromUtf8("fileBtm"));
-        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(fileBtm->sizePolicy().hasHeightForWidth());
-        fileBtm->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(fileBtm->sizePolicy().hasHeightForWidth());
+        fileBtm->setSizePolicy(sizePolicy2);
         fileBtm->setMinimumSize(QSize(40, 0));
         fileBtm->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: \"#737780\";\n"
@@ -187,11 +167,11 @@ public:
 
         pathLine = new QLineEdit(open_file);
         pathLine->setObjectName(QString::fromUtf8("pathLine"));
-        QSizePolicy sizePolicy4(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(pathLine->sizePolicy().hasHeightForWidth());
-        pathLine->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(pathLine->sizePolicy().hasHeightForWidth());
+        pathLine->setSizePolicy(sizePolicy3);
         pathLine->setMinimumSize(QSize(150, 0));
         pathLine->setStyleSheet(QString::fromUtf8("padding-left: 5px;\n"
 "padding-right: 5px;\n"
@@ -253,8 +233,11 @@ public:
         zoom_2 = new QFrame(frame);
         zoom_2->setObjectName(QString::fromUtf8("zoom_2"));
         zoom_2->setEnabled(true);
-        sizePolicy.setHeightForWidth(zoom_2->sizePolicy().hasHeightForWidth());
-        zoom_2->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Maximum);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(zoom_2->sizePolicy().hasHeightForWidth());
+        zoom_2->setSizePolicy(sizePolicy4);
         zoom_2->setStyleSheet(QString::fromUtf8("QFrame {\n"
 "color: white;\n"
 "margin-top: 5px;\n"
@@ -307,8 +290,8 @@ public:
 
         point_size_title = new QLabel(zoom_2);
         point_size_title->setObjectName(QString::fromUtf8("point_size_title"));
-        sizePolicy2.setHeightForWidth(point_size_title->sizePolicy().hasHeightForWidth());
-        point_size_title->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(point_size_title->sizePolicy().hasHeightForWidth());
+        point_size_title->setSizePolicy(sizePolicy1);
 
         gridLayout_10->addWidget(point_size_title, 0, 0, 1, 2);
 
@@ -403,8 +386,8 @@ public:
 
         rotate_title_3 = new QLabel(rotate);
         rotate_title_3->setObjectName(QString::fromUtf8("rotate_title_3"));
-        sizePolicy2.setHeightForWidth(rotate_title_3->sizePolicy().hasHeightForWidth());
-        rotate_title_3->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(rotate_title_3->sizePolicy().hasHeightForWidth());
+        rotate_title_3->setSizePolicy(sizePolicy1);
 
         gridLayout_4->addWidget(rotate_title_3, 0, 0, 1, 1);
 
@@ -414,8 +397,8 @@ public:
         zoom = new QFrame(frame);
         zoom->setObjectName(QString::fromUtf8("zoom"));
         zoom->setEnabled(true);
-        sizePolicy.setHeightForWidth(zoom->sizePolicy().hasHeightForWidth());
-        zoom->setSizePolicy(sizePolicy);
+        sizePolicy4.setHeightForWidth(zoom->sizePolicy().hasHeightForWidth());
+        zoom->setSizePolicy(sizePolicy4);
         zoom->setStyleSheet(QString::fromUtf8("QFrame {\n"
 "color: white;\n"
 "margin-top: 5px;\n"
@@ -460,8 +443,8 @@ public:
 
         rotate_title = new QLabel(zoom);
         rotate_title->setObjectName(QString::fromUtf8("rotate_title"));
-        sizePolicy2.setHeightForWidth(rotate_title->sizePolicy().hasHeightForWidth());
-        rotate_title->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(rotate_title->sizePolicy().hasHeightForWidth());
+        rotate_title->setSizePolicy(sizePolicy1);
 
         gridLayout_3->addWidget(rotate_title, 0, 0, 1, 2);
 
@@ -561,8 +544,8 @@ public:
 
         translate_title = new QLabel(translate);
         translate_title->setObjectName(QString::fromUtf8("translate_title"));
-        sizePolicy2.setHeightForWidth(translate_title->sizePolicy().hasHeightForWidth());
-        translate_title->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(translate_title->sizePolicy().hasHeightForWidth());
+        translate_title->setSizePolicy(sizePolicy1);
 
         gridLayout_5->addWidget(translate_title, 0, 0, 1, 1);
 
@@ -572,8 +555,8 @@ public:
         zoom_3 = new QFrame(frame);
         zoom_3->setObjectName(QString::fromUtf8("zoom_3"));
         zoom_3->setEnabled(true);
-        sizePolicy.setHeightForWidth(zoom_3->sizePolicy().hasHeightForWidth());
-        zoom_3->setSizePolicy(sizePolicy);
+        sizePolicy4.setHeightForWidth(zoom_3->sizePolicy().hasHeightForWidth());
+        zoom_3->setSizePolicy(sizePolicy4);
         zoom_3->setStyleSheet(QString::fromUtf8("QFrame {\n"
 "color: white;\n"
 "margin-top: 5px;\n"
@@ -610,8 +593,8 @@ public:
 
         line_width_title = new QLabel(zoom_3);
         line_width_title->setObjectName(QString::fromUtf8("line_width_title"));
-        sizePolicy2.setHeightForWidth(line_width_title->sizePolicy().hasHeightForWidth());
-        line_width_title->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(line_width_title->sizePolicy().hasHeightForWidth());
+        line_width_title->setSizePolicy(sizePolicy1);
 
         gridLayout_11->addWidget(line_width_title, 0, 0, 1, 2);
 
@@ -646,15 +629,36 @@ public:
 
         gridLayout_7->addWidget(frame, 0, 1, 3, 1);
 
+        header = new QLabel(centralwidget);
+        header->setObjectName(QString::fromUtf8("header"));
+        sizePolicy4.setHeightForWidth(header->sizePolicy().hasHeightForWidth());
+        header->setSizePolicy(sizePolicy4);
+        QFont font;
+        font.setPointSize(24);
+        font.setBold(true);
+        header->setFont(font);
+        header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
+"\n"
+"border: 5px;\n"
+"padding: 5px;\n"
+""));
+        header->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        gridLayout_7->addWidget(header, 0, 0, 1, 1);
+
         frame_8 = new QFrame(centralwidget);
         frame_8->setObjectName(QString::fromUtf8("frame_8"));
-        sizePolicy2.setHeightForWidth(frame_8->sizePolicy().hasHeightForWidth());
-        frame_8->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(frame_8->sizePolicy().hasHeightForWidth());
+        frame_8->setSizePolicy(sizePolicy1);
         frame_8->setStyleSheet(QString::fromUtf8("background-color: \"#515259\";"));
         frame_8->setFrameShape(QFrame::StyledPanel);
         frame_8->setFrameShadow(QFrame::Raised);
         gridLayout_6 = new QGridLayout(frame_8);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        gridLayout_6->addItem(horizontalSpacer, 0, 1, 1, 1);
+
         frame_2 = new QFrame(frame_8);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
         QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -668,14 +672,10 @@ public:
         frame_2->setFrameShadow(QFrame::Raised);
         model_name_and_props = new QLabel(frame_2);
         model_name_and_props->setObjectName(QString::fromUtf8("model_name_and_props"));
-        model_name_and_props->setGeometry(QRect(0, 0, 351, 16));
+        model_name_and_props->setGeometry(QRect(0, 0, 811, 16));
         model_name_and_props->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
 
         gridLayout_6->addWidget(frame_2, 0, 0, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
-
-        gridLayout_6->addItem(horizontalSpacer, 0, 1, 1, 1);
 
 
         gridLayout_7->addWidget(frame_8, 2, 0, 1, 1);
@@ -694,7 +694,6 @@ public:
     void retranslateUi(QMainWindow *MainViewer)
     {
         MainViewer->setWindowTitle(QCoreApplication::translate("MainViewer", "MainViewer", nullptr));
-        header->setText(QCoreApplication::translate("MainViewer", "<html><head/><body><p><span style=\" font-style:italic; color:#ffffff;\">\360\237\220\251 3D-Viewer</span></p></body></html>", nullptr));
         fileBtm->setText(QCoreApplication::translate("MainViewer", "file", nullptr));
         openBtm->setText(QCoreApplication::translate("MainViewer", "OPEN", nullptr));
         reset_model->setText(QCoreApplication::translate("MainViewer", "RESET MODEL", nullptr));
@@ -717,6 +716,7 @@ public:
         line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
         line_type->setText(QCoreApplication::translate("MainViewer", "stipple", nullptr));
         no_lines->setText(QCoreApplication::translate("MainViewer", "no lines", nullptr));
+        header->setText(QCoreApplication::translate("MainViewer", "<html><head/><body><p><span style=\" font-style:italic; color:#ffffff;\">\360\237\220\251 3D-Viewer</span></p></body></html>", nullptr));
         model_name_and_props->setText(QCoreApplication::translate("MainViewer", "Model name and properties", nullptr));
     } // retranslateUi
 
