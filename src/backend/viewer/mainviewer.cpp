@@ -127,8 +127,8 @@ void MainViewer::on_fileBtm_clicked()
 
 void MainViewer::on_openBtm_clicked()
 {
-    ui->GLwidget->free_memory();
     if (!fileName.isEmpty()) {
+        // ui->GLwidget->free_memory();
         QByteArray byteArray = fileName.toUtf8();
         const char* charFileName = byteArray.constData();
         char* model_name = ui->GLwidget->model_name; // Получаем указатель на массив
