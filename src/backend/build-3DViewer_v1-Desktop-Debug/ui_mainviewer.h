@@ -80,12 +80,12 @@ public:
     QLabel *translate_title;
     QFrame *zoom_3;
     QGridLayout *gridLayout_11;
+    QCheckBox *no_lines;
+    QCheckBox *line_type;
     QLabel *label_minus_5;
-    QLabel *label_plus_5;
     QLabel *line_width_title;
     QSlider *line_width_scale;
-    QCheckBox *line_type;
-    QCheckBox *no_lines;
+    QLabel *label_plus_5;
     QLabel *header;
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
@@ -578,15 +578,22 @@ public:
         zoom_3->setFrameShadow(QFrame::Raised);
         gridLayout_11 = new QGridLayout(zoom_3);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        no_lines = new QCheckBox(zoom_3);
+        no_lines->setObjectName(QString::fromUtf8("no_lines"));
+        no_lines->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_11->addWidget(no_lines, 0, 2, 1, 1);
+
+        line_type = new QCheckBox(zoom_3);
+        line_type->setObjectName(QString::fromUtf8("line_type"));
+        line_type->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_11->addWidget(line_type, 0, 3, 1, 1);
+
         label_minus_5 = new QLabel(zoom_3);
         label_minus_5->setObjectName(QString::fromUtf8("label_minus_5"));
 
         gridLayout_11->addWidget(label_minus_5, 3, 0, 1, 1);
-
-        label_plus_5 = new QLabel(zoom_3);
-        label_plus_5->setObjectName(QString::fromUtf8("label_plus_5"));
-
-        gridLayout_11->addWidget(label_plus_5, 3, 3, 1, 1);
 
         line_width_title = new QLabel(zoom_3);
         line_width_title->setObjectName(QString::fromUtf8("line_width_title"));
@@ -608,17 +615,10 @@ public:
 
         gridLayout_11->addWidget(line_width_scale, 3, 1, 1, 1);
 
-        line_type = new QCheckBox(zoom_3);
-        line_type->setObjectName(QString::fromUtf8("line_type"));
-        line_type->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        label_plus_5 = new QLabel(zoom_3);
+        label_plus_5->setObjectName(QString::fromUtf8("label_plus_5"));
 
-        gridLayout_11->addWidget(line_type, 0, 3, 1, 1);
-
-        no_lines = new QCheckBox(zoom_3);
-        no_lines->setObjectName(QString::fromUtf8("no_lines"));
-        no_lines->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
-
-        gridLayout_11->addWidget(no_lines, 0, 2, 1, 1);
+        gridLayout_11->addWidget(label_plus_5, 3, 2, 1, 1);
 
 
         gridLayout->addWidget(zoom_3, 2, 0, 1, 2);
@@ -633,7 +633,6 @@ public:
         QFont font;
         font.setPointSize(24);
         font.setBold(true);
-        font.setWeight(75);
         header->setFont(font);
         header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
 "\n"
@@ -693,11 +692,11 @@ public:
         label_17->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
         translate_title->setText(QCoreApplication::translate("MainViewer", "Move", nullptr));
-        label_minus_5->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
-        label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
-        line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
-        line_type->setText(QCoreApplication::translate("MainViewer", "stipple", nullptr));
         no_lines->setText(QCoreApplication::translate("MainViewer", "no lines", nullptr));
+        line_type->setText(QCoreApplication::translate("MainViewer", "stipple", nullptr));
+        label_minus_5->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
+        line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
+        label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
         header->setText(QCoreApplication::translate("MainViewer", "<html><head/><body><p><span style=\" font-style:italic; color:#ffffff;\">\360\237\220\251 3D-Viewer</span></p></body></html>", nullptr));
         model_name_and_props->setText(QCoreApplication::translate("MainViewer", "Model name and properties", nullptr));
     } // retranslateUi

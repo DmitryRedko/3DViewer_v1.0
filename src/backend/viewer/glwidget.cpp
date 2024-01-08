@@ -52,7 +52,7 @@ void GLWidget::normalize_model(ObjData *data) {
 
 void GLWidget::initializeGLmodel() {
     if (welcome_flag == 0) {
-        const char defaultModel[] = "../models/cube.obj";
+        const char defaultModel[] = "../frontend/default_models/welcome_3d.obj";
         objData = parse_obj(defaultModel, &parse_flag);
         baseData = parse_obj(defaultModel, &parse_flag);
         welcome_flag = 1;
@@ -66,7 +66,7 @@ void GLWidget::initializeGLmodel() {
         normalize_model(&objData);
         draw_model();
     } else {
-        const char defaultModel[] = "../frontend/default_models/error.obj";
+        const char defaultModel[] = "../frontend/default_models/error_3d.obj";
         objData = parse_obj(defaultModel, &parse_flag);
         baseData = parse_obj(defaultModel, &parse_flag);
         parse_flag = 0;

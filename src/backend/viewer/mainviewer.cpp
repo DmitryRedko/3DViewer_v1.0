@@ -8,6 +8,16 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
 {
     ui->setupUi(this);
     myGLW = new GLWidget;
+    ui->point_size_scale->setValue(ui->GLwidget->point_size);
+
+    QString file_name = ui->pathLine->text();
+    ui->model_name_and_props->setText("Model name: " +
+                                      QFileInfo(file_name).fileName() +
+                                      " with " +
+                                      QString::number(ui->GLwidget->objData.vertexCount) +
+                                      " vertices and " +
+                                      QString::number(ui->GLwidget->objData.faceCount) +
+                                      " faces");
 }
 
 MainViewer::~MainViewer()
@@ -177,5 +187,11 @@ void MainViewer::on_no_lines_toggled(bool checked)
         ui->GLwidget->draw_lines = 1;
     }
     ui->GLwidget->update();
+}
+
+
+void MainViewer::on_openBtm_released()
+{
+   on_reset_model_released();
 }
 
