@@ -146,8 +146,7 @@ void GLWidget::apply_transform() {
     zoom_operation(scale, scale, scale, &objData, &objData);
 }
 
-
-
-
-
-
+void GLWidget::free_memory() {
+    model_destructor(&objData);
+    model_destructor(&baseData);
+}

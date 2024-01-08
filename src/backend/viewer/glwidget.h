@@ -20,6 +20,7 @@ public:
     void draw_model_lines();
     void initializeGLmodel();
     void apply_transform();
+    void free_memory();
     char model_name[100] = " ";
     int welcome_flag = 0;
     int parse_flag = 0;

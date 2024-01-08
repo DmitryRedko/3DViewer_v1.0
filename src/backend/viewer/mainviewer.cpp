@@ -22,6 +22,7 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
 
 MainViewer::~MainViewer()
 {
+    ui->GLwidget->free_memory();
     delete ui;
 }
 
@@ -126,6 +127,7 @@ void MainViewer::on_fileBtm_clicked()
 
 void MainViewer::on_openBtm_clicked()
 {
+    ui->GLwidget->free_memory();
     if (!fileName.isEmpty()) {
         QByteArray byteArray = fileName.toUtf8();
         const char* charFileName = byteArray.constData();
