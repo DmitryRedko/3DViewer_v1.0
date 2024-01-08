@@ -147,7 +147,9 @@ void MainViewer::on_openBtm_clicked()
                                           QString::number(ui->GLwidget->objData.vertexCount) +
                                           " vertices and " +
                                           QString::number(ui->GLwidget->objData.faceCount) +
-                                          " faces");
+                                          " faces, size: " +
+                                          QString::number(QFileInfo(file_name).size() / 1000, 'f', 3) +
+                                          " kb");
     }
 }
 
