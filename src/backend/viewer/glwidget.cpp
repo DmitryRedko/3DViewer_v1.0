@@ -91,7 +91,6 @@ void GLWidget::paintGL() {
     }
 }
 
-
 void GLWidget::draw_model() {
 
     glPointSize(point_size);

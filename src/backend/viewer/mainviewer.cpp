@@ -9,6 +9,7 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
     ui->setupUi(this);
     myGLW = new GLWidget;
     ui->point_size_scale->setValue(ui->GLwidget->point_size);
+    ui->line_type->toggle();
 
     QString file_name = ui->pathLine->text();
     ui->model_name_and_props->setText("Model name: " +
@@ -128,7 +129,7 @@ void MainViewer::on_fileBtm_clicked()
 void MainViewer::on_openBtm_clicked()
 {
     if (!fileName.isEmpty()) {
-        // ui->GLwidget->free_memory();
+        // ui->GLwidget->free_memory(); //крашит приложение при открытие не модели
         QByteArray byteArray = fileName.toUtf8();
         const char* charFileName = byteArray.constData();
         char* model_name = ui->GLwidget->model_name; // Получаем указатель на массив
