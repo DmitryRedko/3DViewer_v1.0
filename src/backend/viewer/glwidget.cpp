@@ -135,11 +135,11 @@ void GLWidget::resizeGL(int w, int h) {
         gluLookAt(0,0,5,0,0,0,0,1,0);
     }
     else{
-        glMatrixMode(GL_PROJECTION);  // Переключаемся на матрицу проекции
-        glLoadIdentity();             // Сбрасываем матрицу проекции
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
 
-        glMatrixMode(GL_MODELVIEW);   // Переключаемся на матрицу модели-вида
-        glLoadIdentity();             // Сбрасываем матрицу модели-вида
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
 
     }
 }

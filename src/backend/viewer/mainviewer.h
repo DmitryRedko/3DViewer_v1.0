@@ -38,12 +38,6 @@ private slots:
     void on_line_width_scale_valueChanged(int value);
     void on_line_type_toggled(bool checked);
     void on_openBtm_released();
-    void on_point_color_scale_red_valueChanged(int value);
-    void on_point_color_scale_green_valueChanged(int value);
-    void on_point_color_scale_blue_valueChanged(int value);
-    void on_background_color_scale_red_valueChanged(int value);
-    void on_background_color_scale_green_valueChanged(int value);
-    void on_background_color_scale_blue_valueChanged(int value);
     void on_pointColor_clicked();
     void on_lineColor_clicked();
     void on_BGColor_clicked();

@@ -189,49 +189,6 @@ void MainViewer::on_openBtm_released()
    on_reset_model_released();
 }
 
-
-void MainViewer::on_point_color_scale_red_valueChanged(int value)
-{
-    ui->GLwidget->point_color_red = value;
-    ui->GLwidget->update();
-}
-
-
-void MainViewer::on_point_color_scale_green_valueChanged(int value)
-{
-    ui->GLwidget->point_color_green = value;
-    ui->GLwidget->update();
-}
-
-
-void MainViewer::on_point_color_scale_blue_valueChanged(int value)
-{
-    ui->GLwidget->point_color_blue = value;
-    ui->GLwidget->update();
-}
-
-
-void MainViewer::on_background_color_scale_red_valueChanged(int value)
-{
-    ui->GLwidget->background_color_red = value;
-    ui->GLwidget->update();
-}
-
-
-void MainViewer::on_background_color_scale_green_valueChanged(int value)
-{
-    ui->GLwidget->background_color_green = value;
-    ui->GLwidget->update();
-}
-
-
-void MainViewer::on_background_color_scale_blue_valueChanged(int value)
-{
-    ui->GLwidget->background_color_blue = value;
-    ui->GLwidget->update();
-}
-
-
 void MainViewer::on_pointColor_clicked()
 {
         QColor color = QColorDialog::getColor(QColor(ui->GLwidget->point_color_red, ui->GLwidget->point_color_green, ui->GLwidget->point_color_blue), this);
