@@ -24,6 +24,7 @@ public:
     char model_name[100] = " ";
     int welcome_flag = 0;
     int parse_flag = 0;
+    int before_parse_flag = 0;
     ObjData objData;
     ObjData baseData;
     void normalize_model(ObjData *data);

@@ -66,10 +66,9 @@ void GLWidget::initializeGLmodel() {
         normalize_model(&objData);
         draw_model();
     } else {
-        const char defaultModel[] = "../frontend/default_models/error_3d.obj";
-        objData = parse_obj(defaultModel, &parse_flag);
-        baseData = parse_obj(defaultModel, &parse_flag);
+        strcpy(model_name, "../frontend/default_models/error_3d.obj");
         parse_flag = 0;
+        initializeGLmodel();
     }
 }
 

@@ -9,10 +9,7 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
     objData.textureCount = 0;
     // objData.normalCount = 0;
     objData.faceCount = 0;
-
-    objData.vertices = malloc(sizeof(float));
-    objData.faces = malloc(sizeof(unsigned int));
-
+    
     if (strstr(file_path, ".obj") == NULL) {
         fprintf(stderr, "File does not have .obj extension.\n");
         *parse_flag = 1;
@@ -25,6 +22,11 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
         *parse_flag = 1;
         return objData;
     }
+
+    objData.vertices = malloc(sizeof(float));
+    objData.faces = malloc(sizeof(unsigned int));
+
+
     char line[MAX_LINE_LENGTH];
     while (fgets(line, sizeof(line), file)) {
         // printf("line: %s", line);
@@ -91,11 +93,11 @@ void model_destructor(ObjData *objData) {
     if (objData != NULL) {
         if (objData->vertices != NULL) {
             free(objData->vertices);
-            objData->vertices = NULL;
+            // objData->vertices = NULL;
         }
         if (objData->faces != NULL) {
             free(objData->faces);
-            objData->faces = NULL;
+            // objData->faces = NULL;
         }
     }
 }
