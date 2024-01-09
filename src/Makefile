@@ -26,7 +26,7 @@ dist:
 	
 
 tests: $(TEST_FILE_NAME)
-	$(CC) $(CFLAGS) $(TEST_FILE_NAME) $(POLISH_FILE_NAMES) -o test --coverage $(TEST_LIBS)
+	$(CC) $(CFLAGS) $(TEST_FILE_NAME) -o test --coverage $(TEST_LIBS)
 	./test
 
 gcov_report: tests

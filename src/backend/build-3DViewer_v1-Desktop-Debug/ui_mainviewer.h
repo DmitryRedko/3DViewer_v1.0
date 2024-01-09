@@ -42,10 +42,12 @@ public:
     QPushButton *reset_model;
     QFrame *zoom_2;
     QGridLayout *gridLayout_10;
-    QLabel *label_minus_4;
     QSlider *point_size_scale;
-    QLabel *label_plus_4;
+    QLabel *point_color_title;
+    QSlider *point_color_scale_green;
     QLabel *point_size_title;
+    QSlider *point_color_scale_red;
+    QSlider *point_color_scale_blue;
     QFrame *rotate;
     QGridLayout *gridLayout_4;
     QVBoxLayout *verticalLayout_2;
@@ -259,11 +261,6 @@ public:
         zoom_2->setFrameShadow(QFrame::Raised);
         gridLayout_10 = new QGridLayout(zoom_2);
         gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
-        label_minus_4 = new QLabel(zoom_2);
-        label_minus_4->setObjectName(QString::fromUtf8("label_minus_4"));
-
-        gridLayout_10->addWidget(label_minus_4, 1, 0, 1, 1);
-
         point_size_scale = new QSlider(zoom_2);
         point_size_scale->setObjectName(QString::fromUtf8("point_size_scale"));
         QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Maximum);
@@ -278,19 +275,60 @@ public:
         point_size_scale->setValue(5);
         point_size_scale->setOrientation(Qt::Horizontal);
 
-        gridLayout_10->addWidget(point_size_scale, 1, 1, 1, 1);
+        gridLayout_10->addWidget(point_size_scale, 3, 0, 1, 1);
 
-        label_plus_4 = new QLabel(zoom_2);
-        label_plus_4->setObjectName(QString::fromUtf8("label_plus_4"));
+        point_color_title = new QLabel(zoom_2);
+        point_color_title->setObjectName(QString::fromUtf8("point_color_title"));
+        sizePolicy1.setHeightForWidth(point_color_title->sizePolicy().hasHeightForWidth());
+        point_color_title->setSizePolicy(sizePolicy1);
 
-        gridLayout_10->addWidget(label_plus_4, 1, 2, 1, 1);
+        gridLayout_10->addWidget(point_color_title, 0, 1, 1, 1);
+
+        point_color_scale_green = new QSlider(zoom_2);
+        point_color_scale_green->setObjectName(QString::fromUtf8("point_color_scale_green"));
+        sizePolicy5.setHeightForWidth(point_color_scale_green->sizePolicy().hasHeightForWidth());
+        point_color_scale_green->setSizePolicy(sizePolicy5);
+        point_color_scale_green->setMinimum(0);
+        point_color_scale_green->setMaximum(255);
+        point_color_scale_green->setSingleStep(1);
+        point_color_scale_green->setPageStep(1);
+        point_color_scale_green->setValue(5);
+        point_color_scale_green->setOrientation(Qt::Horizontal);
+
+        gridLayout_10->addWidget(point_color_scale_green, 2, 1, 1, 1);
 
         point_size_title = new QLabel(zoom_2);
         point_size_title->setObjectName(QString::fromUtf8("point_size_title"));
         sizePolicy1.setHeightForWidth(point_size_title->sizePolicy().hasHeightForWidth());
         point_size_title->setSizePolicy(sizePolicy1);
 
-        gridLayout_10->addWidget(point_size_title, 0, 0, 1, 2);
+        gridLayout_10->addWidget(point_size_title, 0, 0, 1, 1);
+
+        point_color_scale_red = new QSlider(zoom_2);
+        point_color_scale_red->setObjectName(QString::fromUtf8("point_color_scale_red"));
+        sizePolicy5.setHeightForWidth(point_color_scale_red->sizePolicy().hasHeightForWidth());
+        point_color_scale_red->setSizePolicy(sizePolicy5);
+        point_color_scale_red->setMinimum(0);
+        point_color_scale_red->setMaximum(255);
+        point_color_scale_red->setSingleStep(1);
+        point_color_scale_red->setPageStep(1);
+        point_color_scale_red->setValue(5);
+        point_color_scale_red->setOrientation(Qt::Horizontal);
+
+        gridLayout_10->addWidget(point_color_scale_red, 1, 1, 1, 1);
+
+        point_color_scale_blue = new QSlider(zoom_2);
+        point_color_scale_blue->setObjectName(QString::fromUtf8("point_color_scale_blue"));
+        sizePolicy5.setHeightForWidth(point_color_scale_blue->sizePolicy().hasHeightForWidth());
+        point_color_scale_blue->setSizePolicy(sizePolicy5);
+        point_color_scale_blue->setMinimum(0);
+        point_color_scale_blue->setMaximum(255);
+        point_color_scale_blue->setSingleStep(1);
+        point_color_scale_blue->setPageStep(1);
+        point_color_scale_blue->setValue(5);
+        point_color_scale_blue->setOrientation(Qt::Horizontal);
+
+        gridLayout_10->addWidget(point_color_scale_blue, 3, 1, 1, 1);
 
 
         gridLayout->addWidget(zoom_2, 1, 0, 1, 2);
@@ -678,8 +716,7 @@ public:
         fileBtm->setText(QCoreApplication::translate("MainViewer", "file", nullptr));
         openBtm->setText(QCoreApplication::translate("MainViewer", "OPEN", nullptr));
         reset_model->setText(QCoreApplication::translate("MainViewer", "RESET MODEL", nullptr));
-        label_minus_4->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
-        label_plus_4->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        point_color_title->setText(QCoreApplication::translate("MainViewer", "Point color (RGB)", nullptr));
         point_size_title->setText(QCoreApplication::translate("MainViewer", "Point size", nullptr));
         label_7->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
         label_8->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));

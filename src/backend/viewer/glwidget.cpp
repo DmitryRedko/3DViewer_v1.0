@@ -97,7 +97,7 @@ void GLWidget::draw_model() {
 
     glVertexPointer(3, GL_FLOAT, 0, objData.vertices);
     glEnableClientState(GL_VERTEX_ARRAY);
-    glColor3ub(255,255,0); // желтый
+    glColor3ub(point_color_red, point_color_green, point_color_blue); // желтый
     glDrawArrays(GL_POINTS, 0, objData.vertexCount);
     // glDisableClientState(GL_VERTEX_ARRAY);
 }

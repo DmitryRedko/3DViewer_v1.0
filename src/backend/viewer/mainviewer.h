@@ -37,5 +37,8 @@ private slots:
     void on_line_type_toggled(bool checked);
     void on_no_lines_toggled(bool checked);
     void on_openBtm_released();
+    void on_point_color_scale_red_valueChanged(int value);
+    void on_point_color_scale_green_valueChanged(int value);
+    void on_point_color_scale_blue_valueChanged(int value);
 };
 #endif // MAINVIEWER_H

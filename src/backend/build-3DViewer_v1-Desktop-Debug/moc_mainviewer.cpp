@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainViewer_t {
-    QByteArrayData data[19];
-    char stringdata0[386];
+    QByteArrayData data[22];
+    char stringdata0[503];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,7 +50,10 @@ QT_MOC_LITERAL(14, 284, 32), // "on_line_width_scale_valueChanged"
 QT_MOC_LITERAL(15, 317, 20), // "on_line_type_toggled"
 QT_MOC_LITERAL(16, 338, 7), // "checked"
 QT_MOC_LITERAL(17, 346, 19), // "on_no_lines_toggled"
-QT_MOC_LITERAL(18, 366, 19) // "on_openBtm_released"
+QT_MOC_LITERAL(18, 366, 19), // "on_openBtm_released"
+QT_MOC_LITERAL(19, 386, 37), // "on_point_color_scale_red_valu..."
+QT_MOC_LITERAL(20, 424, 39), // "on_point_color_scale_green_va..."
+QT_MOC_LITERAL(21, 464, 38) // "on_point_color_scale_blue_val..."
 
     },
     "MainViewer\0on_rotate_x_valueChanged\0"
@@ -63,7 +66,10 @@ QT_MOC_LITERAL(18, 366, 19) // "on_openBtm_released"
     "on_point_size_scale_valueChanged\0value\0"
     "on_line_width_scale_valueChanged\0"
     "on_line_type_toggled\0checked\0"
-    "on_no_lines_toggled\0on_openBtm_released"
+    "on_no_lines_toggled\0on_openBtm_released\0"
+    "on_point_color_scale_red_valueChanged\0"
+    "on_point_color_scale_green_valueChanged\0"
+    "on_point_color_scale_blue_valueChanged"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,7 +79,7 @@ static const uint qt_meta_data_MainViewer[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -81,21 +87,24 @@ static const uint qt_meta_data_MainViewer[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   89,    2, 0x08 /* Private */,
-       3,    0,   90,    2, 0x08 /* Private */,
-       4,    0,   91,    2, 0x08 /* Private */,
-       5,    0,   92,    2, 0x08 /* Private */,
-       6,    0,   93,    2, 0x08 /* Private */,
-       7,    0,   94,    2, 0x08 /* Private */,
-       8,    0,   95,    2, 0x08 /* Private */,
-       9,    0,   96,    2, 0x08 /* Private */,
-      10,    0,   97,    2, 0x08 /* Private */,
-      11,    0,   98,    2, 0x08 /* Private */,
-      12,    1,   99,    2, 0x08 /* Private */,
-      14,    1,  102,    2, 0x08 /* Private */,
-      15,    1,  105,    2, 0x08 /* Private */,
-      17,    1,  108,    2, 0x08 /* Private */,
-      18,    0,  111,    2, 0x08 /* Private */,
+       1,    0,  104,    2, 0x08 /* Private */,
+       3,    0,  105,    2, 0x08 /* Private */,
+       4,    0,  106,    2, 0x08 /* Private */,
+       5,    0,  107,    2, 0x08 /* Private */,
+       6,    0,  108,    2, 0x08 /* Private */,
+       7,    0,  109,    2, 0x08 /* Private */,
+       8,    0,  110,    2, 0x08 /* Private */,
+       9,    0,  111,    2, 0x08 /* Private */,
+      10,    0,  112,    2, 0x08 /* Private */,
+      11,    0,  113,    2, 0x08 /* Private */,
+      12,    1,  114,    2, 0x08 /* Private */,
+      14,    1,  117,    2, 0x08 /* Private */,
+      15,    1,  120,    2, 0x08 /* Private */,
+      17,    1,  123,    2, 0x08 /* Private */,
+      18,    0,  126,    2, 0x08 /* Private */,
+      19,    1,  127,    2, 0x08 /* Private */,
+      20,    1,  130,    2, 0x08 /* Private */,
+      21,    1,  133,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -113,6 +122,9 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void, QMetaType::Bool,   16,
     QMetaType::Void, QMetaType::Bool,   16,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void, QMetaType::Int,   13,
 
        0        // eod
 };
@@ -138,6 +150,9 @@ void MainViewer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->on_line_type_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 13: _t->on_no_lines_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 14: _t->on_openBtm_released(); break;
+        case 15: _t->on_point_color_scale_red_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->on_point_color_scale_green_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 17: _t->on_point_color_scale_blue_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -172,13 +187,13 @@ int MainViewer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 18)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 15;
+        _id -= 18;
     }
     return _id;
 }

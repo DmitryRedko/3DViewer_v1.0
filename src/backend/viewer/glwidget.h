@@ -30,6 +30,9 @@ public:
     void normalize_model(ObjData *data);
     float scale = 100.0, xRot = 0.0f, yRot = 0.0f, zRot = 0.0f, xMov = 0.0f, yMov = 0.0f, zMov = 0.0f;
     int point_size = 2;
+    int point_color_red = 255;
+    int point_color_green = 255;
+    int point_color_blue = 0;
     int line_width = 1;
     int line_type = 1;
     int draw_lines = 1;
