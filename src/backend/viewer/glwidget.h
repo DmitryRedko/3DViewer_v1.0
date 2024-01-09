@@ -60,6 +60,8 @@ public:
     int draw_lines = 1;
 
     GLenum primitive_type = GL_LINES;
+
+    int isPerspective = 0;
 };
 
 #endif // GLWIDGET_H

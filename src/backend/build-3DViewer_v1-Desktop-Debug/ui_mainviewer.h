@@ -52,6 +52,12 @@ public:
     QLabel *label_9;
     QSlider *rotate_z;
     QLabel *rotate_title_3;
+    QFrame *zoom_5;
+    QGridLayout *gridLayout_13;
+    QRadioButton *quads;
+    QRadioButton *lineLoop;
+    QRadioButton *noLine;
+    QRadioButton *line;
     QFrame *translate;
     QGridLayout *gridLayout_5;
     QVBoxLayout *verticalLayout;
@@ -75,6 +81,14 @@ public:
     QGridLayout *gridLayout_10;
     QSlider *point_size_scale;
     QLabel *point_size_title;
+    QFrame *zoom_3;
+    QGridLayout *gridLayout_11;
+    QLabel *label_minus_5;
+    QLabel *label_plus_5;
+    QLabel *line_width_title;
+    QSlider *line_width_scale;
+    QCheckBox *line_type;
+    QLabel *line_type_lablel;
     QFrame *zoom;
     QGridLayout *gridLayout_3;
     QSlider *zoom_scale;
@@ -88,20 +102,11 @@ public:
     QPushButton *BGColor;
     QPushButton *resetColor;
     QLabel *background_title;
-    QFrame *zoom_3;
-    QGridLayout *gridLayout_11;
-    QLabel *label_minus_5;
-    QLabel *label_plus_5;
-    QLabel *line_width_title;
-    QSlider *line_width_scale;
-    QCheckBox *line_type;
-    QLabel *line_type_lablel;
-    QFrame *zoom_5;
-    QGridLayout *gridLayout_13;
-    QRadioButton *quads;
-    QRadioButton *lineLoop;
-    QRadioButton *noLine;
-    QRadioButton *line;
+    QFrame *zoom_11;
+    QGridLayout *gridLayout_23;
+    QRadioButton *perspective;
+    QRadioButton *parallel;
+    QLabel *line_type_lablel_4;
 
     void setupUi(QMainWindow *MainViewer)
     {
@@ -272,6 +277,68 @@ public:
 
         gridLayout->addWidget(rotate, 7, 0, 1, 2);
 
+        zoom_5 = new QFrame(frame);
+        zoom_5->setObjectName(QString::fromUtf8("zoom_5"));
+        zoom_5->setEnabled(true);
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Ignored);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(zoom_5->sizePolicy().hasHeightForWidth());
+        zoom_5->setSizePolicy(sizePolicy3);
+        zoom_5->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"color: white;\n"
+"margin-top: 5px;\n"
+"border: 1px solid white;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"margin-top: 0;\n"
+"border: none;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"padding-top: 3px;\n"
+"padding-right: 3px;\n"
+"}"));
+        zoom_5->setFrameShape(QFrame::StyledPanel);
+        zoom_5->setFrameShadow(QFrame::Raised);
+        gridLayout_13 = new QGridLayout(zoom_5);
+        gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
+        quads = new QRadioButton(zoom_5);
+        quads->setObjectName(QString::fromUtf8("quads"));
+        quads->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_13->addWidget(quads, 4, 0, 1, 1);
+
+        lineLoop = new QRadioButton(zoom_5);
+        lineLoop->setObjectName(QString::fromUtf8("lineLoop"));
+        lineLoop->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_13->addWidget(lineLoop, 3, 0, 1, 1);
+
+        noLine = new QRadioButton(zoom_5);
+        noLine->setObjectName(QString::fromUtf8("noLine"));
+        noLine->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_13->addWidget(noLine, 1, 0, 1, 1);
+
+        line = new QRadioButton(zoom_5);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setEnabled(true);
+        line->setTabletTracking(false);
+        line->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        line->setChecked(true);
+
+        gridLayout_13->addWidget(line, 0, 0, 1, 1);
+
+
+        gridLayout->addWidget(zoom_5, 4, 1, 1, 1);
+
         translate = new QFrame(frame);
         translate->setObjectName(QString::fromUtf8("translate"));
         translate->setStyleSheet(QString::fromUtf8("QFrame {\n"
@@ -379,11 +446,11 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         fileBtm = new QPushButton(open_file);
         fileBtm->setObjectName(QString::fromUtf8("fileBtm"));
-        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(fileBtm->sizePolicy().hasHeightForWidth());
-        fileBtm->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(fileBtm->sizePolicy().hasHeightForWidth());
+        fileBtm->setSizePolicy(sizePolicy4);
         fileBtm->setMinimumSize(QSize(40, 0));
         fileBtm->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: \"#737780\";\n"
@@ -407,11 +474,11 @@ public:
 
         pathLine = new QLineEdit(open_file);
         pathLine->setObjectName(QString::fromUtf8("pathLine"));
-        QSizePolicy sizePolicy4(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(pathLine->sizePolicy().hasHeightForWidth());
-        pathLine->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(pathLine->sizePolicy().hasHeightForWidth());
+        pathLine->setSizePolicy(sizePolicy5);
         pathLine->setMinimumSize(QSize(150, 0));
         pathLine->setStyleSheet(QString::fromUtf8("padding-left: 5px;\n"
 "padding-right: 5px;\n"
@@ -501,11 +568,11 @@ public:
         gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
         point_size_scale = new QSlider(zoom_2);
         point_size_scale->setObjectName(QString::fromUtf8("point_size_scale"));
-        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Maximum);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(point_size_scale->sizePolicy().hasHeightForWidth());
-        point_size_scale->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Maximum);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(point_size_scale->sizePolicy().hasHeightForWidth());
+        point_size_scale->setSizePolicy(sizePolicy6);
         point_size_scale->setMinimum(1);
         point_size_scale->setMaximum(25);
         point_size_scale->setSingleStep(1);
@@ -524,6 +591,79 @@ public:
 
 
         gridLayout->addWidget(zoom_2, 3, 0, 1, 2);
+
+        zoom_3 = new QFrame(frame);
+        zoom_3->setObjectName(QString::fromUtf8("zoom_3"));
+        zoom_3->setEnabled(true);
+        sizePolicy.setHeightForWidth(zoom_3->sizePolicy().hasHeightForWidth());
+        zoom_3->setSizePolicy(sizePolicy);
+        zoom_3->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"color: white;\n"
+"margin-top: 5px;\n"
+"border: 1px solid white;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"margin-top: 0;\n"
+"border: none;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"padding-top: 3px;\n"
+"padding-right: 3px;\n"
+"}"));
+        zoom_3->setFrameShape(QFrame::StyledPanel);
+        zoom_3->setFrameShadow(QFrame::Raised);
+        gridLayout_11 = new QGridLayout(zoom_3);
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        label_minus_5 = new QLabel(zoom_3);
+        label_minus_5->setObjectName(QString::fromUtf8("label_minus_5"));
+
+        gridLayout_11->addWidget(label_minus_5, 5, 0, 1, 1);
+
+        label_plus_5 = new QLabel(zoom_3);
+        label_plus_5->setObjectName(QString::fromUtf8("label_plus_5"));
+
+        gridLayout_11->addWidget(label_plus_5, 5, 2, 1, 1);
+
+        line_width_title = new QLabel(zoom_3);
+        line_width_title->setObjectName(QString::fromUtf8("line_width_title"));
+        sizePolicy1.setHeightForWidth(line_width_title->sizePolicy().hasHeightForWidth());
+        line_width_title->setSizePolicy(sizePolicy1);
+
+        gridLayout_11->addWidget(line_width_title, 3, 1, 1, 1);
+
+        line_width_scale = new QSlider(zoom_3);
+        line_width_scale->setObjectName(QString::fromUtf8("line_width_scale"));
+        sizePolicy6.setHeightForWidth(line_width_scale->sizePolicy().hasHeightForWidth());
+        line_width_scale->setSizePolicy(sizePolicy6);
+        line_width_scale->setMinimum(1);
+        line_width_scale->setMaximum(10);
+        line_width_scale->setSingleStep(1);
+        line_width_scale->setPageStep(1);
+        line_width_scale->setValue(1);
+        line_width_scale->setOrientation(Qt::Horizontal);
+
+        gridLayout_11->addWidget(line_width_scale, 5, 1, 1, 1);
+
+        line_type = new QCheckBox(zoom_3);
+        line_type->setObjectName(QString::fromUtf8("line_type"));
+        line_type->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+
+        gridLayout_11->addWidget(line_type, 2, 1, 1, 1);
+
+        line_type_lablel = new QLabel(zoom_3);
+        line_type_lablel->setObjectName(QString::fromUtf8("line_type_lablel"));
+
+        gridLayout_11->addWidget(line_type_lablel, 1, 1, 1, 1);
+
+
+        gridLayout->addWidget(zoom_3, 4, 0, 1, 1);
 
         zoom = new QFrame(frame);
         zoom->setObjectName(QString::fromUtf8("zoom"));
@@ -556,8 +696,8 @@ public:
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         zoom_scale = new QSlider(zoom);
         zoom_scale->setObjectName(QString::fromUtf8("zoom_scale"));
-        sizePolicy5.setHeightForWidth(zoom_scale->sizePolicy().hasHeightForWidth());
-        zoom_scale->setSizePolicy(sizePolicy5);
+        sizePolicy6.setHeightForWidth(zoom_scale->sizePolicy().hasHeightForWidth());
+        zoom_scale->setSizePolicy(sizePolicy6);
         zoom_scale->setMinimum(1);
         zoom_scale->setMaximum(300);
         zoom_scale->setSingleStep(1);
@@ -618,11 +758,11 @@ public:
         gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         pointColor = new QPushButton(zoom_4);
         pointColor->setObjectName(QString::fromUtf8("pointColor"));
-        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(pointColor->sizePolicy().hasHeightForWidth());
-        pointColor->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(pointColor->sizePolicy().hasHeightForWidth());
+        pointColor->setSizePolicy(sizePolicy7);
         pointColor->setMinimumSize(QSize(0, 18));
         pointColor->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: \"#737780\";\n"
@@ -721,14 +861,14 @@ public:
         gridLayout_8->addWidget(background_title, 0, 0, 1, 2);
 
 
-        gridLayout->addWidget(zoom_4, 5, 0, 1, 2);
+        gridLayout->addWidget(zoom_4, 5, 0, 1, 1);
 
-        zoom_3 = new QFrame(frame);
-        zoom_3->setObjectName(QString::fromUtf8("zoom_3"));
-        zoom_3->setEnabled(true);
-        sizePolicy.setHeightForWidth(zoom_3->sizePolicy().hasHeightForWidth());
-        zoom_3->setSizePolicy(sizePolicy);
-        zoom_3->setStyleSheet(QString::fromUtf8("QFrame {\n"
+        zoom_11 = new QFrame(frame);
+        zoom_11->setObjectName(QString::fromUtf8("zoom_11"));
+        zoom_11->setEnabled(true);
+        sizePolicy3.setHeightForWidth(zoom_11->sizePolicy().hasHeightForWidth());
+        zoom_11->setSizePolicy(sizePolicy3);
+        zoom_11->setStyleSheet(QString::fromUtf8("QFrame {\n"
 "color: white;\n"
 "margin-top: 5px;\n"
 "border: 1px solid white;\n"
@@ -748,115 +888,32 @@ public:
 "padding-top: 3px;\n"
 "padding-right: 3px;\n"
 "}"));
-        zoom_3->setFrameShape(QFrame::StyledPanel);
-        zoom_3->setFrameShadow(QFrame::Raised);
-        gridLayout_11 = new QGridLayout(zoom_3);
-        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
-        label_minus_5 = new QLabel(zoom_3);
-        label_minus_5->setObjectName(QString::fromUtf8("label_minus_5"));
+        zoom_11->setFrameShape(QFrame::StyledPanel);
+        zoom_11->setFrameShadow(QFrame::Raised);
+        gridLayout_23 = new QGridLayout(zoom_11);
+        gridLayout_23->setObjectName(QString::fromUtf8("gridLayout_23"));
+        perspective = new QRadioButton(zoom_11);
+        perspective->setObjectName(QString::fromUtf8("perspective"));
+        perspective->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
 
-        gridLayout_11->addWidget(label_minus_5, 5, 0, 1, 1);
+        gridLayout_23->addWidget(perspective, 3, 0, 1, 1);
 
-        label_plus_5 = new QLabel(zoom_3);
-        label_plus_5->setObjectName(QString::fromUtf8("label_plus_5"));
+        parallel = new QRadioButton(zoom_11);
+        parallel->setObjectName(QString::fromUtf8("parallel"));
+        parallel->setEnabled(true);
+        parallel->setTabletTracking(false);
+        parallel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        parallel->setChecked(true);
 
-        gridLayout_11->addWidget(label_plus_5, 5, 2, 1, 1);
+        gridLayout_23->addWidget(parallel, 1, 0, 1, 1);
 
-        line_width_title = new QLabel(zoom_3);
-        line_width_title->setObjectName(QString::fromUtf8("line_width_title"));
-        sizePolicy1.setHeightForWidth(line_width_title->sizePolicy().hasHeightForWidth());
-        line_width_title->setSizePolicy(sizePolicy1);
+        line_type_lablel_4 = new QLabel(zoom_11);
+        line_type_lablel_4->setObjectName(QString::fromUtf8("line_type_lablel_4"));
 
-        gridLayout_11->addWidget(line_width_title, 3, 1, 1, 1);
-
-        line_width_scale = new QSlider(zoom_3);
-        line_width_scale->setObjectName(QString::fromUtf8("line_width_scale"));
-        sizePolicy5.setHeightForWidth(line_width_scale->sizePolicy().hasHeightForWidth());
-        line_width_scale->setSizePolicy(sizePolicy5);
-        line_width_scale->setMinimum(1);
-        line_width_scale->setMaximum(10);
-        line_width_scale->setSingleStep(1);
-        line_width_scale->setPageStep(1);
-        line_width_scale->setValue(1);
-        line_width_scale->setOrientation(Qt::Horizontal);
-
-        gridLayout_11->addWidget(line_width_scale, 5, 1, 1, 1);
-
-        line_type = new QCheckBox(zoom_3);
-        line_type->setObjectName(QString::fromUtf8("line_type"));
-        line_type->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
-
-        gridLayout_11->addWidget(line_type, 2, 1, 1, 1);
-
-        line_type_lablel = new QLabel(zoom_3);
-        line_type_lablel->setObjectName(QString::fromUtf8("line_type_lablel"));
-
-        gridLayout_11->addWidget(line_type_lablel, 1, 1, 1, 1);
+        gridLayout_23->addWidget(line_type_lablel_4, 0, 0, 1, 1);
 
 
-        gridLayout->addWidget(zoom_3, 4, 0, 1, 1);
-
-        zoom_5 = new QFrame(frame);
-        zoom_5->setObjectName(QString::fromUtf8("zoom_5"));
-        zoom_5->setEnabled(true);
-        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Ignored);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(zoom_5->sizePolicy().hasHeightForWidth());
-        zoom_5->setSizePolicy(sizePolicy7);
-        zoom_5->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"color: white;\n"
-"margin-top: 5px;\n"
-"border: 1px solid white;\n"
-"border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLabel {\n"
-"margin-top: 0;\n"
-"border: none;\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"	background-color: rgba(255, 255, 255, 0);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"padding-top: 3px;\n"
-"padding-right: 3px;\n"
-"}"));
-        zoom_5->setFrameShape(QFrame::StyledPanel);
-        zoom_5->setFrameShadow(QFrame::Raised);
-        gridLayout_13 = new QGridLayout(zoom_5);
-        gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
-        quads = new QRadioButton(zoom_5);
-        quads->setObjectName(QString::fromUtf8("quads"));
-        quads->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
-
-        gridLayout_13->addWidget(quads, 4, 0, 1, 1);
-
-        lineLoop = new QRadioButton(zoom_5);
-        lineLoop->setObjectName(QString::fromUtf8("lineLoop"));
-        lineLoop->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
-
-        gridLayout_13->addWidget(lineLoop, 3, 0, 1, 1);
-
-        noLine = new QRadioButton(zoom_5);
-        noLine->setObjectName(QString::fromUtf8("noLine"));
-        noLine->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
-
-        gridLayout_13->addWidget(noLine, 1, 0, 1, 1);
-
-        line = new QRadioButton(zoom_5);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setEnabled(true);
-        line->setTabletTracking(false);
-        line->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
-        line->setChecked(true);
-
-        gridLayout_13->addWidget(line, 0, 0, 1, 1);
-
-
-        gridLayout->addWidget(zoom_5, 4, 1, 1, 1);
+        gridLayout->addWidget(zoom_11, 5, 1, 1, 1);
 
 
         gridLayout_7->addWidget(frame, 0, 1, 3, 1);
@@ -881,6 +938,10 @@ public:
         label_8->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_9->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
         rotate_title_3->setText(QCoreApplication::translate("MainViewer", "Rotation", nullptr));
+        quads->setText(QCoreApplication::translate("MainViewer", "Quads", nullptr));
+        lineLoop->setText(QCoreApplication::translate("MainViewer", "Line loop", nullptr));
+        noLine->setText(QCoreApplication::translate("MainViewer", "No lines", nullptr));
+        line->setText(QCoreApplication::translate("MainViewer", "Lines", nullptr));
         label_16->setText(QCoreApplication::translate("MainViewer", "X", nullptr));
         label_17->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
@@ -889,23 +950,22 @@ public:
         openBtm->setText(QCoreApplication::translate("MainViewer", "OPEN", nullptr));
         reset_model->setText(QCoreApplication::translate("MainViewer", "RESET MODEL", nullptr));
         point_size_title->setText(QCoreApplication::translate("MainViewer", "Point size", nullptr));
-        label_plus->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
-        rotate_title->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
-        label_minus->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
-        pointColor->setText(QCoreApplication::translate("MainViewer", "Points Color", nullptr));
-        lineColor->setText(QCoreApplication::translate("MainViewer", "Lines Color", nullptr));
-        BGColor->setText(QCoreApplication::translate("MainViewer", "Background Color", nullptr));
-        resetColor->setText(QCoreApplication::translate("MainViewer", "Reset Colors", nullptr));
-        background_title->setText(QCoreApplication::translate("MainViewer", "Color Settings", nullptr));
         label_minus_5->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
         label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
         line_width_title->setText(QCoreApplication::translate("MainViewer", "Line width", nullptr));
         line_type->setText(QCoreApplication::translate("MainViewer", "stipple", nullptr));
         line_type_lablel->setText(QCoreApplication::translate("MainViewer", "Line type", nullptr));
-        quads->setText(QCoreApplication::translate("MainViewer", "Quads", nullptr));
-        lineLoop->setText(QCoreApplication::translate("MainViewer", "Line loop", nullptr));
-        noLine->setText(QCoreApplication::translate("MainViewer", "No lines", nullptr));
-        line->setText(QCoreApplication::translate("MainViewer", "Lines", nullptr));
+        label_plus->setText(QCoreApplication::translate("MainViewer", "+", nullptr));
+        rotate_title->setText(QCoreApplication::translate("MainViewer", "Zoom", nullptr));
+        label_minus->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
+        pointColor->setText(QCoreApplication::translate("MainViewer", "Points", nullptr));
+        lineColor->setText(QCoreApplication::translate("MainViewer", "Lines", nullptr));
+        BGColor->setText(QCoreApplication::translate("MainViewer", "Background", nullptr));
+        resetColor->setText(QCoreApplication::translate("MainViewer", "Reset ", nullptr));
+        background_title->setText(QCoreApplication::translate("MainViewer", "Color Settings", nullptr));
+        perspective->setText(QCoreApplication::translate("MainViewer", "Perspective", nullptr));
+        parallel->setText(QCoreApplication::translate("MainViewer", "Parallel", nullptr));
+        line_type_lablel_4->setText(QCoreApplication::translate("MainViewer", "Projection type", nullptr));
     } // retranslateUi
 
 };

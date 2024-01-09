@@ -52,5 +52,7 @@ private slots:
     void on_line_clicked();
     void on_lineLoop_clicked();
     void on_quads_clicked();
+    void on_perspective_clicked();
+    void on_parallel_clicked();
 };
 #endif // MAINVIEWER_H

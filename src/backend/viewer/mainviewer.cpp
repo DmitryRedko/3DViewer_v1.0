@@ -315,3 +315,21 @@ void MainViewer::on_quads_clicked()
     ui->GLwidget->update();
 }
 
+
+void MainViewer::on_perspective_clicked()
+{
+    ui->GLwidget->isPerspective = 1;
+
+    ui->GLwidget->resizeGL(ui->GLwidget->width(),ui->GLwidget->height());
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_parallel_clicked()
+{
+    ui->GLwidget->isPerspective = 0;
+
+    ui->GLwidget->resizeGL(ui->GLwidget->width(),ui->GLwidget->height());
+    ui->GLwidget->update();
+}
+

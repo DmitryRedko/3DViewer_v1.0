@@ -46,7 +46,7 @@ void GLWidget::normalize_model(ObjData *data) {
             maxVal = data->vertices[i+1];
     }
 
-    zoom_operation(1.3*scale/maxVal, 1.3*scale/maxVal, 1.3*scale/maxVal, data, data);
+    zoom_operation(scale/maxVal, scale/maxVal, scale/maxVal, data, data);
 
 }
 
@@ -126,13 +126,25 @@ void GLWidget::draw_model_lines() {
 
 void GLWidget::resizeGL(int w, int h) {
     glViewport(0, 0, w, h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45,(float)w/h, 0.01, 100.0);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    gluLookAt(0,0,5,0,0,0,0,1,0);
+    if (isPerspective) {
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        gluPerspective(45, static_cast<float>(w) / h, 0.01, 100.0);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        gluLookAt(0,0,5,0,0,0,0,1,0);
+    }
+    else{
+        glMatrixMode(GL_PROJECTION);  // Переключаемся на матрицу проекции
+        glLoadIdentity();             // Сбрасываем матрицу проекции
+
+        glMatrixMode(GL_MODELVIEW);   // Переключаемся на матрицу модели-вида
+        glLoadIdentity();             // Сбрасываем матрицу модели-вида
+
+    }
 }
+
+//void GLWidget::my_resizeGL()
 
 void GLWidget::apply_transform() {
     move_operation(xMov/scale*250, yMov/scale*250, zMov/scale*250, &objData, &baseData);
