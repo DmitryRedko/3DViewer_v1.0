@@ -52,7 +52,8 @@
 
 // START_TEST(test_6) {
 //   char expr[200] =
-//       "(atan(ln(1)) / asin(2) - 2 * tan(atan(4))**3 + ln(acos(cos(cos(5)))))\0";
+//       "(atan(ln(1)) / asin(2) - 2 * tan(atan(4))**3 +
+//       ln(acos(cos(cos(5)))))\0";
 //   double res = 0;
 //   int flag = calculate_res(expr, &res);
 //   ck_assert_int_eq(flag, FAIL);
@@ -76,10 +77,9 @@
 // END_TEST
 
 // START_TEST(test_9) {
-//   char expr[200] = "(10 / 1 ** ln(6) - asin(tan(4))**3 * sqrt(acos(ln(7))))\0";
-//   double res = 0;
-//   int flag = calculate_res(expr, &res);
-//   ck_assert_int_eq(flag, FAIL);
+//   char expr[200] = "(10 / 1 ** ln(6) - asin(tan(4))**3 *
+//   sqrt(acos(ln(7))))\0"; double res = 0; int flag = calculate_res(expr,
+//   &res); ck_assert_int_eq(flag, FAIL);
 // }
 // END_TEST
 
@@ -110,7 +110,8 @@
 
 // START_TEST(test_13) {
 //   char expr[200] =
-//       "(cos(atan(atan(cos(cos(1))))) * 8 * 10 + 2**10 - ln(asin(sqrt(4))))\0";
+//       "(cos(atan(atan(cos(cos(1))))) * 8 * 10 + 2**10 -
+//       ln(asin(sqrt(4))))\0";
 //   double res = 0;
 //   int flag = calculate_res(expr, &res);
 //   ck_assert_int_eq(flag, FAIL);
@@ -128,7 +129,8 @@
 
 // START_TEST(test_15) {
 //   char expr[200] =
-//       "(acos(ln(3)) ** acos(asin(1)) ** 6 / sqrt(3)**7 - tan(sqrt(atan(4))))\0";
+//       "(acos(ln(3)) ** acos(asin(1)) ** 6 / sqrt(3)**7 -
+//       tan(sqrt(atan(4))))\0";
 //   double res = 0;
 //   int flag = calculate_res(expr, &res);
 //   ck_assert_int_eq(flag, FAIL);
@@ -171,9 +173,8 @@
 // END_TEST
 
 // START_TEST(test_20) {
-//   char expr[200] = "(sin(asin(sqrt(4))) / 5 / 5 + sqrt(ln(sin(5)))**7 * 3)\0";
-//   double res = 0;
-//   int flag = calculate_res(expr, &res);
+//   char expr[200] = "(sin(asin(sqrt(4))) / 5 / 5 + sqrt(ln(sin(5)))**7 *
+//   3)\0"; double res = 0; int flag = calculate_res(expr, &res);
 //   ck_assert_int_eq(flag, FAIL);
 // }
 // END_TEST
@@ -217,7 +218,8 @@
 
 // START_TEST(test_25) {
 //   char expr[200] =
-//       "(sin(atan(4)) + cos(9) * ln(5) ** sqrt(acos(acos(2)))**6 + 5 mod 10)\0";
+//       "(sin(atan(4)) + cos(9) * ln(5) ** sqrt(acos(acos(2)))**6 + 5 mod
+//       10)\0";
 //   double res = 0;
 //   int flag = calculate_res(expr, &res);
 //   ck_assert_int_eq(flag, FAIL);

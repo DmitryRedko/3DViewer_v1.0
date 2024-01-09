@@ -45,21 +45,15 @@ check: tests
 
 clang_n:
 	clang-format -n --style=Google *.[ch] 
-	clang-format -n --style=Google ./back/*.[ch] ./back/*.cpp 
-	clang-format -n --style=Google ./back/calc/*.[ch] ./back/calc/*.cpp 
-	clang-format -n --style=Google ./back/credit/*.[ch] ./back/credit/*.cpp 
-	clang-format -n --style=Google ./back/deposit/*.[ch] ./back/deposit/*.cpp 
-	clang-format -n --style=Google ./back/graphics/*.[ch] ./back/graphics/*.cpp 
-	clang-format -n --style=Google ./back/polish/*.[ch] 
+	clang-format -n --style=Google ./backend/operations/*.[ch] 
+	clang-format -n --style=Google ./backend/parser/*.[ch]  
+	clang-format -n --style=Google ./backend/viewer/*.[ch] ./backend/viewer/*.cpp 
 
 clang_i:
-	clang-format -i --style=Google *.[ch]
-	clang-format -i --style=Google ./back/*.[h]
-	clang-format -i --style=Google ./back/calc/*.[h] ./back/calc/*.cpp 
-	clang-format -i --style=Google ./back/credit/*.[h] ./back/credit/*.cpp 
-	clang-format -i --style=Google ./back/deposit/*.[h] ./back/deposit/*.cpp 
-	clang-format -i --style=Google ./back/graphics/*.[h] ./back/graphics/*.cpp 
-	clang-format -i --style=Google ./back/polish/*.[ch]
+	clang-format -i --style=Google *.[ch] 
+	clang-format -i --style=Google ./backend/operations/*.[ch] 
+	clang-format -i --style=Google ./backend/parser/*.[ch]  
+	clang-format -i --style=Google ./backend/viewer/*.[ch] ./backend/viewer/*.cpp 
 
 dvi:
 	cp back/info.pdf info.pdf
