@@ -30,16 +30,36 @@ public:
     void normalize_model(ObjData *data);
     float scale = 100.0, xRot = 0.0f, yRot = 0.0f, zRot = 0.0f, xMov = 0.0f, yMov = 0.0f, zMov = 0.0f;
     int point_size = 2;
-    int point_color_red = 255;
-    int point_color_green = 255;
-    int point_color_blue = 0;
-    int background_color_red = 51;
-    int background_color_green = 51;
-    int background_color_blue = 51;
+
+    int default_point_red = 255;
+    int default_point_green = 255;
+    int default_point_blue = 0;
+
+    int default_line_red = 255;
+    int default_line_green = 0;
+    int default_line_blue = 0;
+
+    int default_background_red = 51;
+    int default_background_green = 51;
+    int default_background_blue = 51;
+
+    int point_color_red = default_point_red;
+    int point_color_green = default_point_green;
+    int point_color_blue = default_point_blue;
+    int background_color_red = default_background_red;
+    int background_color_green = default_background_green;
+    int background_color_blue = default_background_blue;
+
+    int line_color_red = 255;
+    int line_color_green = 0;
+    int line_color_blue = 0;
+
+
     int line_width = 1;
     int line_type = 1;
     int draw_lines = 1;
 
+    GLenum primitive_type = GL_LINES;
 };
 
 #endif // GLWIDGET_H

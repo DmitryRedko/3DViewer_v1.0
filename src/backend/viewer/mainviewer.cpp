@@ -11,18 +11,6 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
     ui->point_size_scale->setValue(ui->GLwidget->point_size);
     ui->line_type->toggle();
 
-    //begin point color slider sets from GLWidget
-    ui->point_color_scale_red->setValue(ui->GLwidget->point_color_red);
-    ui->point_color_scale_green->setValue(ui->GLwidget->point_color_green);
-    ui->point_color_scale_blue->setValue(ui->GLwidget->point_color_blue);
-    //end point color slider sets from GLWidget
-
-    //begin background color slider sets from GLWidget
-    ui->background_color_scale_red->setValue(ui->GLwidget->background_color_red);
-    ui->background_color_scale_green->setValue(ui->GLwidget->background_color_green);
-    ui->background_color_scale_blue->setValue(ui->GLwidget->background_color_blue);
-    //end background color slider sets from GLWidget
-
     QString file_name = ui->pathLine->text();
     ui->model_name_and_props->setText("Model name: " +
                                       QFileInfo(file_name).fileName() +
@@ -187,7 +175,7 @@ void MainViewer::on_line_width_scale_valueChanged(int value)
 
 void MainViewer::on_line_type_toggled(bool checked)
 {
-    printf("\nchecked %d\n", checked);
+//    printf("\nchecked %d\n", checked);
     if (checked == 1) {
         ui->GLwidget->line_type = 1;
     } else {
@@ -195,19 +183,6 @@ void MainViewer::on_line_type_toggled(bool checked)
     }
     ui->GLwidget->update();
 }
-
-
-void MainViewer::on_no_lines_toggled(bool checked)
-{
-    printf("\nchecked %d\n", checked);
-    if (checked == 1) {
-        ui->GLwidget->draw_lines = 0;
-    } else {
-        ui->GLwidget->draw_lines = 1;
-    }
-    ui->GLwidget->update();
-}
-
 
 void MainViewer::on_openBtm_released()
 {
@@ -253,6 +228,90 @@ void MainViewer::on_background_color_scale_green_valueChanged(int value)
 void MainViewer::on_background_color_scale_blue_valueChanged(int value)
 {
     ui->GLwidget->background_color_blue = value;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_pointColor_clicked()
+{
+        QColor color = QColorDialog::getColor(QColor(ui->GLwidget->point_color_red, ui->GLwidget->point_color_green, ui->GLwidget->point_color_blue), this);
+        if (color.isValid()){
+        ui->GLwidget->point_color_red = static_cast<GLubyte>(color.red());
+        ui->GLwidget->point_color_blue = static_cast<GLubyte>(color.blue());
+        ui->GLwidget->point_color_green = static_cast<GLubyte>(color.green());
+        ui->GLwidget->update();
+        }
+}
+
+
+void MainViewer::on_lineColor_clicked()
+{
+    QColor color = QColorDialog::getColor(QColor(ui->GLwidget->line_color_red, ui->GLwidget->line_color_green, ui->GLwidget->line_color_blue), this);
+    if (color.isValid()){
+    ui->GLwidget->line_color_red = static_cast<GLubyte>(color.red());
+    ui->GLwidget->line_color_blue = static_cast<GLubyte>(color.blue());
+    ui->GLwidget->line_color_green = static_cast<GLubyte>(color.green());
+    ui->GLwidget->update();
+    }
+}
+
+
+void MainViewer::on_BGColor_clicked()
+{
+    QColor color = QColorDialog::getColor(QColor(ui->GLwidget->background_color_red, ui->GLwidget->background_color_green, ui->GLwidget->background_color_blue), this);
+    if (color.isValid()){
+    ui->GLwidget->background_color_red = static_cast<GLubyte>(color.red());
+    ui->GLwidget->background_color_blue = static_cast<GLubyte>(color.blue());
+    ui->GLwidget->background_color_green = static_cast<GLubyte>(color.green());
+    ui->GLwidget->update();
+    }
+}
+
+
+void MainViewer::on_resetColor_clicked()
+{
+    ui->GLwidget->point_color_red = ui->GLwidget->default_point_red;
+    ui->GLwidget->point_color_blue = ui->GLwidget->default_point_blue;
+    ui->GLwidget->point_color_green = ui->GLwidget->default_point_green;
+
+    ui->GLwidget->line_color_red = ui->GLwidget->default_line_red;
+    ui->GLwidget->line_color_blue = ui->GLwidget->default_line_blue;
+    ui->GLwidget->line_color_green = ui->GLwidget->default_line_green;
+
+    ui->GLwidget->background_color_red = ui->GLwidget->default_background_red;
+    ui->GLwidget->background_color_blue = ui->GLwidget->default_background_blue;
+    ui->GLwidget->background_color_green = ui->GLwidget->default_background_green;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_noLine_clicked()
+{
+    ui->GLwidget->draw_lines = 0;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_line_clicked()
+{
+    ui->GLwidget->draw_lines = 1;
+    ui->GLwidget->primitive_type = GL_LINES;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_lineLoop_clicked()
+{
+    ui->GLwidget->draw_lines = 1;
+    ui->GLwidget->primitive_type = GL_LINE_LOOP;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_quads_clicked()
+{
+    ui->GLwidget->draw_lines = 1;
+    ui->GLwidget->primitive_type = GL_QUADS;
     ui->GLwidget->update();
 }
 

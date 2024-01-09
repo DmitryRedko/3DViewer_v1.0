@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainViewer_t {
-    QByteArrayData data[25];
-    char stringdata0[635];
+    QByteArrayData data[32];
+    char stringdata0[770];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,14 +49,21 @@ QT_MOC_LITERAL(13, 278, 5), // "value"
 QT_MOC_LITERAL(14, 284, 32), // "on_line_width_scale_valueChanged"
 QT_MOC_LITERAL(15, 317, 20), // "on_line_type_toggled"
 QT_MOC_LITERAL(16, 338, 7), // "checked"
-QT_MOC_LITERAL(17, 346, 19), // "on_no_lines_toggled"
-QT_MOC_LITERAL(18, 366, 19), // "on_openBtm_released"
-QT_MOC_LITERAL(19, 386, 37), // "on_point_color_scale_red_valu..."
-QT_MOC_LITERAL(20, 424, 39), // "on_point_color_scale_green_va..."
-QT_MOC_LITERAL(21, 464, 38), // "on_point_color_scale_blue_val..."
-QT_MOC_LITERAL(22, 503, 42), // "on_background_color_scale_red..."
-QT_MOC_LITERAL(23, 546, 44), // "on_background_color_scale_gre..."
-QT_MOC_LITERAL(24, 591, 43) // "on_background_color_scale_blu..."
+QT_MOC_LITERAL(17, 346, 19), // "on_openBtm_released"
+QT_MOC_LITERAL(18, 366, 37), // "on_point_color_scale_red_valu..."
+QT_MOC_LITERAL(19, 404, 39), // "on_point_color_scale_green_va..."
+QT_MOC_LITERAL(20, 444, 38), // "on_point_color_scale_blue_val..."
+QT_MOC_LITERAL(21, 483, 42), // "on_background_color_scale_red..."
+QT_MOC_LITERAL(22, 526, 44), // "on_background_color_scale_gre..."
+QT_MOC_LITERAL(23, 571, 43), // "on_background_color_scale_blu..."
+QT_MOC_LITERAL(24, 615, 21), // "on_pointColor_clicked"
+QT_MOC_LITERAL(25, 637, 20), // "on_lineColor_clicked"
+QT_MOC_LITERAL(26, 658, 18), // "on_BGColor_clicked"
+QT_MOC_LITERAL(27, 677, 21), // "on_resetColor_clicked"
+QT_MOC_LITERAL(28, 699, 17), // "on_noLine_clicked"
+QT_MOC_LITERAL(29, 717, 15), // "on_line_clicked"
+QT_MOC_LITERAL(30, 733, 19), // "on_lineLoop_clicked"
+QT_MOC_LITERAL(31, 753, 16) // "on_quads_clicked"
 
     },
     "MainViewer\0on_rotate_x_valueChanged\0"
@@ -69,13 +76,17 @@ QT_MOC_LITERAL(24, 591, 43) // "on_background_color_scale_blu..."
     "on_point_size_scale_valueChanged\0value\0"
     "on_line_width_scale_valueChanged\0"
     "on_line_type_toggled\0checked\0"
-    "on_no_lines_toggled\0on_openBtm_released\0"
+    "on_openBtm_released\0"
     "on_point_color_scale_red_valueChanged\0"
     "on_point_color_scale_green_valueChanged\0"
     "on_point_color_scale_blue_valueChanged\0"
     "on_background_color_scale_red_valueChanged\0"
     "on_background_color_scale_green_valueChanged\0"
-    "on_background_color_scale_blue_valueChanged"
+    "on_background_color_scale_blue_valueChanged\0"
+    "on_pointColor_clicked\0on_lineColor_clicked\0"
+    "on_BGColor_clicked\0on_resetColor_clicked\0"
+    "on_noLine_clicked\0on_line_clicked\0"
+    "on_lineLoop_clicked\0on_quads_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -85,7 +96,7 @@ static const uint qt_meta_data_MainViewer[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      21,   14, // methods
+      28,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -93,27 +104,34 @@ static const uint qt_meta_data_MainViewer[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  119,    2, 0x08 /* Private */,
-       3,    0,  120,    2, 0x08 /* Private */,
-       4,    0,  121,    2, 0x08 /* Private */,
-       5,    0,  122,    2, 0x08 /* Private */,
-       6,    0,  123,    2, 0x08 /* Private */,
-       7,    0,  124,    2, 0x08 /* Private */,
-       8,    0,  125,    2, 0x08 /* Private */,
-       9,    0,  126,    2, 0x08 /* Private */,
-      10,    0,  127,    2, 0x08 /* Private */,
-      11,    0,  128,    2, 0x08 /* Private */,
-      12,    1,  129,    2, 0x08 /* Private */,
-      14,    1,  132,    2, 0x08 /* Private */,
-      15,    1,  135,    2, 0x08 /* Private */,
-      17,    1,  138,    2, 0x08 /* Private */,
-      18,    0,  141,    2, 0x08 /* Private */,
-      19,    1,  142,    2, 0x08 /* Private */,
-      20,    1,  145,    2, 0x08 /* Private */,
-      21,    1,  148,    2, 0x08 /* Private */,
-      22,    1,  151,    2, 0x08 /* Private */,
-      23,    1,  154,    2, 0x08 /* Private */,
-      24,    1,  157,    2, 0x08 /* Private */,
+       1,    0,  154,    2, 0x08 /* Private */,
+       3,    0,  155,    2, 0x08 /* Private */,
+       4,    0,  156,    2, 0x08 /* Private */,
+       5,    0,  157,    2, 0x08 /* Private */,
+       6,    0,  158,    2, 0x08 /* Private */,
+       7,    0,  159,    2, 0x08 /* Private */,
+       8,    0,  160,    2, 0x08 /* Private */,
+       9,    0,  161,    2, 0x08 /* Private */,
+      10,    0,  162,    2, 0x08 /* Private */,
+      11,    0,  163,    2, 0x08 /* Private */,
+      12,    1,  164,    2, 0x08 /* Private */,
+      14,    1,  167,    2, 0x08 /* Private */,
+      15,    1,  170,    2, 0x08 /* Private */,
+      17,    0,  173,    2, 0x08 /* Private */,
+      18,    1,  174,    2, 0x08 /* Private */,
+      19,    1,  177,    2, 0x08 /* Private */,
+      20,    1,  180,    2, 0x08 /* Private */,
+      21,    1,  183,    2, 0x08 /* Private */,
+      22,    1,  186,    2, 0x08 /* Private */,
+      23,    1,  189,    2, 0x08 /* Private */,
+      24,    0,  192,    2, 0x08 /* Private */,
+      25,    0,  193,    2, 0x08 /* Private */,
+      26,    0,  194,    2, 0x08 /* Private */,
+      27,    0,  195,    2, 0x08 /* Private */,
+      28,    0,  196,    2, 0x08 /* Private */,
+      29,    0,  197,    2, 0x08 /* Private */,
+      30,    0,  198,    2, 0x08 /* Private */,
+      31,    0,  199,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -129,7 +147,6 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Bool,   16,
-    QMetaType::Void, QMetaType::Bool,   16,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int,   13,
@@ -137,6 +154,14 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -160,14 +185,21 @@ void MainViewer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->on_point_size_scale_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 11: _t->on_line_width_scale_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 12: _t->on_line_type_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 13: _t->on_no_lines_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 14: _t->on_openBtm_released(); break;
-        case 15: _t->on_point_color_scale_red_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 16: _t->on_point_color_scale_green_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 17: _t->on_point_color_scale_blue_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 18: _t->on_background_color_scale_red_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 19: _t->on_background_color_scale_green_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 20: _t->on_background_color_scale_blue_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 13: _t->on_openBtm_released(); break;
+        case 14: _t->on_point_color_scale_red_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 15: _t->on_point_color_scale_green_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->on_point_color_scale_blue_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 17: _t->on_background_color_scale_red_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 18: _t->on_background_color_scale_green_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: _t->on_background_color_scale_blue_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 20: _t->on_pointColor_clicked(); break;
+        case 21: _t->on_lineColor_clicked(); break;
+        case 22: _t->on_BGColor_clicked(); break;
+        case 23: _t->on_resetColor_clicked(); break;
+        case 24: _t->on_noLine_clicked(); break;
+        case 25: _t->on_line_clicked(); break;
+        case 26: _t->on_lineLoop_clicked(); break;
+        case 27: _t->on_quads_clicked(); break;
         default: ;
         }
     }
@@ -202,13 +234,13 @@ int MainViewer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 21)
+        if (_id < 28)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 21;
+        _id -= 28;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 21)
+        if (_id < 28)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 21;
+        _id -= 28;
     }
     return _id;
 }

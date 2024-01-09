@@ -28,6 +28,67 @@ padding: 5px;</string>
       </property>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="header">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px; 
+
+border: 5px;
+padding: 5px;
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;🐩 3D-Viewer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QFrame" name="frame_8">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: &quot;#515259&quot;;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QLabel" name="model_name_and_props">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>Model name and properties</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item row="0" column="1" rowspan="3">
      <widget class="QFrame" name="frame">
       <property name="sizePolicy">
@@ -47,6 +108,150 @@ padding: 5px;</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="7" column="0" colspan="2">
+        <widget class="QFrame" name="rotate">
+         <property name="styleSheet">
+          <string notr="true">QFrame {
+color: white;
+margin-top: 5px;
+border: 1px solid white;
+border-radius: 10px;
+}
+
+QLabel {
+margin-top: 0;
+border: none;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="1" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="topMargin">
+             <number>5</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="line_7">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="styleSheet">
+                 <string notr="true">	color: rgba(255, 255, 255, 102);</string>
+                </property>
+                <property name="text">
+                 <string>X</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="rotate_x">
+                <property name="minimum">
+                 <number>-360</number>
+                </property>
+                <property name="maximum">
+                 <number>360</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="line_8">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="styleSheet">
+                 <string notr="true">	color: rgba(255, 255, 255, 102);</string>
+                </property>
+                <property name="text">
+                 <string>Y</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="rotate_y">
+                <property name="minimum">
+                 <number>-360</number>
+                </property>
+                <property name="maximum">
+                 <number>360</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="line_9">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_9">
+                <property name="styleSheet">
+                 <string notr="true">	color: rgba(255, 255, 255, 102);</string>
+                </property>
+                <property name="text">
+                 <string>Z</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="rotate_z">
+                <property name="minimum">
+                 <number>-360</number>
+                </property>
+                <property name="maximum">
+                 <number>360</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="rotate_title_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Rotation</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="2">
         <widget class="QFrame" name="translate">
          <property name="styleSheet">
           <string notr="true">QFrame {
@@ -184,104 +389,6 @@ border: none;
             </property>
             <property name="text">
              <string>Move</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QFrame" name="zoom">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QFrame {
-color: white;
-margin-top: 5px;
-border: 1px solid white;
-border-radius: 10px;
-}
-
-QLabel {
-margin-top: 0;
-border: none;
-}
-
-QPushButton {
-	background-color: rgba(255, 255, 255, 0);
-}
-
-QPushButton:pressed {
-padding-top: 3px;
-padding-right: 3px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <item row="1" column="1">
-           <widget class="QSlider" name="zoom_scale">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>300</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="pageStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>100</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="label_plus">
-            <property name="text">
-             <string>+</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="rotate_title">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Zoom</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_minus">
-            <property name="text">
-             <string>-</string>
             </property>
            </widget>
           </item>
@@ -430,269 +537,7 @@ QPushButton:pressed {
          </layout>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QFrame" name="zoom_3">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QFrame {
-color: white;
-margin-top: 5px;
-border: 1px solid white;
-border-radius: 10px;
-}
-
-QLabel {
-margin-top: 0;
-border: none;
-}
-
-QPushButton {
-	background-color: rgba(255, 255, 255, 0);
-}
-
-QPushButton:pressed {
-padding-top: 3px;
-padding-right: 3px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_11">
-          <item row="0" column="2">
-           <widget class="QCheckBox" name="no_lines">
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="text">
-             <string>no lines</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QCheckBox" name="line_type">
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="text">
-             <string>stipple</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_minus_5">
-            <property name="text">
-             <string>-</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="line_width_title">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Line width</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QSlider" name="line_width_scale">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>10</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="pageStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>1</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QLabel" name="label_plus_5">
-            <property name="text">
-             <string>+</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QFrame" name="rotate">
-         <property name="styleSheet">
-          <string notr="true">QFrame {
-color: white;
-margin-top: 5px;
-border: 1px solid white;
-border-radius: 10px;
-}
-
-QLabel {
-margin-top: 0;
-border: none;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="1" column="0">
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <property name="topMargin">
-             <number>5</number>
-            </property>
-            <item>
-             <layout class="QHBoxLayout" name="line_7">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_7">
-                <property name="styleSheet">
-                 <string notr="true">	color: rgba(255, 255, 255, 102);</string>
-                </property>
-                <property name="text">
-                 <string>X</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSlider" name="rotate_x">
-                <property name="minimum">
-                 <number>-360</number>
-                </property>
-                <property name="maximum">
-                 <number>360</number>
-                </property>
-                <property name="singleStep">
-                 <number>1</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="line_8">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_8">
-                <property name="styleSheet">
-                 <string notr="true">	color: rgba(255, 255, 255, 102);</string>
-                </property>
-                <property name="text">
-                 <string>Y</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSlider" name="rotate_y">
-                <property name="minimum">
-                 <number>-360</number>
-                </property>
-                <property name="maximum">
-                 <number>360</number>
-                </property>
-                <property name="singleStep">
-                 <number>1</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="line_9">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_9">
-                <property name="styleSheet">
-                 <string notr="true">	color: rgba(255, 255, 255, 102);</string>
-                </property>
-                <property name="text">
-                 <string>Z</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSlider" name="rotate_z">
-                <property name="minimum">
-                 <number>-360</number>
-                </property>
-                <property name="maximum">
-                 <number>360</number>
-                </property>
-                <property name="singleStep">
-                 <number>1</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="rotate_title_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Rotation</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="2">
+       <item row="3" column="0" colspan="2">
         <widget class="QFrame" name="zoom_2">
          <property name="enabled">
           <bool>true</bool>
@@ -732,7 +577,7 @@ padding-right: 3px;
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
-          <item row="3" column="0">
+          <item row="1" column="0">
            <widget class="QSlider" name="point_size_scale">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
@@ -745,47 +590,6 @@ padding-right: 3px;
             </property>
             <property name="maximum">
              <number>25</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="pageStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>5</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="point_color_title">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Point color (RGB)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QSlider" name="point_color_scale_green">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimum">
-             <number>0</number>
-            </property>
-            <property name="maximum">
-             <number>255</number>
             </property>
             <property name="singleStep">
              <number>1</number>
@@ -814,8 +618,51 @@ padding-right: 3px;
             </property>
            </widget>
           </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QFrame" name="zoom">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame {
+color: white;
+margin-top: 5px;
+border: 1px solid white;
+border-radius: 10px;
+}
+
+QLabel {
+margin-top: 0;
+border: none;
+}
+
+QPushButton {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+QPushButton:pressed {
+padding-top: 3px;
+padding-right: 3px;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
           <item row="1" column="1">
-           <widget class="QSlider" name="point_color_scale_red">
+           <widget class="QSlider" name="zoom_scale">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
               <horstretch>0</horstretch>
@@ -823,10 +670,10 @@ padding-right: 3px;
              </sizepolicy>
             </property>
             <property name="minimum">
-             <number>0</number>
+             <number>1</number>
             </property>
             <property name="maximum">
-             <number>255</number>
+             <number>300</number>
             </property>
             <property name="singleStep">
              <number>1</number>
@@ -835,45 +682,44 @@ padding-right: 3px;
              <number>1</number>
             </property>
             <property name="value">
-             <number>5</number>
+             <number>100</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QSlider" name="point_color_scale_blue">
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_plus">
+            <property name="text">
+             <string>+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="rotate_title">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="minimum">
-             <number>0</number>
+            <property name="text">
+             <string>Zoom</string>
             </property>
-            <property name="maximum">
-             <number>255</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="pageStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>5</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_minus">
+            <property name="text">
+             <string>-</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="5" column="0" colspan="2">
         <widget class="QFrame" name="zoom_4">
          <property name="enabled">
           <bool>true</bool>
@@ -913,31 +759,137 @@ padding-right: 3px;
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_8">
-          <item row="4" column="0">
-           <widget class="QSlider" name="background_color_scale_blue">
+          <item row="1" column="0" colspan="2">
+           <widget class="QPushButton" name="pointColor">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="minimum">
-             <number>0</number>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>18</height>
+             </size>
             </property>
-            <property name="maximum">
-             <number>255</number>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: &quot;#737780&quot;;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:hover {
+    background-color: &quot;#A0A6AA&quot;; 
+    color: black; 
+}
+
+QPushButton:pressed {
+    background-color: &quot;#595E62&quot;;
+    border: 1px solid black;  
+}
+</string>
             </property>
-            <property name="singleStep">
-             <number>1</number>
+            <property name="text">
+             <string>Points Color</string>
             </property>
-            <property name="pageStep">
-             <number>1</number>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QPushButton" name="lineColor">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>18</height>
+             </size>
             </property>
-            <property name="value">
-             <number>5</number>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: &quot;#737780&quot;;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:hover {
+    background-color: &quot;#A0A6AA&quot;; 
+    color: black; 
+}
+
+QPushButton:pressed {
+    background-color: &quot;#595E62&quot;;
+    border: 1px solid black;  
+}
+</string>
             </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+            <property name="text">
+             <string>Lines Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QPushButton" name="BGColor">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>18</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: &quot;#737780&quot;;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:hover {
+    background-color: &quot;#A0A6AA&quot;; 
+    color: black; 
+}
+
+QPushButton:pressed {
+    background-color: &quot;#595E62&quot;;
+    border: 1px solid black;  
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Background Color</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QPushButton" name="resetColor">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>18</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: &quot;#737780&quot;;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:hover {
+    background-color: &quot;#A0A6AA&quot;; 
+    color: black; 
+}
+
+QPushButton:pressed {
+    background-color: &quot;#595E62&quot;;
+    border: 1px solid black;  
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Reset Colors</string>
             </property>
            </widget>
           </item>
@@ -950,127 +902,218 @@ padding-right: 3px;
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Background (RGB) color</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QSlider" name="background_color_scale_green">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimum">
-             <number>0</number>
-            </property>
-            <property name="maximum">
-             <number>255</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="pageStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>5</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QSlider" name="background_color_scale_red">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimum">
-             <number>0</number>
-            </property>
-            <property name="maximum">
-             <number>255</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="pageStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>5</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <string>Color Settings</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
        </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="header">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-radius: 10px; 
-
-border: 5px;
-padding: 5px;
-</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;🐩 3D-Viewer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QFrame" name="frame_8">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: &quot;#515259&quot;;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <item row="0" column="0">
-        <widget class="QLabel" name="model_name_and_props">
+       <item row="4" column="0">
+        <widget class="QFrame" name="zoom_3">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255);</string>
+          <string notr="true">QFrame {
+color: white;
+margin-top: 5px;
+border: 1px solid white;
+border-radius: 10px;
+}
+
+QLabel {
+margin-top: 0;
+border: none;
+}
+
+QPushButton {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+QPushButton:pressed {
+padding-top: 3px;
+padding-right: 3px;
+}</string>
          </property>
-         <property name="text">
-          <string>Model name and properties</string>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
          </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_11">
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_minus_5">
+            <property name="text">
+             <string>-</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="label_plus_5">
+            <property name="text">
+             <string>+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="line_width_title">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Line width</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QSlider" name="line_width_scale">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>10</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="line_type">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>stipple</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="line_type_lablel">
+            <property name="text">
+             <string>Line type</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QFrame" name="zoom_5">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame {
+color: white;
+margin-top: 5px;
+border: 1px solid white;
+border-radius: 10px;
+}
+
+QLabel {
+margin-top: 0;
+border: none;
+}
+
+QPushButton {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+QPushButton:pressed {
+padding-top: 3px;
+padding-right: 3px;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_13">
+          <item row="4" column="0">
+           <widget class="QRadioButton" name="quads">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>Quads</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="lineLoop">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>Line loop</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="noLine">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>No lines</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="line">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="tabletTracking">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>Lines</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>

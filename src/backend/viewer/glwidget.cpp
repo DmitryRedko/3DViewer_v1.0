@@ -119,15 +119,9 @@ void GLWidget::draw_model_lines() {
         glEnable(GL_LINE_SMOOTH);
     }
     glLineWidth(line_width);
-    glColor3ub(255,0,0); // красный
+    glColor3ub(line_color_red,line_color_green, line_color_blue); // красный
 
-    // glIndexPointer(GL_INT, 2, objData.faces);
-    // glEnableClientState(GL_INDEX_ARRAY);
-     glDrawElements(GL_LINES, objData.faceCount, GL_UNSIGNED_INT, objData.faces);
-
-//    glDrawElements(GL_LINE_STRIP, objData.faceCount, GL_UNSIGNED_INT, reinterpret_cast<const GLvoid*>(objData.faces));
-
-    // glDisableClientState(GL_INDEX_ARRAY);
+    glDrawElements(primitive_type, objData.faceCount, GL_UNSIGNED_INT, objData.faces);
 }
 
 void GLWidget::resizeGL(int w, int h) {

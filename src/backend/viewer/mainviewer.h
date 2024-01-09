@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "glwidget.h"
+#include<QColorDialog>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainViewer; }
@@ -35,7 +37,6 @@ private slots:
     void on_point_size_scale_valueChanged(int value);
     void on_line_width_scale_valueChanged(int value);
     void on_line_type_toggled(bool checked);
-    void on_no_lines_toggled(bool checked);
     void on_openBtm_released();
     void on_point_color_scale_red_valueChanged(int value);
     void on_point_color_scale_green_valueChanged(int value);
@@ -43,5 +44,13 @@ private slots:
     void on_background_color_scale_red_valueChanged(int value);
     void on_background_color_scale_green_valueChanged(int value);
     void on_background_color_scale_blue_valueChanged(int value);
+    void on_pointColor_clicked();
+    void on_lineColor_clicked();
+    void on_BGColor_clicked();
+    void on_resetColor_clicked();
+    void on_noLine_clicked();
+    void on_line_clicked();
+    void on_lineLoop_clicked();
+    void on_quads_clicked();
 };
 #endif // MAINVIEWER_H
