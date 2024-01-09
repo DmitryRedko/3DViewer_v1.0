@@ -74,11 +74,13 @@ void GLWidget::initializeGLmodel() {
 
 
 void GLWidget::initializeGL() {
-    glClearColor(0.2, 0.2, 0.2, 1);
+    // glClearColor(0.2, 0.2, 0.2, 1);
+    glClearColor(background_color_red / 255.0f, background_color_green / 255.0f, background_color_blue / 255.0f, 1);
     glEnable(GL_DEPTH_TEST);
 }
 
 void GLWidget::paintGL() {
+    glClearColor(background_color_red / 255.0f, background_color_green / 255.0f, background_color_blue / 255.0f, 1);
     if (draw_lines == 1) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         draw_model_lines();

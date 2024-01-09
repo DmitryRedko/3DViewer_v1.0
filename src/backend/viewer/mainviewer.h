@@ -40,5 +40,8 @@ private slots:
     void on_point_color_scale_red_valueChanged(int value);
     void on_point_color_scale_green_valueChanged(int value);
     void on_point_color_scale_blue_valueChanged(int value);
+    void on_background_color_scale_red_valueChanged(int value);
+    void on_background_color_scale_green_valueChanged(int value);
+    void on_background_color_scale_blue_valueChanged(int value);
 };
 #endif // MAINVIEWER_H

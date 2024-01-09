@@ -11,11 +11,17 @@ MainViewer::MainViewer(QWidget *parent): QMainWindow(parent), ui(new Ui::MainVie
     ui->point_size_scale->setValue(ui->GLwidget->point_size);
     ui->line_type->toggle();
 
-    //begin color slider sets from GLWidget
+    //begin point color slider sets from GLWidget
     ui->point_color_scale_red->setValue(ui->GLwidget->point_color_red);
     ui->point_color_scale_green->setValue(ui->GLwidget->point_color_green);
     ui->point_color_scale_blue->setValue(ui->GLwidget->point_color_blue);
-    //end color slider sets from GLWidget
+    //end point color slider sets from GLWidget
+
+    //begin background color slider sets from GLWidget
+    ui->background_color_scale_red->setValue(ui->GLwidget->background_color_red);
+    ui->background_color_scale_green->setValue(ui->GLwidget->background_color_green);
+    ui->background_color_scale_blue->setValue(ui->GLwidget->background_color_blue);
+    //end background color slider sets from GLWidget
 
     QString file_name = ui->pathLine->text();
     ui->model_name_and_props->setText("Model name: " +
@@ -226,6 +232,27 @@ void MainViewer::on_point_color_scale_green_valueChanged(int value)
 void MainViewer::on_point_color_scale_blue_valueChanged(int value)
 {
     ui->GLwidget->point_color_blue = value;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_background_color_scale_red_valueChanged(int value)
+{
+    ui->GLwidget->background_color_red = value;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_background_color_scale_green_valueChanged(int value)
+{
+    ui->GLwidget->background_color_green = value;
+    ui->GLwidget->update();
+}
+
+
+void MainViewer::on_background_color_scale_blue_valueChanged(int value)
+{
+    ui->GLwidget->background_color_blue = value;
     ui->GLwidget->update();
 }
 

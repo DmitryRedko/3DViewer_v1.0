@@ -33,6 +33,9 @@ public:
     int point_color_red = 255;
     int point_color_green = 255;
     int point_color_blue = 0;
+    int background_color_red = 51;
+    int background_color_green = 51;
+    int background_color_blue = 51;
     int line_width = 1;
     int line_type = 1;
     int draw_lines = 1;
