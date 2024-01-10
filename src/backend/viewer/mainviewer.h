@@ -3,7 +3,7 @@
 
 #include <QColorDialog>
 #include <QMainWindow>
-
+#include <QSettings>
 #include "glwidget.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,6 +23,9 @@ class MainViewer : public QMainWindow {
  private:
   Ui::MainViewer *ui;
   GLWidget *myGLW;
+
+ public:
+  QSettings *settings;
 
  private slots:
   void on_rotate_x_valueChanged();
@@ -49,5 +52,9 @@ class MainViewer : public QMainWindow {
   void on_quads_clicked();
   void on_perspective_clicked();
   void on_parallel_clicked();
+  void update_sliders();
+  void save_settings();
+  void load_settings();
+
 };
 #endif  // MAINVIEWER_H

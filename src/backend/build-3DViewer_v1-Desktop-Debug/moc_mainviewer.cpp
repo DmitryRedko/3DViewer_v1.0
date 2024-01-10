@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainViewer_t {
-    QByteArrayData data[28];
-    char stringdata0[564];
+    QByteArrayData data[31];
+    char stringdata0[607];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -59,7 +59,10 @@ QT_MOC_LITERAL(23, 468, 15), // "on_line_clicked"
 QT_MOC_LITERAL(24, 484, 19), // "on_lineLoop_clicked"
 QT_MOC_LITERAL(25, 504, 16), // "on_quads_clicked"
 QT_MOC_LITERAL(26, 521, 22), // "on_perspective_clicked"
-QT_MOC_LITERAL(27, 544, 19) // "on_parallel_clicked"
+QT_MOC_LITERAL(27, 544, 19), // "on_parallel_clicked"
+QT_MOC_LITERAL(28, 564, 14), // "update_sliders"
+QT_MOC_LITERAL(29, 579, 13), // "save_settings"
+QT_MOC_LITERAL(30, 593, 13) // "load_settings"
 
     },
     "MainViewer\0on_rotate_x_valueChanged\0"
@@ -77,7 +80,8 @@ QT_MOC_LITERAL(27, 544, 19) // "on_parallel_clicked"
     "on_resetColor_clicked\0on_noLine_clicked\0"
     "on_line_clicked\0on_lineLoop_clicked\0"
     "on_quads_clicked\0on_perspective_clicked\0"
-    "on_parallel_clicked"
+    "on_parallel_clicked\0update_sliders\0"
+    "save_settings\0load_settings"
 };
 #undef QT_MOC_LITERAL
 
@@ -87,7 +91,7 @@ static const uint qt_meta_data_MainViewer[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      27,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -95,30 +99,33 @@ static const uint qt_meta_data_MainViewer[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  134,    2, 0x08 /* Private */,
-       3,    0,  135,    2, 0x08 /* Private */,
-       4,    0,  136,    2, 0x08 /* Private */,
-       5,    0,  137,    2, 0x08 /* Private */,
-       6,    0,  138,    2, 0x08 /* Private */,
-       7,    0,  139,    2, 0x08 /* Private */,
-       8,    0,  140,    2, 0x08 /* Private */,
-       9,    0,  141,    2, 0x08 /* Private */,
-      10,    0,  142,    2, 0x08 /* Private */,
-      11,    0,  143,    2, 0x08 /* Private */,
-      12,    1,  144,    2, 0x08 /* Private */,
-      14,    1,  147,    2, 0x08 /* Private */,
-      15,    1,  150,    2, 0x08 /* Private */,
-      17,    0,  153,    2, 0x08 /* Private */,
-      18,    0,  154,    2, 0x08 /* Private */,
-      19,    0,  155,    2, 0x08 /* Private */,
-      20,    0,  156,    2, 0x08 /* Private */,
-      21,    0,  157,    2, 0x08 /* Private */,
-      22,    0,  158,    2, 0x08 /* Private */,
-      23,    0,  159,    2, 0x08 /* Private */,
-      24,    0,  160,    2, 0x08 /* Private */,
-      25,    0,  161,    2, 0x08 /* Private */,
-      26,    0,  162,    2, 0x08 /* Private */,
-      27,    0,  163,    2, 0x08 /* Private */,
+       1,    0,  149,    2, 0x08 /* Private */,
+       3,    0,  150,    2, 0x08 /* Private */,
+       4,    0,  151,    2, 0x08 /* Private */,
+       5,    0,  152,    2, 0x08 /* Private */,
+       6,    0,  153,    2, 0x08 /* Private */,
+       7,    0,  154,    2, 0x08 /* Private */,
+       8,    0,  155,    2, 0x08 /* Private */,
+       9,    0,  156,    2, 0x08 /* Private */,
+      10,    0,  157,    2, 0x08 /* Private */,
+      11,    0,  158,    2, 0x08 /* Private */,
+      12,    1,  159,    2, 0x08 /* Private */,
+      14,    1,  162,    2, 0x08 /* Private */,
+      15,    1,  165,    2, 0x08 /* Private */,
+      17,    0,  168,    2, 0x08 /* Private */,
+      18,    0,  169,    2, 0x08 /* Private */,
+      19,    0,  170,    2, 0x08 /* Private */,
+      20,    0,  171,    2, 0x08 /* Private */,
+      21,    0,  172,    2, 0x08 /* Private */,
+      22,    0,  173,    2, 0x08 /* Private */,
+      23,    0,  174,    2, 0x08 /* Private */,
+      24,    0,  175,    2, 0x08 /* Private */,
+      25,    0,  176,    2, 0x08 /* Private */,
+      26,    0,  177,    2, 0x08 /* Private */,
+      27,    0,  178,    2, 0x08 /* Private */,
+      28,    0,  179,    2, 0x08 /* Private */,
+      29,    0,  180,    2, 0x08 /* Private */,
+      30,    0,  181,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -134,6 +141,9 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Int,   13,
     QMetaType::Void, QMetaType::Bool,   16,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -179,6 +189,9 @@ void MainViewer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 21: _t->on_quads_clicked(); break;
         case 22: _t->on_perspective_clicked(); break;
         case 23: _t->on_parallel_clicked(); break;
+        case 24: _t->update_sliders(); break;
+        case 25: _t->save_settings(); break;
+        case 26: _t->load_settings(); break;
         default: ;
         }
     }
@@ -213,13 +226,13 @@ int MainViewer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 27;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 27)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 27;
     }
     return _id;
 }

@@ -41,6 +41,7 @@ void GLWidget::normalize_model(ObjData *data) {
 }
 
 void GLWidget::initializeGLmodel() {
+
   if (welcome_flag == 0) {
     const char defaultModel[] = "../frontend/default_models/welcome_3d.obj";
     objData = parse_obj(defaultModel, &parse_flag);
