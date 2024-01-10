@@ -4,6 +4,7 @@
 #include <QColorDialog>
 #include <QMainWindow>
 #include <QSettings>
+
 #include "glwidget.h"
 
 QT_BEGIN_NAMESPACE

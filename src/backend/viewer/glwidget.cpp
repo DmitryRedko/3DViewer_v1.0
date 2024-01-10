@@ -36,13 +36,11 @@ void GLWidget::normalize_model(ObjData *data) {
   }
 
   zoom_operation(scale / maxVal, scale / maxVal, scale / maxVal, data, data);
-
 }
 
 void GLWidget::initializeGLmodel() {
-
-    objData = parse_obj(model_name, &parse_flag);
-    baseData = parse_obj(model_name, &parse_flag);
+  objData = parse_obj(model_name, &parse_flag);
+  baseData = parse_obj(model_name, &parse_flag);
 
   if (parse_flag == 0) {
     normalize_model(&baseData);
@@ -53,7 +51,6 @@ void GLWidget::initializeGLmodel() {
     parse_flag = 0;
     initializeGLmodel();
   }
-
 }
 
 void GLWidget::initializeGL() {
@@ -141,4 +138,27 @@ void GLWidget::apply_transform() {
 void GLWidget::free_memory() {
   model_destructor(&objData);
   model_destructor(&baseData);
+}
+
+void GLWidget::mouseMoveEvent(QMouseEvent *event) {
+  QPoint new_pos = event->globalPos() - cur_pos;
+
+  if (event->buttons() & Qt::LeftButton) {
+    xMov = new_pos.x() / 50;
+    yMov = -new_pos.y() / 50;
+    apply_transform();
+    update();
+  } else if (event->buttons() & Qt::RightButton) {
+    xRot = -new_pos.y();
+    yRot = new_pos.x();
+    apply_transform();
+    update();
+  }
+}
+
+void GLWidget::wheelEvent(QWheelEvent *event) {
+  QPoint numDegrees = event->angleDelta() / 120;
+  scale += numDegrees.y();
+  apply_transform();
+  update();
 }

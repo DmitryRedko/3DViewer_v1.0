@@ -24,8 +24,7 @@ MainViewer::MainViewer(QWidget* parent)
       QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
       QString::number(QFileInfo(file_name).size() / 1000, 'f', 3) + " kb");
 
-    ui->GLwidget->update();
-
+  ui->GLwidget->update();
 }
 
 MainViewer::~MainViewer() {
@@ -34,40 +33,37 @@ MainViewer::~MainViewer() {
   delete ui;
 }
 
+void MainViewer::update_sliders() {
+  ui->point_size_scale->setValue(ui->GLwidget->point_size);
+  ui->line_type->setChecked(ui->GLwidget->line_type);
+  ui->zoom_scale->setValue(ui->GLwidget->scale);
+  ui->rotate_x->setValue(ui->GLwidget->xRot);
+  ui->rotate_y->setValue(ui->GLwidget->yRot);
+  ui->rotate_z->setValue(ui->GLwidget->zRot);
+  ui->move_x->setValue(ui->GLwidget->xMov);
+  ui->move_y->setValue(ui->GLwidget->yMov);
+  ui->move_z->setValue(ui->GLwidget->zMov);
+  ui->line_width_scale->setValue(ui->GLwidget->line_width);
 
-void MainViewer::update_sliders(){
-    ui->point_size_scale->setValue(ui->GLwidget->point_size);
-    ui->line_type->setChecked(ui->GLwidget->line_type);
-    ui->zoom_scale->setValue(ui->GLwidget->scale);
-    ui->rotate_x->setValue(ui->GLwidget->xRot);
-    ui->rotate_y->setValue(ui->GLwidget->yRot);
-    ui->rotate_z->setValue(ui->GLwidget->zRot);
-    ui->move_x->setValue(ui->GLwidget->xMov);
-    ui->move_y->setValue(ui->GLwidget->yMov);
-    ui->move_z->setValue(ui->GLwidget->zMov);
-    ui->line_width_scale->setValue(ui->GLwidget->line_width);
+  if (ui->GLwidget->isPerspective)
+    ui->perspective->toggle();
+  else
+    ui->parallel->toggle();
 
-    if(ui->GLwidget->isPerspective)
-        ui->perspective->toggle();
-    else
-        ui->parallel->toggle();
-
-    switch (ui->GLwidget->primitive_type) {
+  switch (ui->GLwidget->primitive_type) {
     case GL_POINTS:
-        ui->noLine->toggle();
-        break;
+      ui->noLine->toggle();
+      break;
     case GL_LINES:
-        ui->line->toggle();
-        break;
+      ui->line->toggle();
+      break;
     case GL_LINE_LOOP:
-        ui->lineLoop->toggle();
-        break;
+      ui->lineLoop->toggle();
+      break;
     case GL_QUADS:
-        ui->quads->toggle();
-
-    }
+      ui->quads->toggle();
+  }
 }
-
 
 void MainViewer::on_rotate_x_valueChanged() {
   ui->rotate_title_3->setText(
@@ -151,25 +147,24 @@ void MainViewer::on_reset_model_released() {
   ui->line_width_scale->setValue(ui->GLwidget->default_line_width);
 
   ui->GLwidget->isPerspective = ui->GLwidget->default_perspective;
-  if(ui->GLwidget->isPerspective)
-      ui->perspective->toggle();
+  if (ui->GLwidget->isPerspective)
+    ui->perspective->toggle();
   else
-      ui->parallel->toggle();
+    ui->parallel->toggle();
 
   ui->GLwidget->primitive_type = ui->GLwidget->default_primitive_type;
   switch (ui->GLwidget->primitive_type) {
-  case GL_POINTS:
+    case GL_POINTS:
       ui->noLine->toggle();
       break;
-  case GL_LINES:
+    case GL_LINES:
       ui->line->toggle();
       break;
-  case GL_LINE_LOOP:
+    case GL_LINE_LOOP:
       ui->lineLoop->toggle();
       break;
-  case GL_QUADS:
+    case GL_QUADS:
       ui->quads->toggle();
-
   }
   ui->GLwidget->draw_lines = 1;
 
@@ -206,7 +201,6 @@ void MainViewer::on_openBtm_clicked() {
         QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
         QString::number(QFileInfo(file_name).size() / 1000, 'f', 3) + " kb");
   }
-
 }
 
 void MainViewer::on_point_size_scale_valueChanged(int value) {
@@ -344,9 +338,12 @@ void MainViewer::save_settings() {
   settings->setValue("point_color_green", ui->GLwidget->point_color_green);
   settings->setValue("point_color_blue", ui->GLwidget->point_color_blue);
 
-  settings->setValue("background_color_red", ui->GLwidget->background_color_red);
-  settings->setValue("background_color_green", ui->GLwidget->background_color_green);
-  settings->setValue("background_color_blue", ui->GLwidget->background_color_blue);
+  settings->setValue("background_color_red",
+                     ui->GLwidget->background_color_red);
+  settings->setValue("background_color_green",
+                     ui->GLwidget->background_color_green);
+  settings->setValue("background_color_blue",
+                     ui->GLwidget->background_color_blue);
 
   settings->setValue("scale", ui->GLwidget->scale);
   settings->setValue("move_x", ui->GLwidget->xMov);
@@ -357,64 +354,66 @@ void MainViewer::save_settings() {
   settings->setValue("rotation_z", ui->GLwidget->zRot);
 
   settings->setValue("model_name", ui->GLwidget->model_name);
-
 }
 
 void MainViewer::load_settings() {
   if (settings->value("are_settings").toInt()) {
+    QByteArray modelNameBytes =
+        settings->value("model_name").toString().toUtf8();
+    qstrncpy(ui->GLwidget->model_name, modelNameBytes.constData(),
+             sizeof(ui->GLwidget->model_name));
+    ui->GLwidget->model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
+    ui->GLwidget->initializeGLmodel();
 
-      QByteArray modelNameBytes = settings->value("model_name").toString().toUtf8();
-      qstrncpy(ui->GLwidget->model_name, modelNameBytes.constData(), sizeof(ui->GLwidget->model_name));
-      ui->GLwidget->model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
-      ui->GLwidget->initializeGLmodel();
+    ui->GLwidget->point_size = settings->value("point_size").toInt();
+    ui->GLwidget->line_type = settings->value("line_type").toInt();
+    ui->GLwidget->line_width = settings->value("line_width").toInt();
+    ui->GLwidget->primitive_type = settings->value("primitive_type").toInt();
+    ui->GLwidget->isPerspective = settings->value("projection_type").toInt();
 
-      ui->GLwidget->point_size = settings->value("point_size").toInt();
-      ui->GLwidget->line_type = settings->value("line_type").toInt();
-      ui->GLwidget->line_width = settings->value("line_width").toInt();
-      ui->GLwidget->primitive_type = settings->value("primitive_type").toInt();
-      ui->GLwidget->isPerspective = settings->value("projection_type").toInt();
+    ui->GLwidget->line_color_red = settings->value("line_color_red").toInt();
+    ui->GLwidget->line_color_green =
+        settings->value("line_color_green").toInt();
+    ui->GLwidget->line_color_blue = settings->value("line_color_blue").toInt();
 
-      ui->GLwidget->line_color_red = settings->value("line_color_red").toInt();
-      ui->GLwidget->line_color_green = settings->value("line_color_green").toInt();
-      ui->GLwidget->line_color_blue = settings->value("line_color_blue").toInt();
+    ui->GLwidget->point_color_red = settings->value("point_color_red").toInt();
+    ui->GLwidget->point_color_green =
+        settings->value("point_color_green").toInt();
+    ui->GLwidget->point_color_blue =
+        settings->value("point_color_blue").toInt();
 
-      ui->GLwidget->point_color_red = settings->value("point_color_red").toInt();
-      ui->GLwidget->point_color_green = settings->value("point_color_green").toInt();
-      ui->GLwidget->point_color_blue = settings->value("point_color_blue").toInt();
+    ui->GLwidget->background_color_red =
+        settings->value("background_color_red").toInt();
+    ui->GLwidget->background_color_green =
+        settings->value("background_color_green").toInt();
+    ui->GLwidget->background_color_blue =
+        settings->value("background_color_blue").toInt();
 
-      ui->GLwidget->background_color_red = settings->value("background_color_red").toInt();
-      ui->GLwidget->background_color_green = settings->value("background_color_green").toInt();
-      ui->GLwidget->background_color_blue = settings->value("background_color_blue").toInt();
+    ui->GLwidget->scale = settings->value("scale").toInt();
 
-      ui->GLwidget->scale = settings->value("scale").toInt();
+    ui->GLwidget->xMov = settings->value("move_x").toInt();
+    ui->GLwidget->yMov = settings->value("move_y").toInt();
+    ui->GLwidget->zMov = settings->value("move_z").toInt();
 
-      ui->GLwidget->xMov = settings->value("move_x").toInt();
-      ui->GLwidget->yMov = settings->value("move_y").toInt();
-      ui->GLwidget->zMov = settings->value("move_z").toInt();
+    ui->GLwidget->xRot = settings->value("rotation_x").toInt();
+    ui->GLwidget->yRot = settings->value("rotation_y").toInt();
+    ui->GLwidget->zRot = settings->value("rotation_z").toInt();
 
-      ui->GLwidget->xRot = settings->value("rotation_x").toInt();
-      ui->GLwidget->yRot = settings->value("rotation_y").toInt();
-      ui->GLwidget->zRot = settings->value("rotation_z").toInt();
-
-      ui->GLwidget->update();
+    ui->GLwidget->update();
   }
 }
 
-
-void MainViewer::on_pushButton_clicked()
-{
-    char* model_name =
-      ui->GLwidget->model_name;  // Получаем указатель на массив
-      strncpy(model_name, "../frontend/default_models/welcome_3d.obj\0", sizeof(ui->GLwidget->model_name) - 1);
-      model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
-      on_reset_model_released();
-      on_resetColor_clicked();
-      ui->GLwidget->initializeGLmodel();
-      ui->model_name_and_props->setText(
-          "Model name: " + QFileInfo(model_name).fileName() + " with " +
-          QString::number(ui->GLwidget->objData.vertexCount) + " vertices and " +
-          QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
-          QString::number(QFileInfo(model_name).size() / 1000, 'f', 3) + " kb");
-
+void MainViewer::on_pushButton_clicked() {
+  char* model_name = ui->GLwidget->model_name;  // Получаем указатель на массив
+  strncpy(model_name, "../frontend/default_models/welcome_3d.obj\0",
+          sizeof(ui->GLwidget->model_name) - 1);
+  model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
+  on_reset_model_released();
+  on_resetColor_clicked();
+  ui->GLwidget->initializeGLmodel();
+  ui->model_name_and_props->setText(
+      "Model name: " + QFileInfo(model_name).fileName() + " with " +
+      QString::number(ui->GLwidget->objData.vertexCount) + " vertices and " +
+      QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
+      QString::number(QFileInfo(model_name).size() / 1000, 'f', 3) + " kb");
 }
-
