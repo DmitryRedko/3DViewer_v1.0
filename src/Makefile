@@ -37,7 +37,7 @@ gcov_report: tests
 	open ./report/index.html
 
 clean:
-	rm -rf *.o *.a *.so *.gcda *.gcno *.gch rep.info *.html *.css test report *.txt test.info test.dSYM
+	rm -rf *.o *.a *.so *.gcda *.gcno *.gch rep.info *.html *.css test report *.txt test.info test.dSYM ./s21_tests
 	# cd back; make clean
 
 check: tests
