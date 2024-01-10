@@ -56,5 +56,6 @@ class MainViewer : public QMainWindow {
   void save_settings();
   void load_settings();
 
+  void on_pushButton_clicked();
 };
 #endif  // MAINVIEWER_H

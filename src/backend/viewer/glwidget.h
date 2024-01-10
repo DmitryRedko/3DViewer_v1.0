@@ -21,8 +21,9 @@ class GLWidget : public QGLWidget {
   void initializeGLmodel();
   void apply_transform();
   void free_memory();
-  char model_name[100] = " ";
-  int welcome_flag = 0;
+
+
+  char model_name[100] = "../frontend/default_models/welcome_3d.obj\0";
   int parse_flag = 0;
 //  int before_parse_flag = 0;
   ObjData objData;
@@ -51,7 +52,6 @@ class GLWidget : public QGLWidget {
   int default_background_red = 51;
   int default_background_green = 51;
   int default_background_blue = 51;
-
 
   int point_size = default_point_size;
   int line_width = default_line_width;

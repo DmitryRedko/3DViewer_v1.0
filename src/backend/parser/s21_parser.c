@@ -12,14 +12,12 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
   objData.faceCount = 0;
 
   if (strstr(file_path, ".obj") == NULL) {
-    fprintf(stderr, "File does not have .obj extension.\n");
     *parse_flag = 1;
     return objData;
   }
 
   FILE *file = fopen(file_path, "r");
   if (file == NULL) {
-    fprintf(stderr, "Unable to open file.\n");
     *parse_flag = 1;
     return objData;
   }

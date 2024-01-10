@@ -1,7 +1,5 @@
 #include "glwidget.h"
 
-#include <GL/freeglut.h>
-#include <GL/gl.h>
 #include <GL/glut.h>
 
 #include <QDebug>
@@ -38,19 +36,13 @@ void GLWidget::normalize_model(ObjData *data) {
   }
 
   zoom_operation(scale / maxVal, scale / maxVal, scale / maxVal, data, data);
+
 }
 
 void GLWidget::initializeGLmodel() {
 
-  if (welcome_flag == 0) {
-    const char defaultModel[] = "../frontend/default_models/welcome_3d.obj";
-    objData = parse_obj(defaultModel, &parse_flag);
-    baseData = parse_obj(defaultModel, &parse_flag);
-    welcome_flag = 1;
-  } else {
     objData = parse_obj(model_name, &parse_flag);
     baseData = parse_obj(model_name, &parse_flag);
-  }
 
   if (parse_flag == 0) {
     normalize_model(&baseData);
@@ -61,6 +53,7 @@ void GLWidget::initializeGLmodel() {
     parse_flag = 0;
     initializeGLmodel();
   }
+
 }
 
 void GLWidget::initializeGL() {

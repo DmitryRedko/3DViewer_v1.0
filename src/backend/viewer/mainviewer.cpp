@@ -11,20 +11,20 @@ MainViewer::MainViewer(QWidget* parent)
   ui->setupUi(this);
   myGLW = new GLWidget;
 
-  QString file_name = ui->pathLine->text();
-
   settings = new QSettings("21school", "3D_Viewer", this);
   load_settings();
 
   update_sliders();
 
-  ui->GLwidget->update();
-
+  QString file_name = ui->GLwidget->model_name;
 
   ui->model_name_and_props->setText(
       "Model name: " + QFileInfo(file_name).fileName() + " with " +
       QString::number(ui->GLwidget->objData.vertexCount) + " vertices and " +
-      QString::number(ui->GLwidget->objData.faceCount) + " faces");
+      QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
+      QString::number(QFileInfo(file_name).size() / 1000, 'f', 3) + " kb");
+
+    ui->GLwidget->update();
 
 }
 
@@ -171,6 +171,7 @@ void MainViewer::on_reset_model_released() {
       ui->quads->toggle();
 
   }
+  ui->GLwidget->draw_lines = 1;
 
   ui->GLwidget->resizeGL(ui->GLwidget->width(), ui->GLwidget->height());
   ui->GLwidget->update();
@@ -205,6 +206,7 @@ void MainViewer::on_openBtm_clicked() {
         QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
         QString::number(QFileInfo(file_name).size() / 1000, 'f', 3) + " kb");
   }
+
 }
 
 void MainViewer::on_point_size_scale_valueChanged(int value) {
@@ -356,12 +358,16 @@ void MainViewer::save_settings() {
 
   settings->setValue("model_name", ui->GLwidget->model_name);
 
-  settings->setValue("welcome_flag", ui->GLwidget->welcome_flag);
-
 }
 
 void MainViewer::load_settings() {
   if (settings->value("are_settings").toInt()) {
+
+      QByteArray modelNameBytes = settings->value("model_name").toString().toUtf8();
+      qstrncpy(ui->GLwidget->model_name, modelNameBytes.constData(), sizeof(ui->GLwidget->model_name));
+      ui->GLwidget->model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
+      ui->GLwidget->initializeGLmodel();
+
       ui->GLwidget->point_size = settings->value("point_size").toInt();
       ui->GLwidget->line_type = settings->value("line_type").toInt();
       ui->GLwidget->line_width = settings->value("line_width").toInt();
@@ -381,6 +387,7 @@ void MainViewer::load_settings() {
       ui->GLwidget->background_color_blue = settings->value("background_color_blue").toInt();
 
       ui->GLwidget->scale = settings->value("scale").toInt();
+
       ui->GLwidget->xMov = settings->value("move_x").toInt();
       ui->GLwidget->yMov = settings->value("move_y").toInt();
       ui->GLwidget->zMov = settings->value("move_z").toInt();
@@ -389,12 +396,25 @@ void MainViewer::load_settings() {
       ui->GLwidget->yRot = settings->value("rotation_y").toInt();
       ui->GLwidget->zRot = settings->value("rotation_z").toInt();
 
-      QByteArray modelNameBytes = settings->value("model_name").toString().toUtf8();
-      qstrncpy(ui->GLwidget->model_name, modelNameBytes.constData(), sizeof(ui->GLwidget->model_name));
-      ui->GLwidget->model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
-
-      ui->GLwidget->welcome_flag = settings->value("welcome_flag").toInt();
       ui->GLwidget->update();
   }
+}
+
+
+void MainViewer::on_pushButton_clicked()
+{
+    char* model_name =
+      ui->GLwidget->model_name;  // Получаем указатель на массив
+      strncpy(model_name, "../frontend/default_models/welcome_3d.obj\0", sizeof(ui->GLwidget->model_name) - 1);
+      model_name[sizeof(ui->GLwidget->model_name) - 1] = '\0';
+      on_reset_model_released();
+      on_resetColor_clicked();
+      ui->GLwidget->initializeGLmodel();
+      ui->model_name_and_props->setText(
+          "Model name: " + QFileInfo(model_name).fileName() + " with " +
+          QString::number(ui->GLwidget->objData.vertexCount) + " vertices and " +
+          QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
+          QString::number(QFileInfo(model_name).size() / 1000, 'f', 3) + " kb");
+
 }
 

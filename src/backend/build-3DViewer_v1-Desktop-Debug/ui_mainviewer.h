@@ -73,10 +73,11 @@ public:
     QLabel *translate_title;
     QFrame *open_file;
     QGridLayout *gridLayout_2;
-    QPushButton *fileBtm;
     QLineEdit *pathLine;
-    QPushButton *openBtm;
     QPushButton *reset_model;
+    QPushButton *fileBtm;
+    QPushButton *openBtm;
+    QPushButton *pushButton;
     QFrame *zoom_2;
     QGridLayout *gridLayout_10;
     QSlider *point_size_scale;
@@ -112,7 +113,7 @@ public:
     {
         if (MainViewer->objectName().isEmpty())
             MainViewer->setObjectName(QString::fromUtf8("MainViewer"));
-        MainViewer->resize(1161, 757);
+        MainViewer->resize(1161, 794);
         MainViewer->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";"));
         centralwidget = new QWidget(MainViewer);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -444,13 +445,52 @@ public:
         open_file->setFrameShadow(QFrame::Raised);
         gridLayout_2 = new QGridLayout(open_file);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        fileBtm = new QPushButton(open_file);
-        fileBtm->setObjectName(QString::fromUtf8("fileBtm"));
-        QSizePolicy sizePolicy4(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        pathLine = new QLineEdit(open_file);
+        pathLine->setObjectName(QString::fromUtf8("pathLine"));
+        QSizePolicy sizePolicy4(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(fileBtm->sizePolicy().hasHeightForWidth());
-        fileBtm->setSizePolicy(sizePolicy4);
+        sizePolicy4.setHeightForWidth(pathLine->sizePolicy().hasHeightForWidth());
+        pathLine->setSizePolicy(sizePolicy4);
+        pathLine->setMinimumSize(QSize(150, 0));
+        pathLine->setStyleSheet(QString::fromUtf8("padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"color: rgb(255, 255, 255);\n"
+"width: 100px;"));
+        pathLine->setReadOnly(true);
+
+        gridLayout_2->addWidget(pathLine, 0, 0, 1, 1);
+
+        reset_model = new QPushButton(open_file);
+        reset_model->setObjectName(QString::fromUtf8("reset_model"));
+        reset_model->setCursor(QCursor(Qt::PointingHandCursor));
+        reset_model->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: \"#737780\";\n"
+"    border: 1px solid white;\n"
+"    color: white;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: \"#A0A6AA\"; \n"
+"    color: black; \n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: \"#595E62\";\n"
+"    border: 1px solid black;  \n"
+"}\n"
+""));
+
+        gridLayout_2->addWidget(reset_model, 2, 0, 1, 2);
+
+        fileBtm = new QPushButton(open_file);
+        fileBtm->setObjectName(QString::fromUtf8("fileBtm"));
+        QSizePolicy sizePolicy5(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(fileBtm->sizePolicy().hasHeightForWidth());
+        fileBtm->setSizePolicy(sizePolicy5);
         fileBtm->setMinimumSize(QSize(40, 0));
         fileBtm->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: \"#737780\";\n"
@@ -471,22 +511,6 @@ public:
 ""));
 
         gridLayout_2->addWidget(fileBtm, 0, 1, 1, 1);
-
-        pathLine = new QLineEdit(open_file);
-        pathLine->setObjectName(QString::fromUtf8("pathLine"));
-        QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(pathLine->sizePolicy().hasHeightForWidth());
-        pathLine->setSizePolicy(sizePolicy5);
-        pathLine->setMinimumSize(QSize(150, 0));
-        pathLine->setStyleSheet(QString::fromUtf8("padding-left: 5px;\n"
-"padding-right: 5px;\n"
-"color: rgb(255, 255, 255);\n"
-"width: 100px;"));
-        pathLine->setReadOnly(true);
-
-        gridLayout_2->addWidget(pathLine, 0, 0, 1, 1);
 
         openBtm = new QPushButton(open_file);
         openBtm->setObjectName(QString::fromUtf8("openBtm"));
@@ -511,10 +535,9 @@ public:
 
         gridLayout_2->addWidget(openBtm, 1, 0, 1, 2);
 
-        reset_model = new QPushButton(open_file);
-        reset_model->setObjectName(QString::fromUtf8("reset_model"));
-        reset_model->setCursor(QCursor(Qt::PointingHandCursor));
-        reset_model->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        pushButton = new QPushButton(open_file);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: \"#737780\";\n"
 "    border: 1px solid white;\n"
 "    color: white;\n"
@@ -532,7 +555,7 @@ public:
 "}\n"
 ""));
 
-        gridLayout_2->addWidget(reset_model, 2, 0, 1, 2);
+        gridLayout_2->addWidget(pushButton, 3, 0, 1, 2);
 
 
         gridLayout->addWidget(open_file, 0, 0, 1, 2);
@@ -946,9 +969,10 @@ public:
         label_17->setText(QCoreApplication::translate("MainViewer", "Y", nullptr));
         label_18->setText(QCoreApplication::translate("MainViewer", "Z", nullptr));
         translate_title->setText(QCoreApplication::translate("MainViewer", "Move", nullptr));
+        reset_model->setText(QCoreApplication::translate("MainViewer", "RESET MODEL", nullptr));
         fileBtm->setText(QCoreApplication::translate("MainViewer", "file", nullptr));
         openBtm->setText(QCoreApplication::translate("MainViewer", "OPEN", nullptr));
-        reset_model->setText(QCoreApplication::translate("MainViewer", "RESET MODEL", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainViewer", "RESET TO DEFAULTS", nullptr));
         point_size_title->setText(QCoreApplication::translate("MainViewer", "Point size", nullptr));
         label_minus_5->setText(QCoreApplication::translate("MainViewer", "-", nullptr));
         label_plus_5->setText(QCoreApplication::translate("MainViewer", "+", nullptr));

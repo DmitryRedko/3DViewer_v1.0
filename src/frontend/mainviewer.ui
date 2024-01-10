@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1161</width>
-    <height>757</height>
+    <height>794</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -505,6 +505,60 @@ border: none;
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="pathLine">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">padding-left: 5px;
+padding-right: 5px;
+color: rgb(255, 255, 255);
+width: 100px;</string>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QPushButton" name="reset_model">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: &quot;#737780&quot;;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+}
+
+QPushButton:hover {
+    background-color: &quot;#A0A6AA&quot;; 
+    color: black; 
+}
+
+QPushButton:pressed {
+    background-color: &quot;#595E62&quot;;
+    border: 1px solid black;  
+}
+</string>
+            </property>
+            <property name="text">
+             <string>RESET MODEL</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="fileBtm">
             <property name="sizePolicy">
@@ -543,31 +597,6 @@ QPushButton:pressed {
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLineEdit" name="pathLine">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">padding-left: 5px;
-padding-right: 5px;
-color: rgb(255, 255, 255);
-width: 100px;</string>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0" colspan="2">
            <widget class="QPushButton" name="openBtm">
             <property name="cursor">
@@ -597,11 +626,8 @@ QPushButton:pressed {
             </property>
            </widget>
           </item>
-          <item row="2" column="0" colspan="2">
-           <widget class="QPushButton" name="reset_model">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
+          <item row="3" column="0" colspan="2">
+           <widget class="QPushButton" name="pushButton">
             <property name="styleSheet">
              <string notr="true">QPushButton {
     background-color: &quot;#737780&quot;;
@@ -622,7 +648,7 @@ QPushButton:pressed {
 </string>
             </property>
             <property name="text">
-             <string>RESET MODEL</string>
+             <string>RESET TO DEFAULTS</string>
             </property>
            </widget>
           </item>
