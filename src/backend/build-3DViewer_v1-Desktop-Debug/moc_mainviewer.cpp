@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainViewer_t {
-    QByteArrayData data[32];
-    char stringdata0[629];
+    QByteArrayData data[37];
+    char stringdata0[687];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -63,7 +63,12 @@ QT_MOC_LITERAL(27, 544, 19), // "on_parallel_clicked"
 QT_MOC_LITERAL(28, 564, 14), // "update_sliders"
 QT_MOC_LITERAL(29, 579, 13), // "save_settings"
 QT_MOC_LITERAL(30, 593, 13), // "load_settings"
-QT_MOC_LITERAL(31, 607, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(31, 607, 14), // "mouseMoveEvent"
+QT_MOC_LITERAL(32, 622, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(33, 635, 5), // "event"
+QT_MOC_LITERAL(34, 641, 10), // "wheelEvent"
+QT_MOC_LITERAL(35, 652, 12), // "QWheelEvent*"
+QT_MOC_LITERAL(36, 665, 21) // "on_pushButton_clicked"
 
     },
     "MainViewer\0on_rotate_x_valueChanged\0"
@@ -82,8 +87,9 @@ QT_MOC_LITERAL(31, 607, 21) // "on_pushButton_clicked"
     "on_line_clicked\0on_lineLoop_clicked\0"
     "on_quads_clicked\0on_perspective_clicked\0"
     "on_parallel_clicked\0update_sliders\0"
-    "save_settings\0load_settings\0"
-    "on_pushButton_clicked"
+    "save_settings\0load_settings\0mouseMoveEvent\0"
+    "QMouseEvent*\0event\0wheelEvent\0"
+    "QWheelEvent*\0on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -93,7 +99,7 @@ static const uint qt_meta_data_MainViewer[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      28,   14, // methods
+      30,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -101,34 +107,36 @@ static const uint qt_meta_data_MainViewer[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  154,    2, 0x08 /* Private */,
-       3,    0,  155,    2, 0x08 /* Private */,
-       4,    0,  156,    2, 0x08 /* Private */,
-       5,    0,  157,    2, 0x08 /* Private */,
-       6,    0,  158,    2, 0x08 /* Private */,
-       7,    0,  159,    2, 0x08 /* Private */,
-       8,    0,  160,    2, 0x08 /* Private */,
-       9,    0,  161,    2, 0x08 /* Private */,
-      10,    0,  162,    2, 0x08 /* Private */,
-      11,    0,  163,    2, 0x08 /* Private */,
-      12,    1,  164,    2, 0x08 /* Private */,
-      14,    1,  167,    2, 0x08 /* Private */,
-      15,    1,  170,    2, 0x08 /* Private */,
-      17,    0,  173,    2, 0x08 /* Private */,
-      18,    0,  174,    2, 0x08 /* Private */,
-      19,    0,  175,    2, 0x08 /* Private */,
-      20,    0,  176,    2, 0x08 /* Private */,
-      21,    0,  177,    2, 0x08 /* Private */,
-      22,    0,  178,    2, 0x08 /* Private */,
-      23,    0,  179,    2, 0x08 /* Private */,
-      24,    0,  180,    2, 0x08 /* Private */,
-      25,    0,  181,    2, 0x08 /* Private */,
-      26,    0,  182,    2, 0x08 /* Private */,
-      27,    0,  183,    2, 0x08 /* Private */,
-      28,    0,  184,    2, 0x08 /* Private */,
-      29,    0,  185,    2, 0x08 /* Private */,
-      30,    0,  186,    2, 0x08 /* Private */,
-      31,    0,  187,    2, 0x08 /* Private */,
+       1,    0,  164,    2, 0x08 /* Private */,
+       3,    0,  165,    2, 0x08 /* Private */,
+       4,    0,  166,    2, 0x08 /* Private */,
+       5,    0,  167,    2, 0x08 /* Private */,
+       6,    0,  168,    2, 0x08 /* Private */,
+       7,    0,  169,    2, 0x08 /* Private */,
+       8,    0,  170,    2, 0x08 /* Private */,
+       9,    0,  171,    2, 0x08 /* Private */,
+      10,    0,  172,    2, 0x08 /* Private */,
+      11,    0,  173,    2, 0x08 /* Private */,
+      12,    1,  174,    2, 0x08 /* Private */,
+      14,    1,  177,    2, 0x08 /* Private */,
+      15,    1,  180,    2, 0x08 /* Private */,
+      17,    0,  183,    2, 0x08 /* Private */,
+      18,    0,  184,    2, 0x08 /* Private */,
+      19,    0,  185,    2, 0x08 /* Private */,
+      20,    0,  186,    2, 0x08 /* Private */,
+      21,    0,  187,    2, 0x08 /* Private */,
+      22,    0,  188,    2, 0x08 /* Private */,
+      23,    0,  189,    2, 0x08 /* Private */,
+      24,    0,  190,    2, 0x08 /* Private */,
+      25,    0,  191,    2, 0x08 /* Private */,
+      26,    0,  192,    2, 0x08 /* Private */,
+      27,    0,  193,    2, 0x08 /* Private */,
+      28,    0,  194,    2, 0x08 /* Private */,
+      29,    0,  195,    2, 0x08 /* Private */,
+      30,    0,  196,    2, 0x08 /* Private */,
+      31,    1,  197,    2, 0x08 /* Private */,
+      34,    1,  200,    2, 0x08 /* Private */,
+      36,    0,  203,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -158,6 +166,8 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 32,   33,
+    QMetaType::Void, 0x80000000 | 35,   33,
     QMetaType::Void,
 
        0        // eod
@@ -196,7 +206,9 @@ void MainViewer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 24: _t->update_sliders(); break;
         case 25: _t->save_settings(); break;
         case 26: _t->load_settings(); break;
-        case 27: _t->on_pushButton_clicked(); break;
+        case 27: _t->mouseMoveEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 28: _t->wheelEvent((*reinterpret_cast< QWheelEvent*(*)>(_a[1]))); break;
+        case 29: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
@@ -231,13 +243,13 @@ int MainViewer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 28)
+        if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 28;
+        _id -= 30;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 28)
+        if (_id < 30)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 28;
+        _id -= 30;
     }
     return _id;
 }

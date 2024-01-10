@@ -4,6 +4,10 @@
 #include <QFileDialog>
 #include <cstring>
 
+#include <QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtCore/QCoreApplication>
+
 #include "ui_mainviewer.h"
 
 MainViewer::MainViewer(QWidget* parent)
@@ -416,4 +420,37 @@ void MainViewer::on_pushButton_clicked() {
       QString::number(ui->GLwidget->objData.vertexCount) + " vertices and " +
       QString::number(ui->GLwidget->objData.faceCount) + " faces, size: " +
       QString::number(QFileInfo(model_name).size() / 1000, 'f', 3) + " kb");
+}
+
+
+void MainViewer::mouseMoveEvent(QMouseEvent* event) {
+    // QPoint new_pos = event->globalPos() - cur_pos;
+    QPoint cursorPos = QCursor::pos();
+    if (event->buttons() & Qt::LeftButton) {
+        // xMov = new_pos.x();
+        // yMov = -new_pos.y();
+        ui->GLwidget->xMov = cursorPos.x();
+        ui->GLwidget->yMov = -cursorPos.y();
+        update_sliders();
+        ui->GLwidget->apply_transform();
+        ui->GLwidget->update();
+    } else if (event->buttons() & Qt::RightButton) {
+        // xRot = -new_pos.y();
+        // yRot = new_pos.x();
+        // apply_transform();
+        // update();
+        ui->GLwidget->xRot = -cursorPos.x();
+        ui->GLwidget->yRot = cursorPos.y();
+        update_sliders();
+        ui->GLwidget->apply_transform();
+        ui->GLwidget->update();
+    }
+}
+
+void MainViewer::wheelEvent(QWheelEvent *event) {
+    QPoint numDegrees = event->angleDelta() / 120;
+    ui->GLwidget->scale += numDegrees.y();
+    update_sliders();
+    ui->GLwidget->apply_transform();
+    ui->GLwidget->update();
 }

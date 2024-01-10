@@ -4,6 +4,9 @@
 #include <QColorDialog>
 #include <QMainWindow>
 #include <QSettings>
+#include <QMouseEvent>
+#include <QWheelEvent>
+#include <QPoint>
 
 #include "glwidget.h"
 
@@ -56,6 +59,8 @@ class MainViewer : public QMainWindow {
   void update_sliders();
   void save_settings();
   void load_settings();
+  void mouseMoveEvent (QMouseEvent* event) override;
+   void wheelEvent(QWheelEvent *event) override;
 
   void on_pushButton_clicked();
 };
