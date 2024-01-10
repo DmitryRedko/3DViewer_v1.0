@@ -426,7 +426,13 @@ void MainViewer::on_pushButton_clicked() {
 void MainViewer::mouseMoveEvent(QMouseEvent* event) {
     // QPoint new_pos = event->globalPos() - cur_pos;
     QPoint cursorPos = QCursor::pos();
-    if (event->buttons() & Qt::LeftButton) {
+    // QPoint cursorPos = event->globalPos();
+
+    //попытка передать event по указателю дальше в GLwidget
+    // ui->GLwidget->mouseMoveEvent(event);
+
+    if (event ->buttons() & Qt::LeftButton) {
+        // printf("egegei\n");
         // xMov = new_pos.x();
         // yMov = -new_pos.y();
         ui->GLwidget->xMov = cursorPos.x();
@@ -454,3 +460,14 @@ void MainViewer::wheelEvent(QWheelEvent *event) {
     ui->GLwidget->apply_transform();
     ui->GLwidget->update();
 }
+
+// void MainViewer::mouseMoveEvent(QMouseEvent *event) {
+//     QPoint cursorPos = QCursor::pos();
+//     // auto mousePos = this->mapFromGlobal(QCursor::globalPos());
+//     int move_x = cursorPos.x();
+//     int move_y = cursorPos.y();
+
+//     // Отправляем сигнал valueChanged с новым значением слайдера
+//    emit valueChanged(move_x);
+//    emit valueChanged(move_y);
+// }

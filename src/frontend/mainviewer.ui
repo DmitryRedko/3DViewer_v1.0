@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1161</width>
-    <height>794</height>
+    <height>819</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,6 @@ padding: 5px;</string>
       <property name="font">
        <font>
         <pointsize>24</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -1225,10 +1224,10 @@ padding-right: 3px;
      </widget>
     </item>
    </layout>
+   <zorder>GLwidget</zorder>
    <zorder>frame</zorder>
    <zorder>frame_8</zorder>
    <zorder>header</zorder>
-   <zorder>GLwidget</zorder>
   </widget>
  </widget>
  <customwidgets>

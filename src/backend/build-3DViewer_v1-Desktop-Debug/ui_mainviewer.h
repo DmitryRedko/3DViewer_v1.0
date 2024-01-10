@@ -113,7 +113,7 @@ public:
     {
         if (MainViewer->objectName().isEmpty())
             MainViewer->setObjectName(QString::fromUtf8("MainViewer"));
-        MainViewer->resize(1161, 794);
+        MainViewer->resize(1161, 819);
         MainViewer->setStyleSheet(QString::fromUtf8("background-color: \"#737780\";"));
         centralwidget = new QWidget(MainViewer);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -138,7 +138,6 @@ public:
         QFont font;
         font.setPointSize(24);
         font.setBold(true);
-        font.setWeight(75);
         header->setFont(font);
         header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
 "\n"
@@ -942,10 +941,10 @@ public:
         gridLayout_7->addWidget(frame, 0, 1, 3, 1);
 
         MainViewer->setCentralWidget(centralwidget);
+        GLwidget->raise();
         frame->raise();
         frame_8->raise();
         header->raise();
-        GLwidget->raise();
 
         retranslateUi(MainViewer);
 

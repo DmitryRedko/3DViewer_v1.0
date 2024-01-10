@@ -142,7 +142,6 @@ void GLWidget::free_memory() {
 
 void GLWidget::mouseMoveEvent(QMouseEvent *event) {
   // QPoint new_pos = event->globalPos() - cur_pos;
-
   // if (event->buttons() & Qt::LeftButton) {
   //   xMov = new_pos.x();
   //   yMov = -new_pos.y();
@@ -155,6 +154,8 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event) {
   //   update();
   // }
 }
+
+
 
 void GLWidget::wheelEvent(QWheelEvent *event) {
   // QPoint numDegrees = event->angleDelta() / 120;

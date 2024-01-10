@@ -7,6 +7,8 @@
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QPoint>
+#include <QObject>
+#include <QScreen>
 
 #include "glwidget.h"
 
@@ -30,6 +32,11 @@ class MainViewer : public QMainWindow {
 
  public:
   QSettings *settings;
+     QPoint cur_pos;
+     QPoint new_pos;
+
+ signals:
+     void valueChanged(int);
 
  private slots:
   void on_rotate_x_valueChanged();
