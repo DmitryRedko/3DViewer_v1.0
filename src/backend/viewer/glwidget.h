@@ -80,8 +80,8 @@ class GLWidget : public QGLWidget {
         zRot = default_zRot, xMov = default_xMov, yMov = default_yMov,
         zMov = default_zMov;
 
-  void mouseMoveEvent(QMouseEvent *event) override;
-  void wheelEvent(QWheelEvent *event) override;
+  // void mouseMoveEvent(QMouseEvent *event) override;
+  // void wheelEvent(QWheelEvent *event) override;
   QPoint cur_pos;
   QPoint new_pos;
 };

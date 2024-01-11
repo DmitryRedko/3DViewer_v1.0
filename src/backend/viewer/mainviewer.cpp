@@ -435,8 +435,8 @@ void MainViewer::mouseMoveEvent(QMouseEvent* event) {
         // printf("egegei\n");
         // xMov = new_pos.x();
         // yMov = -new_pos.y();
-        ui->GLwidget->xMov = cursorPos.x();
-        ui->GLwidget->yMov = -cursorPos.y();
+        ui->GLwidget->xMov = cursorPos.x() / 50;
+        ui->GLwidget->yMov = -cursorPos.y() / 50;
         update_sliders();
         ui->GLwidget->apply_transform();
         ui->GLwidget->update();
@@ -445,8 +445,8 @@ void MainViewer::mouseMoveEvent(QMouseEvent* event) {
         // yRot = new_pos.x();
         // apply_transform();
         // update();
-        ui->GLwidget->xRot = -cursorPos.x();
-        ui->GLwidget->yRot = cursorPos.y();
+        ui->GLwidget->xRot = -cursorPos.x() / 50;
+        ui->GLwidget->yRot = cursorPos.y() / 50;
         update_sliders();
         ui->GLwidget->apply_transform();
         ui->GLwidget->update();
