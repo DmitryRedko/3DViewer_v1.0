@@ -10,6 +10,13 @@
 #include <QObject>
 #include <QScreen>
 
+#include <QImage>
+#include <QOpenGLFramebufferObject>
+#include <QIcon>
+#include <QPushButton>
+#include <QImageReader>
+
+
 #include "glwidget.h"
 
 QT_BEGIN_NAMESPACE
@@ -29,6 +36,7 @@ class MainViewer : public QMainWindow {
  private:
   Ui::MainViewer *ui;
   GLWidget *myGLW;
+  void captureOpenGLScene();
 
  public:
   QSettings *settings;
@@ -70,5 +78,6 @@ class MainViewer : public QMainWindow {
    void wheelEvent(QWheelEvent *event) override;
 
   void on_pushButton_clicked();
+  void on_saveImage_clicked();
 };
 #endif  // MAINVIEWER_H

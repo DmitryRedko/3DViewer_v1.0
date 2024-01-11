@@ -35,6 +35,12 @@ public:
     QFrame *frame_8;
     QGridLayout *gridLayout_6;
     QLabel *model_name_and_props;
+    QGridLayout *gridLayout_9;
+    QVBoxLayout *verticalLayout_3;
+    QRadioButton *jpeg;
+    QRadioButton *bmp;
+    QPushButton *saveImage;
+    GLWidget *GLwidget;
     QFrame *frame;
     QGridLayout *gridLayout;
     QFrame *zoom_11;
@@ -107,7 +113,6 @@ public:
     QRadioButton *noLine;
     QRadioButton *line;
     QLabel *header;
-    GLWidget *GLwidget;
 
     void setupUi(QMainWindow *MainViewer)
     {
@@ -137,8 +142,49 @@ public:
 
         gridLayout_6->addWidget(model_name_and_props, 0, 0, 1, 1);
 
+        gridLayout_9 = new QGridLayout();
+        gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        jpeg = new QRadioButton(frame_8);
+        jpeg->setObjectName(QString::fromUtf8("jpeg"));
+        jpeg->setMaximumSize(QSize(70, 16777215));
+        jpeg->setChecked(true);
+
+        verticalLayout_3->addWidget(jpeg);
+
+        bmp = new QRadioButton(frame_8);
+        bmp->setObjectName(QString::fromUtf8("bmp"));
+        bmp->setMaximumSize(QSize(70, 16777215));
+
+        verticalLayout_3->addWidget(bmp);
+
+
+        gridLayout_9->addLayout(verticalLayout_3, 0, 1, 1, 1);
+
+        saveImage = new QPushButton(frame_8);
+        saveImage->setObjectName(QString::fromUtf8("saveImage"));
+        saveImage->setMinimumSize(QSize(40, 40));
+        saveImage->setMaximumSize(QSize(40, 40));
+        saveImage->setStyleSheet(QString::fromUtf8(""));
+        saveImage->setIconSize(QSize(30, 30));
+
+        gridLayout_9->addWidget(saveImage, 0, 0, 1, 1);
+
+
+        gridLayout_6->addLayout(gridLayout_9, 0, 1, 1, 1);
+
 
         gridLayout_7->addWidget(frame_8, 2, 0, 1, 1);
+
+        GLwidget = new GLWidget(centralwidget);
+        GLwidget->setObjectName(QString::fromUtf8("GLwidget"));
+        GLwidget->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
+"background-color: \"#252628\";\n"
+"border: 1px solid \"#252628\";\n"
+"padding: 5px;"));
+
+        gridLayout_7->addWidget(GLwidget, 1, 0, 1, 1);
 
         frame = new QFrame(centralwidget);
         frame->setObjectName(QString::fromUtf8("frame"));
@@ -921,6 +967,7 @@ public:
         QFont font;
         font.setPointSize(24);
         font.setBold(true);
+        font.setWeight(75);
         header->setFont(font);
         header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
 "\n"
@@ -930,15 +977,6 @@ public:
         header->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         gridLayout_7->addWidget(header, 0, 0, 1, 1);
-
-        GLwidget = new GLWidget(centralwidget);
-        GLwidget->setObjectName(QString::fromUtf8("GLwidget"));
-        GLwidget->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
-"background-color: \"#252628\";\n"
-"border: 1px solid \"#252628\";\n"
-"padding: 5px;"));
-
-        gridLayout_7->addWidget(GLwidget, 1, 0, 1, 1);
 
         MainViewer->setCentralWidget(centralwidget);
         GLwidget->raise();
@@ -955,6 +993,9 @@ public:
     {
         MainViewer->setWindowTitle(QCoreApplication::translate("MainViewer", "MainViewer", nullptr));
         model_name_and_props->setText(QCoreApplication::translate("MainViewer", "Model name and properties", nullptr));
+        jpeg->setText(QCoreApplication::translate("MainViewer", "JPEG", nullptr));
+        bmp->setText(QCoreApplication::translate("MainViewer", "BMP", nullptr));
+        saveImage->setText(QString());
         perspective->setText(QCoreApplication::translate("MainViewer", "Perspective", nullptr));
         parallel->setText(QCoreApplication::translate("MainViewer", "Parallel", nullptr));
         line_type_lablel_4->setText(QCoreApplication::translate("MainViewer", "Projection type", nullptr));

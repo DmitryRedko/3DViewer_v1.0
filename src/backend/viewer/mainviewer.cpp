@@ -16,6 +16,19 @@ MainViewer::MainViewer(QWidget* parent)
   myGLW = new GLWidget;
 
   settings = new QSettings("21school", "3D_Viewer", this);
+
+  // Assuming your image file is in the resource file or on the disk
+  QString imagePath = "../frontend/photo.png"; // Replace with the actual path
+
+  // Load the image into a QIcon
+  QIcon icon(imagePath);
+
+  // Set the icon for the button
+  ui->saveImage->setIcon(icon);
+
+  // Adjust the size of the button to fit the icon
+  ui->saveImage->setIconSize(QSize(50, 50)); // Set the desired size
+
   load_settings();
 
   update_sliders();
@@ -471,3 +484,42 @@ void MainViewer::wheelEvent(QWheelEvent *event) {
 //    emit valueChanged(move_x);
 //    emit valueChanged(move_y);
 // }
+
+
+void MainViewer::captureOpenGLScene() {
+
+
+
+    QString filePath = QFileDialog::getSaveFileName(this, tr("Save Image"), "", tr("All Files (*)"));
+    // Create an FBO
+    QOpenGLFramebufferObject fbo(ui->GLwidget->width(), ui->GLwidget->height());
+
+    // Bind the FBO for rendering
+    fbo.bind();
+
+    // Render the scene
+    ui->GLwidget->paintGL(); // Assuming your paintGL() function renders the scene
+
+    // Release the FBO
+    fbo.release();
+
+    // Read pixels from the FBO
+    QImage image = fbo.toImage();
+
+    if(ui->jpeg->isChecked()){
+        filePath+=".jpeg";
+    }
+    else {
+        filePath+=".bmp";
+    }
+    qDebug() << filePath;
+    // Save the image to a file
+    image.save(filePath); // or "output.bmp"
+}
+
+
+void MainViewer::on_saveImage_clicked()
+{
+     captureOpenGLScene();
+}
+

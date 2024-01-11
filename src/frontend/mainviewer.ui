@@ -46,7 +46,82 @@
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <layout class="QGridLayout" name="gridLayout_9">
+         <item row="0" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QRadioButton" name="jpeg">
+             <property name="maximumSize">
+              <size>
+               <width>70</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>JPEG</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="bmp">
+             <property name="maximumSize">
+              <size>
+               <width>70</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>BMP</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="saveImage">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="GLWidget" name="GLwidget" native="true">
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px; 
+background-color: &quot;#252628&quot;;
+border: 1px solid &quot;#252628&quot;;
+padding: 5px;</string>
+      </property>
      </widget>
     </item>
     <item row="0" column="1" rowspan="3">
@@ -1195,6 +1270,7 @@ padding-right: 3px;
       <property name="font">
        <font>
         <pointsize>24</pointsize>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -1210,16 +1286,6 @@ padding: 5px;
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="GLWidget" name="GLwidget" native="true">
-      <property name="styleSheet">
-       <string notr="true">border-radius: 10px; 
-background-color: &quot;#252628&quot;;
-border: 1px solid &quot;#252628&quot;;
-padding: 5px;</string>
       </property>
      </widget>
     </item>
