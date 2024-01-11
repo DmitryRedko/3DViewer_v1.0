@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DGIFIMAGE_NO_LIB -DQT_QML_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../viewer -I. -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I../viewer -I. -I../viewer/3rdparty/QtGifImage/src/gifimage -I../viewer/3rdparty/QtGifImage/src/3rdParty/giflib -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = 3DViewer_v11.0.0
-DISTDIR = /home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/build-3DViewer_v1-Desktop-Debug/.tmp/3DViewer_v11.0.0
+DISTDIR = /home/tim/school-21/3DViewer_v1.0/src/backend/build-3DViewer_v1-Desktop-Debug/.tmp/3DViewer_v11.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) -lglut -lGLU /usr/lib/x86_64-linux-gnu/libQt5OpenGL.so /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
@@ -52,12 +52,26 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../operations/s21_arithmetic.c \
+SOURCES       = ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/dgif_lib.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/egif_lib.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_err.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gifalloc.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/quantize.c \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.cpp \
+		../operations/s21_arithmetic.c \
 		../parser/s21_parser.c \
 		../viewer/glwidget.cpp \
 		../viewer/main.cpp \
 		../viewer/mainviewer.cpp moc_mainviewer.cpp
-OBJECTS       = s21_arithmetic.o \
+OBJECTS       = dgif_lib.o \
+		egif_lib.o \
+		gif_err.o \
+		gif_hash.o \
+		gifalloc.o \
+		quantize.o \
+		qgifimage.o \
+		s21_arithmetic.o \
 		s21_parser.o \
 		glwidget.o \
 		main.o \
@@ -124,6 +138,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib.pri \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qtgifimage.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf \
@@ -141,9 +157,19 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../viewer/3DViewer_v1.pro ../backend.h \
+		../viewer/3DViewer_v1.pro ../viewer/3rdparty/QtGifImage/src/gifimage/qgifglobal.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage_p.h \
+		../backend.h \
 		../viewer/glwidget.h \
-		../viewer/mainviewer.h ../operations/s21_arithmetic.c \
+		../viewer/mainviewer.h ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/dgif_lib.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/egif_lib.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_err.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gifalloc.c \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/quantize.c \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.cpp \
+		../operations/s21_arithmetic.c \
 		../parser/s21_parser.c \
 		../viewer/glwidget.cpp \
 		../viewer/main.cpp \
@@ -221,6 +247,8 @@ Makefile: ../viewer/3DViewer_v1.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib.pri \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qtgifimage.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf \
@@ -301,6 +329,8 @@ Makefile: ../viewer/3DViewer_v1.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
+../viewer/3rdparty/QtGifImage/src/3rdParty/giflib.pri:
+../viewer/3rdparty/QtGifImage/src/gifimage/qtgifimage.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf:
@@ -334,8 +364,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../backend.h ../viewer/glwidget.h ../viewer/mainviewer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../operations/s21_arithmetic.c ../parser/s21_parser.c ../viewer/glwidget.cpp ../viewer/main.cpp ../viewer/mainviewer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../viewer/3rdparty/QtGifImage/src/gifimage/qgifglobal.h ../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.h ../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage_p.h ../backend.h ../viewer/glwidget.h ../viewer/mainviewer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/dgif_lib.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/egif_lib.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_err.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gifalloc.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/quantize.c ../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.cpp ../operations/s21_arithmetic.c ../parser/s21_parser.c ../viewer/glwidget.cpp ../viewer/main.cpp ../viewer/mainviewer.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../frontend/mainviewer.ui $(DISTDIR)/
 
 
@@ -372,11 +402,13 @@ compiler_moc_header_make_all: moc_mainviewer.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainviewer.cpp
 moc_mainviewer.cpp: ../viewer/mainviewer.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifglobal.h \
 		../viewer/glwidget.h \
 		../backend.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/build-3DViewer_v1-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/viewer -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../viewer/mainviewer.h -o moc_mainviewer.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/tim/school-21/3DViewer_v1.0/src/backend/build-3DViewer_v1-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/tim/school-21/3DViewer_v1.0/src/backend/viewer -I/home/tim/school-21/3DViewer_v1.0/src/backend/viewer/3rdparty/QtGifImage/src/gifimage -I/home/tim/school-21/3DViewer_v1.0/src/backend/viewer/3rdparty/QtGifImage/src/3rdParty/giflib -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../viewer/mainviewer.h -o moc_mainviewer.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -401,6 +433,40 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
+dgif_lib.o: ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/dgif_lib.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib_private.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o dgif_lib.o ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/dgif_lib.c
+
+egif_lib.o: ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/egif_lib.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib_private.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o egif_lib.o ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/egif_lib.c
+
+gif_err.o: ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_err.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib_private.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o gif_err.o ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_err.c
+
+gif_hash.o: ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib_private.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o gif_hash.o ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.c
+
+gifalloc.o: ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gifalloc.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o gifalloc.o ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gifalloc.c
+
+quantize.o: ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/quantize.c ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib_private.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o quantize.o ../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/quantize.c
+
+qgifimage.o: ../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.cpp ../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifglobal.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage_p.h \
+		../viewer/3rdparty/QtGifImage/src/3rdParty/giflib/gif_lib.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qgifimage.o ../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.cpp
+
 s21_arithmetic.o: ../operations/s21_arithmetic.c ../backend.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_arithmetic.o ../operations/s21_arithmetic.c
 
@@ -412,12 +478,16 @@ glwidget.o: ../viewer/glwidget.cpp ../viewer/glwidget.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o glwidget.o ../viewer/glwidget.cpp
 
 main.o: ../viewer/main.cpp ../viewer/mainviewer.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifglobal.h \
 		../viewer/glwidget.h \
 		../backend.h \
 		../parser/s21_parser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../viewer/main.cpp
 
 mainviewer.o: ../viewer/mainviewer.cpp ../viewer/mainviewer.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifimage.h \
+		../viewer/3rdparty/QtGifImage/src/gifimage/qgifglobal.h \
 		../viewer/glwidget.h \
 		../backend.h \
 		ui_mainviewer.h

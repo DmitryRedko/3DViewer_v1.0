@@ -40,6 +40,7 @@ public:
     QRadioButton *jpeg;
     QRadioButton *bmp;
     QPushButton *saveImage;
+    QPushButton *save_gif_button;
     GLWidget *GLwidget;
     QFrame *frame;
     QGridLayout *gridLayout;
@@ -160,7 +161,7 @@ public:
         verticalLayout_3->addWidget(bmp);
 
 
-        gridLayout_9->addLayout(verticalLayout_3, 0, 1, 1, 1);
+        gridLayout_9->addLayout(verticalLayout_3, 0, 2, 1, 1);
 
         saveImage = new QPushButton(frame_8);
         saveImage->setObjectName(QString::fromUtf8("saveImage"));
@@ -169,7 +170,16 @@ public:
         saveImage->setStyleSheet(QString::fromUtf8(""));
         saveImage->setIconSize(QSize(30, 30));
 
-        gridLayout_9->addWidget(saveImage, 0, 0, 1, 1);
+        gridLayout_9->addWidget(saveImage, 0, 1, 1, 1);
+
+        save_gif_button = new QPushButton(frame_8);
+        save_gif_button->setObjectName(QString::fromUtf8("save_gif_button"));
+        save_gif_button->setMinimumSize(QSize(40, 40));
+        save_gif_button->setMaximumSize(QSize(40, 40));
+        save_gif_button->setStyleSheet(QString::fromUtf8(""));
+        save_gif_button->setIconSize(QSize(30, 30));
+
+        gridLayout_9->addWidget(save_gif_button, 0, 0, 1, 1);
 
 
         gridLayout_6->addLayout(gridLayout_9, 0, 1, 1, 1);
@@ -967,7 +977,6 @@ public:
         QFont font;
         font.setPointSize(24);
         font.setBold(true);
-        font.setWeight(75);
         header->setFont(font);
         header->setStyleSheet(QString::fromUtf8("border-radius: 10px; \n"
 "\n"
@@ -996,6 +1005,7 @@ public:
         jpeg->setText(QCoreApplication::translate("MainViewer", "JPEG", nullptr));
         bmp->setText(QCoreApplication::translate("MainViewer", "BMP", nullptr));
         saveImage->setText(QString());
+        save_gif_button->setText(QString());
         perspective->setText(QCoreApplication::translate("MainViewer", "Perspective", nullptr));
         parallel->setText(QCoreApplication::translate("MainViewer", "Parallel", nullptr));
         line_type_lablel_4->setText(QCoreApplication::translate("MainViewer", "Projection type", nullptr));

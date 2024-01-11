@@ -9,12 +9,19 @@
 #include <QPoint>
 #include <QObject>
 #include <QScreen>
+#include <QDateTime>
 
 #include <QImage>
 #include <QOpenGLFramebufferObject>
 #include <QIcon>
 #include <QPushButton>
 #include <QImageReader>
+#include <QMessageBox>
+
+// #include <gif_lib.h>e
+// #include <libgif/encoder.h>
+// #include <iostream>
+#include <3rdparty/QtGifImage/src/gifimage/qgifimage.h>
 
 
 #include "glwidget.h"
@@ -37,6 +44,12 @@ class MainViewer : public QMainWindow {
   Ui::MainViewer *ui;
   GLWidget *myGLW;
   void captureOpenGLScene();
+  void bind_slots();
+  //gif
+  QString gif_name;
+  QGifImage *gif_frame;
+  int frames_counter = 0;
+  QTimer timer;
 
  public:
   QSettings *settings;
@@ -45,6 +58,7 @@ class MainViewer : public QMainWindow {
 
  signals:
      void valueChanged(int);
+
 
  private slots:
   void on_rotate_x_valueChanged();
@@ -79,5 +93,12 @@ class MainViewer : public QMainWindow {
 
   void on_pushButton_clicked();
   void on_saveImage_clicked();
+
+
+
+  // void saveGif(QGLWidget *widget, const QString &fileName);
+  void saveGif();
+  void on_save_gif_button_pressed();
+  void on_save_gif_button_clicked();
 };
 #endif  // MAINVIEWER_H

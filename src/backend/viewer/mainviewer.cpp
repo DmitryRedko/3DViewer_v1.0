@@ -15,19 +15,25 @@ MainViewer::MainViewer(QWidget* parent)
   ui->setupUi(this);
   myGLW = new GLWidget;
 
+  bind_slots();
+
   settings = new QSettings("21school", "3D_Viewer", this);
 
   // Assuming your image file is in the resource file or on the disk
   QString imagePath = "../frontend/photo.png"; // Replace with the actual path
+  QString imagePath2 = "../frontend/video.png"; // Replace with the actual path
 
   // Load the image into a QIcon
   QIcon icon(imagePath);
+  QIcon icon2(imagePath2);
 
   // Set the icon for the button
   ui->saveImage->setIcon(icon);
+  ui->save_gif_button->setIcon(icon2);
 
   // Adjust the size of the button to fit the icon
   ui->saveImage->setIconSize(QSize(50, 50)); // Set the desired size
+  ui->save_gif_button->setIconSize(QSize(50, 50));
 
   load_settings();
 
@@ -48,6 +54,14 @@ MainViewer::~MainViewer() {
   save_settings();
   ui->GLwidget->free_memory();
   delete ui;
+}
+
+void MainViewer::bind_slots() {
+    // connect(timer, SIGNAL(timeout()), this, SLOT(saveGif()));
+    QObject::connect(&timer, &QTimer::timeout, [this]{
+        saveGif();
+        // qDebug() << "Timer expired";
+    });
 }
 
 void MainViewer::update_sliders() {
@@ -508,11 +522,11 @@ void MainViewer::captureOpenGLScene() {
 
     if(ui->jpeg->isChecked()){
         filePath+=".jpeg";
-    }
-    else {
+    } else {
         filePath+=".bmp";
     }
-    qDebug() << filePath;
+
+    // qDebug() << filePath;
     // Save the image to a file
     image.save(filePath); // or "output.bmp"
 }
@@ -521,5 +535,55 @@ void MainViewer::captureOpenGLScene() {
 void MainViewer::on_saveImage_clicked()
 {
      captureOpenGLScene();
+}
+
+void MainViewer::saveGif()
+{
+    QImage image = ui->GLwidget->grabFrameBuffer();
+    QSize image_size(640, 480);
+    QImage scaled_image = image.scaled(image_size);
+
+    gif_frame->addFrame(scaled_image);
+
+    if (frames_counter == 50) {
+        timer.stop();
+        gif_frame->save(gif_name);
+        frames_counter = 0;
+        QMessageBox messageBoxGif;
+        messageBoxGif.information(0, "", "Gif animation saved successfully");
+        delete gif_frame;
+        ui->save_gif_button->setText("");
+        ui->save_gif_button->setEnabled(true);
+    }
+    frames_counter++;
+    if (!ui->save_gif_button->isEnabled()) {
+        ui->save_gif_button->setText(QString::number(frames_counter / 10) + "s");
+    }
+}
+
+void MainViewer::on_save_gif_button_pressed()
+{
+
+}
+
+
+void MainViewer::on_save_gif_button_clicked()
+{
+    // gif_name = "animat.gif";
+    QDateTime current_date = QDateTime::currentDateTime();
+    QString formattedTime = current_date.toString("yyyy-MM-dd hh.mm.ss");
+    QString name_pattern = "Screen Cast " + formattedTime + ".gif";
+    gif_name = QFileDialog::getSaveFileName(this, tr("Save a gif animation"),
+    name_pattern, tr("gif (*.gif)"));
+
+
+   if (gif_name != "") {
+    gif_frame = new QGifImage;
+    gif_frame->setDefaultDelay(10);
+    timer.setInterval(100);
+    timer.start();
+
+    // qDebug() << gif_name;
+   }
 }
 

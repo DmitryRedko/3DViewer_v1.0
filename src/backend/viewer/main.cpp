@@ -11,6 +11,7 @@ extern "C" {
 #include <QDebug>
 
 int main(int argc, char *argv[]) {
+
   glutInit(&argc, argv);
   QApplication a(argc, argv);
   //указание локали, т.к. русская убунту может не давать грузить нормально

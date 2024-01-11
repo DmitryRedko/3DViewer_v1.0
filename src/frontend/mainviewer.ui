@@ -48,7 +48,7 @@
        </item>
        <item row="0" column="1">
         <layout class="QGridLayout" name="gridLayout_9">
-         <item row="0" column="1">
+         <item row="0" column="2">
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <widget class="QRadioButton" name="jpeg">
@@ -81,8 +81,36 @@
            </item>
           </layout>
          </item>
-         <item row="0" column="0">
+         <item row="0" column="1">
           <widget class="QPushButton" name="saveImage">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="save_gif_button">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -1270,7 +1298,6 @@ padding-right: 3px;
       <property name="font">
        <font>
         <pointsize>24</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
