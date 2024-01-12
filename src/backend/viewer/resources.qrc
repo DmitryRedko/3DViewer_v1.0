@@ -2,5 +2,7 @@
     <qresource prefix="/res">
         <file>res/video.png</file>
         <file>res/photo.png</file>
+        <file>res/error_3d.obj</file>
+        <file>res/welcome_3d.obj</file>
     </qresource>
 </RCC>
