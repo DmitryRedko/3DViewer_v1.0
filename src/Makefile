@@ -7,12 +7,6 @@ TEST_FLAGS = -lcheck
 
 SOURCE_DVI = 3d_viewer
 
-all: pdf
-
-clean:
-	rm -f *.aux *.log *.pdf *.dvi
-
-
 ifeq ($(OS), Darwin)
 	TEST_LIBS=-lcheck
 else
@@ -53,8 +47,9 @@ gcov_report: tests
 clean:
 	rm -rf *.o *.a *.so *.gcda *.gcno *.gch rep.info *.html *.css test report *.txt test.info test.dSYM ./s21_tests
 	cd backend/viewer; make clean
-	cd backend/viewer; rm -rf make
+	cd backend/viewer; rm -rf .qmake.stash
 	rm -rf 3DViewer_v11.0.0.tar.gz
+	rm -f *.aux *.log *.pdf *.dvi
 
 
 check: tests
