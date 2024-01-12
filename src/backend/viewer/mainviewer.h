@@ -90,7 +90,7 @@ class MainViewer : public QMainWindow {
   void update_sliders();
   void save_settings();
   void load_settings();
-  void mousePressEvent(QMouseEvent *event);
+  void mousePressEvent(QMouseEvent *event) override;
   void mouseMoveEvent (QMouseEvent* event) override;
    void wheelEvent(QWheelEvent *event) override;
 

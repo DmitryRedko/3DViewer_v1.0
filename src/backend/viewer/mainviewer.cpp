@@ -461,7 +461,7 @@ void MainViewer::mouseMoveEvent(QMouseEvent* event) {
     QRect  screenGeometry = screen->geometry();
     int desktop_height = screenGeometry.height();
     int desktop_width = screenGeometry.width();
-    qDebug() << "Resolution: " << desktop_height << "x" << desktop_width;
+    // qDebug() << "Resolution: " << desktop_height << "x" << desktop_width;
 
     int norm_coef_x = desktop_width / 200; //slider value: min value 100 + max value 100 = 200
     int norm_coef_y = desktop_height / 200; //slider value: min value 100 + max value 100 = 200
@@ -472,14 +472,14 @@ void MainViewer::mouseMoveEvent(QMouseEvent* event) {
 
     qDebug() << "prev_x: " << prev_x;
 
-    int gl_widget_width = ui->GLwidget->width();
-    int gl_widget_heighy = ui->GLwidget->height();
+    // int gl_widget_width = ui->GLwidget->width();
+    // int gl_widget_heighy = ui->GLwidget->height();
 
     if (event ->buttons() & Qt::LeftButton) {
         int diff_prev_and_cur_x = prev_x - event->globalX();
         int diff_prev_and_cur_y = prev_y - event->globalY();
 
-        qDebug() << "diff_x: " << diff_prev_and_cur_x;
+        // qDebug() << "diff_x: " << diff_prev_and_cur_x;
 
         ui->GLwidget->xMov = -diff_prev_and_cur_x / norm_coef_x;
         ui->GLwidget->yMov = diff_prev_and_cur_y / norm_coef_y;
