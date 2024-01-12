@@ -470,7 +470,7 @@ void MainViewer::mouseMoveEvent(QMouseEvent* event) {
     int prev_x = cur_pos.x();
     int prev_y = cur_pos.y();
 
-    qDebug() << "prev_x: " << prev_x;
+    // qDebug() << "prev_x: " << prev_x;
 
     // int gl_widget_width = ui->GLwidget->width();
     // int gl_widget_heighy = ui->GLwidget->height();
