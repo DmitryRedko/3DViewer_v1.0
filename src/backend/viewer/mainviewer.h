@@ -1,29 +1,26 @@
 #ifndef MAINVIEWER_H
 #define MAINVIEWER_H
 
-
 #include <QColorDialog>
-#include <QMainWindow>
-#include <QSettings>
-#include <QMouseEvent>
-#include <QWheelEvent>
-#include <QPoint>
-#include <QObject>
-#include <QScreen>
 #include <QDateTime>
-
-#include <QImage>
-#include <QOpenGLFramebufferObject>
 #include <QIcon>
-#include <QPushButton>
+#include <QImage>
 #include <QImageReader>
+#include <QMainWindow>
 #include <QMessageBox>
+#include <QMouseEvent>
+#include <QObject>
+#include <QOpenGLFramebufferObject>
+#include <QPoint>
+#include <QPushButton>
+#include <QScreen>
+#include <QSettings>
+#include <QWheelEvent>
 
 // #include <gif_lib.h>e
 // #include <libgif/encoder.h>
 // #include <iostream>
 #include <3rdparty/QtGifImage/src/gifimage/qgifimage.h>
-
 
 #include "glwidget.h"
 
@@ -46,7 +43,7 @@ class MainViewer : public QMainWindow {
   GLWidget *myGLW;
   void captureOpenGLScene();
   void bind_slots();
-  //gif
+  // gif
   QString gif_name;
   QGifImage *gif_frame;
   int frames_counter = 0;
@@ -57,10 +54,8 @@ class MainViewer : public QMainWindow {
  public:
   QSettings *settings;
 
-
  signals:
-     void valueChanged(int);
-
+  void valueChanged(int);
 
  private slots:
   void on_rotate_x_valueChanged();
@@ -91,13 +86,11 @@ class MainViewer : public QMainWindow {
   void save_settings();
   void load_settings();
   void mousePressEvent(QMouseEvent *event) override;
-  void mouseMoveEvent (QMouseEvent* event) override;
-   void wheelEvent(QWheelEvent *event) override;
+  void mouseMoveEvent(QMouseEvent *event) override;
+  void wheelEvent(QWheelEvent *event) override;
 
   void on_pushButton_clicked();
   void on_saveImage_clicked();
-
-
 
   // void saveGif(QGLWidget *widget, const QString &fileName);
   void saveGif();

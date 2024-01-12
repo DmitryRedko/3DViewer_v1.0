@@ -1,12 +1,11 @@
 #include "mainviewer.h"
 
+#include <QApplication>
 #include <QDebug>
 #include <QFileDialog>
-#include <cstring>
-
-#include <QApplication>
-#include <QtWidgets/QMainWindow>
 #include <QtCore/QCoreApplication>
+#include <QtWidgets/QMainWindow>
+#include <cstring>
 
 #include "ui_mainviewer.h"
 
@@ -20,8 +19,8 @@ MainViewer::MainViewer(QWidget* parent)
   settings = new QSettings("21school", "3D_Viewer", this);
 
   // Assuming your image file is in the resource file or on the disk
-  QString imagePath = "../frontend/photo.png"; // Replace with the actual path
-  QString imagePath2 = "../frontend/video.png"; // Replace with the actual path
+  QString imagePath = "../frontend/photo.png";   // Replace with the actual path
+  QString imagePath2 = "../frontend/video.png";  // Replace with the actual path
 
   // Load the image into a QIcon
   QIcon icon(imagePath);
@@ -32,7 +31,7 @@ MainViewer::MainViewer(QWidget* parent)
   ui->save_gif_button->setIcon(icon2);
 
   // Adjust the size of the button to fit the icon
-  ui->saveImage->setIconSize(QSize(50, 50)); // Set the desired size
+  ui->saveImage->setIconSize(QSize(50, 50));  // Set the desired size
   ui->save_gif_button->setIconSize(QSize(50, 50));
 
   load_settings();
@@ -57,11 +56,11 @@ MainViewer::~MainViewer() {
 }
 
 void MainViewer::bind_slots() {
-    // connect(timer, SIGNAL(timeout()), this, SLOT(saveGif()));
-    QObject::connect(&timer, &QTimer::timeout, [this]{
-        saveGif();
-        // qDebug() << "Timer expired";
-    });
+  // connect(timer, SIGNAL(timeout()), this, SLOT(saveGif()));
+  QObject::connect(&timer, &QTimer::timeout, [this] {
+    saveGif();
+    // qDebug() << "Timer expired";
+  });
 }
 
 void MainViewer::update_sliders() {
@@ -449,64 +448,67 @@ void MainViewer::on_pushButton_clicked() {
       QString::number(QFileInfo(model_name).size() / 1000, 'f', 3) + " kb");
 }
 
-void MainViewer::mousePressEvent(QMouseEvent *event) {
-    cur_pos = event->globalPos();
+void MainViewer::mousePressEvent(QMouseEvent* event) {
+  //запоминаем позицию х и у курсора после нажатия мышки в переменной cur_pos
+  cur_pos = event->globalPos();
 }
 
 void MainViewer::mouseMoveEvent(QMouseEvent* event) {
-    QPoint cursorPos = QCursor::pos();
+  QPoint cursorPos = QCursor::pos();
 
-    //Параметры разрешения экрана
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect  screenGeometry = screen->geometry();
-    int desktop_height = screenGeometry.height();
-    int desktop_width = screenGeometry.width();
-    // qDebug() << "Resolution: " << desktop_height << "x" << desktop_width;
+  //Параметры разрешения экрана
+  QScreen* screen = QGuiApplication::primaryScreen();
+  QRect screenGeometry = screen->geometry();
+  int desktop_height = screenGeometry.height();
+  int desktop_width = screenGeometry.width();
+  // qDebug() << "Resolution: " << desktop_height << "x" << desktop_width;
 
-    int norm_coef_x = desktop_width / 200; //slider value: min value 100 + max value 100 = 200
-    int norm_coef_y = desktop_height / 200; //slider value: min value 100 + max value 100 = 200
-    // int cur_y = event->localPos().y();
+  int norm_coef_x =
+      desktop_width / 200;  // slider value: min value 100 + max value 100 = 200
+  int norm_coef_y = desktop_height /
+                    200;  // slider value: min value 100 + max value 100 = 200
+  // int cur_y = event->localPos().y();
 
-    int prev_x = cur_pos.x();
-    int prev_y = cur_pos.y();
+  int prev_x = cur_pos.x();
+  int prev_y = cur_pos.y();
 
-    // qDebug() << "prev_x: " << prev_x;
+  // qDebug() << "prev_x: " << prev_x;
 
-    // int gl_widget_width = ui->GLwidget->width();
-    // int gl_widget_heighy = ui->GLwidget->height();
+  // int gl_widget_width = ui->GLwidget->width();
+  // int gl_widget_heighy = ui->GLwidget->height();
 
-    if (event ->buttons() & Qt::LeftButton) {
-        int diff_prev_and_cur_x = prev_x - event->globalX();
-        int diff_prev_and_cur_y = prev_y - event->globalY();
+  if (event->buttons() & Qt::LeftButton) {
+    int diff_prev_and_cur_x = prev_x - event->globalX();
+    int diff_prev_and_cur_y = prev_y - event->globalY();
 
-        // qDebug() << "diff_x: " << diff_prev_and_cur_x;
+    // qDebug() << "diff_x: " << diff_prev_and_cur_x;
 
-        ui->GLwidget->xMov = -diff_prev_and_cur_x / norm_coef_x;
-        ui->GLwidget->yMov = diff_prev_and_cur_y / norm_coef_y;
+    ui->GLwidget->xMov = -diff_prev_and_cur_x / norm_coef_x;
+    ui->GLwidget->yMov = diff_prev_and_cur_y / norm_coef_y;
 
-        update_sliders();
+    update_sliders();
 
-        ui->GLwidget->apply_transform();
-        ui->GLwidget->update();
-    } else if (event->buttons() & Qt::RightButton) {
-        // xRot = -new_pos.y();
-        // yRot = new_pos.x();
-        // apply_transform();
-        // update();
-        ui->GLwidget->xRot = -cursorPos.x();
-        ui->GLwidget->yRot = cursorPos.y();
-        update_sliders();
-        ui->GLwidget->apply_transform();
-        ui->GLwidget->update();
-    }
-}
-
-void MainViewer::wheelEvent(QWheelEvent *event) {
-    QPoint numDegrees = event->angleDelta() / 120;
-    ui->GLwidget->scale += numDegrees.y();
+    ui->GLwidget->apply_transform();
+    ui->GLwidget->update();
+  } else if (event->buttons() & Qt::RightButton) {
+    // xRot = -new_pos.y();
+    // yRot = new_pos.x();
+    // apply_transform();
+    // update();
+    ui->GLwidget->xRot = -cursorPos.x();
+    ui->GLwidget->yRot = cursorPos.y();
     update_sliders();
     ui->GLwidget->apply_transform();
     ui->GLwidget->update();
+  }
+}
+
+void MainViewer::wheelEvent(QWheelEvent* event) {
+  QPoint numDegrees = event->angleDelta() / 120;
+  ui->GLwidget->scale += numDegrees.y();
+  update_sliders();
+  ui->GLwidget->apply_transform();
+  ui->GLwidget->update();
 }
 
 // void MainViewer::mouseMoveEvent(QMouseEvent *event) {
@@ -520,91 +522,77 @@ void MainViewer::wheelEvent(QWheelEvent *event) {
 //    emit valueChanged(move_y);
 // }
 
-
 void MainViewer::captureOpenGLScene() {
+  QString filePath = QFileDialog::getSaveFileName(this, tr("Save Image"), "",
+                                                  tr("All Files (*)"));
+  // Create an FBO
+  QOpenGLFramebufferObject fbo(ui->GLwidget->width(), ui->GLwidget->height());
 
+  // Bind the FBO for rendering
+  fbo.bind();
 
+  // Render the scene
+  ui->GLwidget
+      ->paintGL();  // Assuming your paintGL() function renders the scene
 
-    QString filePath = QFileDialog::getSaveFileName(this, tr("Save Image"), "", tr("All Files (*)"));
-    // Create an FBO
-    QOpenGLFramebufferObject fbo(ui->GLwidget->width(), ui->GLwidget->height());
+  // Release the FBO
+  fbo.release();
 
-    // Bind the FBO for rendering
-    fbo.bind();
+  // Read pixels from the FBO
+  QImage image = fbo.toImage();
 
-    // Render the scene
-    ui->GLwidget->paintGL(); // Assuming your paintGL() function renders the scene
+  if (ui->jpeg->isChecked()) {
+    filePath += ".jpeg";
+  } else {
+    filePath += ".bmp";
+  }
 
-    // Release the FBO
-    fbo.release();
-
-    // Read pixels from the FBO
-    QImage image = fbo.toImage();
-
-    if(ui->jpeg->isChecked()){
-        filePath+=".jpeg";
-    } else {
-        filePath+=".bmp";
-    }
-
-    // qDebug() << filePath;
-    // Save the image to a file
-    image.save(filePath); // or "output.bmp"
+  // qDebug() << filePath;
+  // Save the image to a file
+  image.save(filePath);  // or "output.bmp"
 }
 
+void MainViewer::on_saveImage_clicked() { captureOpenGLScene(); }
 
-void MainViewer::on_saveImage_clicked()
-{
-     captureOpenGLScene();
+void MainViewer::saveGif() {
+  QImage image = ui->GLwidget->grabFrameBuffer();
+  QSize image_size(640, 480);
+  QImage scaled_image = image.scaled(image_size);
+
+  gif_frame->addFrame(scaled_image);
+
+  if (frames_counter == 50) {
+    timer.stop();
+    gif_frame->save(gif_name);
+    frames_counter = 0;
+    QMessageBox messageBoxGif;
+    messageBoxGif.information(0, "", "Gif animation saved successfully");
+    delete gif_frame;
+    ui->save_gif_button->setText("");
+    ui->save_gif_button->setEnabled(true);
+  }
+  frames_counter++;
+  if (!ui->save_gif_button->isEnabled()) {
+    ui->save_gif_button->setText(QString::number(frames_counter / 10) + "s");
+  }
 }
 
-void MainViewer::saveGif()
-{
-    QImage image = ui->GLwidget->grabFrameBuffer();
-    QSize image_size(640, 480);
-    QImage scaled_image = image.scaled(image_size);
+void MainViewer::on_save_gif_button_pressed() {}
 
-    gif_frame->addFrame(scaled_image);
+void MainViewer::on_save_gif_button_clicked() {
+  // gif_name = "animat.gif";
+  QDateTime current_date = QDateTime::currentDateTime();
+  QString formattedTime = current_date.toString("yyyy-MM-dd hh.mm.ss");
+  QString name_pattern = "Screen Cast " + formattedTime + ".gif";
+  gif_name = QFileDialog::getSaveFileName(this, tr("Save a gif animation"),
+                                          name_pattern, tr("gif (*.gif)"));
 
-    if (frames_counter == 50) {
-        timer.stop();
-        gif_frame->save(gif_name);
-        frames_counter = 0;
-        QMessageBox messageBoxGif;
-        messageBoxGif.information(0, "", "Gif animation saved successfully");
-        delete gif_frame;
-        ui->save_gif_button->setText("");
-        ui->save_gif_button->setEnabled(true);
-    }
-    frames_counter++;
-    if (!ui->save_gif_button->isEnabled()) {
-        ui->save_gif_button->setText(QString::number(frames_counter / 10) + "s");
-    }
-}
-
-void MainViewer::on_save_gif_button_pressed()
-{
-
-}
-
-
-void MainViewer::on_save_gif_button_clicked()
-{
-    // gif_name = "animat.gif";
-    QDateTime current_date = QDateTime::currentDateTime();
-    QString formattedTime = current_date.toString("yyyy-MM-dd hh.mm.ss");
-    QString name_pattern = "Screen Cast " + formattedTime + ".gif";
-    gif_name = QFileDialog::getSaveFileName(this, tr("Save a gif animation"),
-    name_pattern, tr("gif (*.gif)"));
-
-
-   if (gif_name != "") {
+  if (gif_name != "") {
     gif_frame = new QGifImage;
     gif_frame->setDefaultDelay(10);
     timer.setInterval(100);
     timer.start();
 
     // qDebug() << gif_name;
-   }
+  }
 }
-
