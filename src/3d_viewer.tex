@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+{\Large 3D-Viewer project}
+	
+backend: C
+frontend: C++ (Qt 6.5.2)
+
+\section{3D Viewer Overview}
+\label{3d-viewer-overview}
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.7\linewidth]{frontend/intro.eps}
+      \caption{3D Viewer Overview}
+      \label{fig:your_image}
+\end{figure}
+    
+        
+\section{Installation and Commands}
+\label{installation-and-commands}
+
+We kindly request you to navigate to the \texttt{src} path and run \texttt{make install} to install our application.
+
+\subsection{Makefile Targets:}
+\begin{itemize}
+  \item \textbf{install} \\
+        Installs 3D-Viewer in the build folder.
+  \item \textbf{uninstall} \\
+        Uninstalls 3D-Viewer.
+  \item \textbf{clean} \\
+        Cleans service files.
+  \item \textbf{dvi} \\
+        Opens project documentation.
+  \item \textbf{dist} \\
+        Generates distribution \texttt{.tgz} with an executable and necessary documentation.
+  \item \textbf{test} \\
+        Tests affine transformation and loading of the file.
+  \item \textbf{gcov\_report} \\
+        Generates an HTML report displaying the coverage of all functions by tests.
+\end{itemize}
+
+\section{Tests}
+\label{tests}
+
+Tests were written using the \texttt{check} library, and coverage report using \texttt{LCOV}.
+
+\section{Technical Specifications}
+\label{technical-specifications}
+
+You need to develop a program to visualize 3D wireframe models:
+
+\begin{itemize}
+  \item The program must be developed in C language of C11 standard using the gcc compiler. You can use any additional Qt libraries and modules.
+  \item The program code must be located in the \texttt{src} folder.
+  \item The program must be built with a Makefile containing a standard set of targets for GNU programs: all, install, uninstall, clean, dvi, dist, tests, gcov. The installation directory could be arbitrary, except the building one.
+  \item The program must be developed according to the principles of structured programming.
+  \item When writing code, it is necessary to follow the Google style.
+  \item Prepare full coverage of modules related to model loading and affine transformations with unit-tests.
+  \item There should be only one model on the screen at a time.
+  \item The program must provide the ability to:
+        \begin{itemize}
+          \item Load a wireframe model from an obj file (vertices and surfaces list support only).
+          \item Translate the model by a given distance in relation to the X, Y, Z axes.
+          \item Rotate the model by a given angle relative to its X, Y, Z axes.
+          \item Scale the model by a given value.
+        \end{itemize}
+  \item GUI implementation, based on any GUI library with API for C89/C99/C11.
+        \begin{itemize}
+          \item For Linux: GTK+, CEF, Qt.
+          \item For Mac: GTK+, Nuklear, raygui, microui, libagar, libui, IUP, LCUI, CEF, Qt.
+        \end{itemize}
+  \item The graphical user interface must contain:
+        \begin{itemize}
+          \item A button to select the model file and a field to output its name.
+          \item A visualization area for the wireframe model.
+          \item Button/buttons and input fields for translating the model.
+          \item Button/buttons and input fields for rotating the model.
+          \item Button/buttons and input fields for scaling the model.
+          \item Information about the uploaded model - file name, number of vertices and edges.
+        \end{itemize}
+  \item The program must correctly process and allow users to view models with details up to 100, 1000, 10,000, 100,000, 1,000,000 vertices without freezing (a freeze is an interface inactivity of more than 0.5 seconds).
+\end{itemize}
+
+\subsection{Bonus. Settings}
+\begin{itemize}
+  \item The program must allow customizing the type of projection (parallel and central).
+  \item The program must allow setting up the type (solid, dashed), color and thickness of the edges, display method (none, circle, square), color and size of the vertices.
+  \item The program must allow choosing the background color.
+  \item Settings must be saved between program restarts.
+\end{itemize}
+
+\subsection{Bonus. Record}
+\begin{itemize}
+  \item The program must allow saving the captured (rendered) images as BMP and JPEG files.
+  \item The program must allow recording small screencasts by a special button - the current custom affine transformation of the loaded object into GIF-animation.
+\end{itemize}
+
+\end{document}

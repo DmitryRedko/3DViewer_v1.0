@@ -25,7 +25,7 @@ class GLWidget : public QGLWidget {
   void apply_transform();
   void free_memory();
 
-  char model_name[100] = "../frontend/default_models/welcome_3d.obj\0";
+  char model_name[100] = "../frontend/default_models/welcome_3d.obj";
   int parse_flag = 0;
   //  int before_parse_flag = 0;
   ObjData objData;

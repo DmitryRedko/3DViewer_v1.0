@@ -5,29 +5,43 @@ TEST_FILE_NAME = s21_tests.c
 TEST_LIBS = s21_tests.o
 TEST_FLAGS = -lcheck
 
+SOURCE_DVI = 3d_viewer
+
+all: pdf
+
+clean:
+	rm -f *.aux *.log *.pdf *.dvi
+
+
 ifeq ($(OS), Darwin)
 	TEST_LIBS=-lcheck
 else
 	TEST_LIBS=-lcheck -lsubunit -pthread -lrt -lm
 endif
 
-all: gcov_report
+all: install
 
 install:
-	cd back; make install 
-	cd back; mv s21_SmartCalc ../
-
+	cd backend/viewer; make  
+	
 uninstall:
-	cd back; make uninstall
-	rm -rf s21_SmartCalc 
+	cd backend/viewer; make clean
+	rm -rf build
 
 dist: 
-	cd back; make dist
-	cd back; mv s21_SmartCalc1.0.0.tar.gz ../
-	
+	cd backend/viewer; make dist
+	cd backend/viewer; mv 3DViewer_v11.0.0.tar.gz ../../
+
+dvi: $(SOURCE_DVI).pdf
+
+$(SOURCE_DVI).pdf: $(SOURCE_DVI).tex
+	latex $(SOURCE_DVI).tex
+	ebb frontend/intro.png
+	dvipdf $(SOURCE_DVI).dvi
+	rm -rf *.log *.dvi *.aux
+
 
 tests: $(TEST_FILE_NAME)
-	# $(CC) ${CFLAGS} ${TEST_FILE_NAME} backend/parser/s21_parser.c ${TEST_FLAGS} -o s21_tests --coverage
 	$(CC) ${CFLAGS} s21_tests.c backend/parser/s21_parser.c backend/operations/s21_arithmetic.c -lcheck -lsubunit -lm -o s21_tests --coverage
 	./s21_tests
 
@@ -38,7 +52,10 @@ gcov_report: tests
 
 clean:
 	rm -rf *.o *.a *.so *.gcda *.gcno *.gch rep.info *.html *.css test report *.txt test.info test.dSYM ./s21_tests
-	# cd back; make clean
+	cd backend/viewer; make clean
+	cd backend/viewer; rm -rf make
+	rm -rf 3DViewer_v11.0.0.tar.gz
+
 
 check: tests
 	cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --check-config *.c *.h
