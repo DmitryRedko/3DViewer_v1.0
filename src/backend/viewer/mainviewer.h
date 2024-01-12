@@ -1,6 +1,7 @@
 #ifndef MAINVIEWER_H
 #define MAINVIEWER_H
 
+
 #include <QColorDialog>
 #include <QMainWindow>
 #include <QSettings>
@@ -50,11 +51,12 @@ class MainViewer : public QMainWindow {
   QGifImage *gif_frame;
   int frames_counter = 0;
   QTimer timer;
+  QPoint cur_pos;
+  QPoint new_pos;
 
  public:
   QSettings *settings;
-     QPoint cur_pos;
-     QPoint new_pos;
+
 
  signals:
      void valueChanged(int);
@@ -88,6 +90,7 @@ class MainViewer : public QMainWindow {
   void update_sliders();
   void save_settings();
   void load_settings();
+  void mousePressEvent(QMouseEvent *event);
   void mouseMoveEvent (QMouseEvent* event) override;
    void wheelEvent(QWheelEvent *event) override;
 

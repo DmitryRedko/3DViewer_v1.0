@@ -449,22 +449,43 @@ void MainViewer::on_pushButton_clicked() {
       QString::number(QFileInfo(model_name).size() / 1000, 'f', 3) + " kb");
 }
 
+void MainViewer::mousePressEvent(QMouseEvent *event) {
+    cur_pos = event->globalPos();
+}
 
 void MainViewer::mouseMoveEvent(QMouseEvent* event) {
-    // QPoint new_pos = event->globalPos() - cur_pos;
     QPoint cursorPos = QCursor::pos();
-    // QPoint cursorPos = event->globalPos();
 
-    //попытка передать event по указателю дальше в GLwidget
-    // ui->GLwidget->mouseMoveEvent(event);
+    //Параметры разрешения экрана
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect  screenGeometry = screen->geometry();
+    int desktop_height = screenGeometry.height();
+    int desktop_width = screenGeometry.width();
+    qDebug() << "Resolution: " << desktop_height << "x" << desktop_width;
+
+    int norm_coef_x = desktop_width / 200; //slider value: min value 100 + max value 100 = 200
+    int norm_coef_y = desktop_height / 200; //slider value: min value 100 + max value 100 = 200
+    // int cur_y = event->localPos().y();
+
+    int prev_x = cur_pos.x();
+    int prev_y = cur_pos.y();
+
+    qDebug() << "prev_x: " << prev_x;
+
+    int gl_widget_width = ui->GLwidget->width();
+    int gl_widget_heighy = ui->GLwidget->height();
 
     if (event ->buttons() & Qt::LeftButton) {
-        // printf("egegei\n");
-        // xMov = new_pos.x();
-        // yMov = -new_pos.y();
-        ui->GLwidget->xMov = cursorPos.x() / 50;
-        ui->GLwidget->yMov = -cursorPos.y() / 50;
+        int diff_prev_and_cur_x = prev_x - event->globalX();
+        int diff_prev_and_cur_y = prev_y - event->globalY();
+
+        qDebug() << "diff_x: " << diff_prev_and_cur_x;
+
+        ui->GLwidget->xMov = -diff_prev_and_cur_x / norm_coef_x;
+        ui->GLwidget->yMov = diff_prev_and_cur_y / norm_coef_y;
+
         update_sliders();
+
         ui->GLwidget->apply_transform();
         ui->GLwidget->update();
     } else if (event->buttons() & Qt::RightButton) {
@@ -472,8 +493,8 @@ void MainViewer::mouseMoveEvent(QMouseEvent* event) {
         // yRot = new_pos.x();
         // apply_transform();
         // update();
-        ui->GLwidget->xRot = -cursorPos.x() / 50;
-        ui->GLwidget->yRot = cursorPos.y() / 50;
+        ui->GLwidget->xRot = -cursorPos.x();
+        ui->GLwidget->yRot = cursorPos.y();
         update_sliders();
         ui->GLwidget->apply_transform();
         ui->GLwidget->update();

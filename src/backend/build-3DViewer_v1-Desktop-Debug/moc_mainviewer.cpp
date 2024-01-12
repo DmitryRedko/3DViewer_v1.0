@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainViewer_t {
-    QByteArrayData data[42];
-    char stringdata0[783];
+    QByteArrayData data[43];
+    char stringdata0[799];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -64,16 +64,17 @@ QT_MOC_LITERAL(28, 557, 19), // "on_parallel_clicked"
 QT_MOC_LITERAL(29, 577, 14), // "update_sliders"
 QT_MOC_LITERAL(30, 592, 13), // "save_settings"
 QT_MOC_LITERAL(31, 606, 13), // "load_settings"
-QT_MOC_LITERAL(32, 620, 14), // "mouseMoveEvent"
-QT_MOC_LITERAL(33, 635, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(34, 648, 5), // "event"
-QT_MOC_LITERAL(35, 654, 10), // "wheelEvent"
-QT_MOC_LITERAL(36, 665, 12), // "QWheelEvent*"
-QT_MOC_LITERAL(37, 678, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(38, 700, 20), // "on_saveImage_clicked"
-QT_MOC_LITERAL(39, 721, 7), // "saveGif"
-QT_MOC_LITERAL(40, 729, 26), // "on_save_gif_button_pressed"
-QT_MOC_LITERAL(41, 756, 26) // "on_save_gif_button_clicked"
+QT_MOC_LITERAL(32, 620, 15), // "mousePressEvent"
+QT_MOC_LITERAL(33, 636, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(34, 649, 5), // "event"
+QT_MOC_LITERAL(35, 655, 14), // "mouseMoveEvent"
+QT_MOC_LITERAL(36, 670, 10), // "wheelEvent"
+QT_MOC_LITERAL(37, 681, 12), // "QWheelEvent*"
+QT_MOC_LITERAL(38, 694, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(39, 716, 20), // "on_saveImage_clicked"
+QT_MOC_LITERAL(40, 737, 7), // "saveGif"
+QT_MOC_LITERAL(41, 745, 26), // "on_save_gif_button_pressed"
+QT_MOC_LITERAL(42, 772, 26) // "on_save_gif_button_clicked"
 
     },
     "MainViewer\0valueChanged\0\0"
@@ -93,9 +94,9 @@ QT_MOC_LITERAL(41, 756, 26) // "on_save_gif_button_clicked"
     "on_line_clicked\0on_lineLoop_clicked\0"
     "on_quads_clicked\0on_perspective_clicked\0"
     "on_parallel_clicked\0update_sliders\0"
-    "save_settings\0load_settings\0mouseMoveEvent\0"
-    "QMouseEvent*\0event\0wheelEvent\0"
-    "QWheelEvent*\0on_pushButton_clicked\0"
+    "save_settings\0load_settings\0mousePressEvent\0"
+    "QMouseEvent*\0event\0mouseMoveEvent\0"
+    "wheelEvent\0QWheelEvent*\0on_pushButton_clicked\0"
     "on_saveImage_clicked\0saveGif\0"
     "on_save_gif_button_pressed\0"
     "on_save_gif_button_clicked"
@@ -108,7 +109,7 @@ static const uint qt_meta_data_MainViewer[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      35,   14, // methods
+      36,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -116,43 +117,44 @@ static const uint qt_meta_data_MainViewer[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  189,    2, 0x06 /* Public */,
+       1,    1,  194,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,  192,    2, 0x08 /* Private */,
-       4,    0,  193,    2, 0x08 /* Private */,
-       5,    0,  194,    2, 0x08 /* Private */,
-       6,    0,  195,    2, 0x08 /* Private */,
-       7,    0,  196,    2, 0x08 /* Private */,
-       8,    0,  197,    2, 0x08 /* Private */,
-       9,    0,  198,    2, 0x08 /* Private */,
-      10,    0,  199,    2, 0x08 /* Private */,
-      11,    0,  200,    2, 0x08 /* Private */,
-      12,    0,  201,    2, 0x08 /* Private */,
-      13,    1,  202,    2, 0x08 /* Private */,
-      15,    1,  205,    2, 0x08 /* Private */,
-      16,    1,  208,    2, 0x08 /* Private */,
-      18,    0,  211,    2, 0x08 /* Private */,
-      19,    0,  212,    2, 0x08 /* Private */,
-      20,    0,  213,    2, 0x08 /* Private */,
-      21,    0,  214,    2, 0x08 /* Private */,
-      22,    0,  215,    2, 0x08 /* Private */,
-      23,    0,  216,    2, 0x08 /* Private */,
-      24,    0,  217,    2, 0x08 /* Private */,
-      25,    0,  218,    2, 0x08 /* Private */,
-      26,    0,  219,    2, 0x08 /* Private */,
-      27,    0,  220,    2, 0x08 /* Private */,
-      28,    0,  221,    2, 0x08 /* Private */,
-      29,    0,  222,    2, 0x08 /* Private */,
-      30,    0,  223,    2, 0x08 /* Private */,
-      31,    0,  224,    2, 0x08 /* Private */,
-      32,    1,  225,    2, 0x08 /* Private */,
-      35,    1,  228,    2, 0x08 /* Private */,
-      37,    0,  231,    2, 0x08 /* Private */,
-      38,    0,  232,    2, 0x08 /* Private */,
-      39,    0,  233,    2, 0x08 /* Private */,
-      40,    0,  234,    2, 0x08 /* Private */,
-      41,    0,  235,    2, 0x08 /* Private */,
+       3,    0,  197,    2, 0x08 /* Private */,
+       4,    0,  198,    2, 0x08 /* Private */,
+       5,    0,  199,    2, 0x08 /* Private */,
+       6,    0,  200,    2, 0x08 /* Private */,
+       7,    0,  201,    2, 0x08 /* Private */,
+       8,    0,  202,    2, 0x08 /* Private */,
+       9,    0,  203,    2, 0x08 /* Private */,
+      10,    0,  204,    2, 0x08 /* Private */,
+      11,    0,  205,    2, 0x08 /* Private */,
+      12,    0,  206,    2, 0x08 /* Private */,
+      13,    1,  207,    2, 0x08 /* Private */,
+      15,    1,  210,    2, 0x08 /* Private */,
+      16,    1,  213,    2, 0x08 /* Private */,
+      18,    0,  216,    2, 0x08 /* Private */,
+      19,    0,  217,    2, 0x08 /* Private */,
+      20,    0,  218,    2, 0x08 /* Private */,
+      21,    0,  219,    2, 0x08 /* Private */,
+      22,    0,  220,    2, 0x08 /* Private */,
+      23,    0,  221,    2, 0x08 /* Private */,
+      24,    0,  222,    2, 0x08 /* Private */,
+      25,    0,  223,    2, 0x08 /* Private */,
+      26,    0,  224,    2, 0x08 /* Private */,
+      27,    0,  225,    2, 0x08 /* Private */,
+      28,    0,  226,    2, 0x08 /* Private */,
+      29,    0,  227,    2, 0x08 /* Private */,
+      30,    0,  228,    2, 0x08 /* Private */,
+      31,    0,  229,    2, 0x08 /* Private */,
+      32,    1,  230,    2, 0x08 /* Private */,
+      35,    1,  233,    2, 0x08 /* Private */,
+      36,    1,  236,    2, 0x08 /* Private */,
+      38,    0,  239,    2, 0x08 /* Private */,
+      39,    0,  240,    2, 0x08 /* Private */,
+      40,    0,  241,    2, 0x08 /* Private */,
+      41,    0,  242,    2, 0x08 /* Private */,
+      42,    0,  243,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
@@ -186,7 +188,8 @@ static const uint qt_meta_data_MainViewer[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 33,   34,
-    QMetaType::Void, 0x80000000 | 36,   34,
+    QMetaType::Void, 0x80000000 | 33,   34,
+    QMetaType::Void, 0x80000000 | 37,   34,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -230,13 +233,14 @@ void MainViewer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 25: _t->update_sliders(); break;
         case 26: _t->save_settings(); break;
         case 27: _t->load_settings(); break;
-        case 28: _t->mouseMoveEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 29: _t->wheelEvent((*reinterpret_cast< QWheelEvent*(*)>(_a[1]))); break;
-        case 30: _t->on_pushButton_clicked(); break;
-        case 31: _t->on_saveImage_clicked(); break;
-        case 32: _t->saveGif(); break;
-        case 33: _t->on_save_gif_button_pressed(); break;
-        case 34: _t->on_save_gif_button_clicked(); break;
+        case 28: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 29: _t->mouseMoveEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 30: _t->wheelEvent((*reinterpret_cast< QWheelEvent*(*)>(_a[1]))); break;
+        case 31: _t->on_pushButton_clicked(); break;
+        case 32: _t->on_saveImage_clicked(); break;
+        case 33: _t->saveGif(); break;
+        case 34: _t->on_save_gif_button_pressed(); break;
+        case 35: _t->on_save_gif_button_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -280,13 +284,13 @@ int MainViewer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 35)
+        if (_id < 36)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 35;
+        _id -= 36;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 35)
+        if (_id < 36)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 35;
+        _id -= 36;
     }
     return _id;
 }

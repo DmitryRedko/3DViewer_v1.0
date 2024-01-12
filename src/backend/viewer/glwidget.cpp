@@ -141,18 +141,20 @@ void GLWidget::free_memory() {
 }
 
 // void GLWidget::mouseMoveEvent(QMouseEvent *event) {
-//   // QPoint new_pos = event->globalPos() - cur_pos;
-//   // if (event->buttons() & Qt::LeftButton) {
-//   //   xMov = new_pos.x();
-//   //   yMov = -new_pos.y();
-//   //   apply_transform();
-//   //   update();
-//   // } else if (event->buttons() & Qt::RightButton) {
-//   //   xRot = -new_pos.y();
-//   //   yRot = new_pos.x();
-//   //   apply_transform();
-//   //   update();
-//   // }
+  // QPoint new_pos = event->globalPos() - cur_pos;
+  // if (event->buttons() & Qt::LeftButton) {
+  //   xMov = new_pos.x();
+  //   yMov = -new_pos.y();
+  //   apply_transform();
+  //   update();
+  // } else if (event->buttons() & Qt::RightButton) {
+  //   xRot = -new_pos.y();
+  //   yRot = new_pos.x();
+  //   apply_transform();
+  //   update();
+  // }
+
+    // qDebug() << "globalPos: " << event->localPos();
 // }
 
 
