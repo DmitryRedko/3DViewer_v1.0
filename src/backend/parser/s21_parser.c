@@ -21,10 +21,10 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
   FILE *file = fopen(file_path, "r");
 //   вообще непонятно, может такая ситуация быть или нет
 
-//   if (file == NULL) {
-//     *parse_flag = 1;
-//     return objData;
-//   }
+  if (file == NULL) {
+    *parse_flag = 1;
+    return objData;
+  }
 
   objData.vertices = malloc(sizeof(float));
   objData.faces = malloc(sizeof(unsigned int));

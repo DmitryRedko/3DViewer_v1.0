@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = 3DViewer_v11.0.0
-DISTDIR = /home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/viewer/.tmp/3DViewer_v11.0.0
+DISTDIR = /home/tim/school-21/3DViewer_v1.0/src/backend/viewer/.tmp/3DViewer_v11.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -lglut -lGLU /usr/lib/x86_64-linux-gnu/libQt5OpenGL.so /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
@@ -63,7 +63,8 @@ SOURCES       = 3rdparty/QtGifImage/src/3rdParty/giflib/dgif_lib.c \
 		../parser/s21_parser.c \
 		glwidget.cpp \
 		main.cpp \
-		mainviewer.cpp moc_mainviewer.cpp
+		mainviewer.cpp qrc_resources.cpp \
+		moc_mainviewer.cpp
 OBJECTS       = dgif_lib.o \
 		egif_lib.o \
 		gif_err.o \
@@ -76,6 +77,7 @@ OBJECTS       = dgif_lib.o \
 		glwidget.o \
 		main.o \
 		mainviewer.o \
+		qrc_resources.o \
 		moc_mainviewer.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -87,8 +89,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_av.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_avwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent_private.pri \
@@ -196,8 +196,6 @@ Makefile: 3DViewer_v1.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_av.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_avwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent_private.pri \
@@ -266,7 +264,8 @@ Makefile: 3DViewer_v1.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		3DViewer_v1.pro
+		3DViewer_v1.pro \
+		resources.qrc
 	$(QMAKE) -o Makefile 3DViewer_v1.pro
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf:
@@ -278,8 +277,6 @@ Makefile: 3DViewer_v1.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/g++-unix.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/qconfig.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_av.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_avwidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_concurrent_private.pri:
@@ -349,6 +346,7 @@ Makefile: 3DViewer_v1.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 3DViewer_v1.pro:
+resources.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile 3DViewer_v1.pro
 
@@ -363,6 +361,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents 3rdparty/QtGifImage/src/gifimage/qgifglobal.h 3rdparty/QtGifImage/src/gifimage/qgifimage.h 3rdparty/QtGifImage/src/gifimage/qgifimage_p.h ../backend.h glwidget.h mainviewer.h $(DISTDIR)/
 	$(COPY_FILE) --parents 3rdparty/QtGifImage/src/3rdParty/giflib/dgif_lib.c 3rdparty/QtGifImage/src/3rdParty/giflib/egif_lib.c 3rdparty/QtGifImage/src/3rdParty/giflib/gif_err.c 3rdparty/QtGifImage/src/3rdParty/giflib/gif_hash.c 3rdparty/QtGifImage/src/3rdParty/giflib/gifalloc.c 3rdparty/QtGifImage/src/3rdParty/giflib/quantize.c 3rdparty/QtGifImage/src/gifimage/qgifimage.cpp ../operations/s21_arithmetic.c ../parser/s21_parser.c glwidget.cpp main.cpp mainviewer.cpp $(DISTDIR)/
@@ -390,8 +389,15 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: resources.qrc \
+		/usr/lib/qt5/bin/rcc \
+		res/video.png \
+		res/photo.png
+	/usr/lib/qt5/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -408,7 +414,7 @@ moc_mainviewer.cpp: mainviewer.h \
 		../backend.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/viewer/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/viewer -I/home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/viewer/3rdparty/QtGifImage/src/gifimage -I/home/dmitry/Desktop/School21/Viewer/3DViewer_v1.0/src/backend/viewer/3rdparty/QtGifImage/src/3rdParty/giflib -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainviewer.h -o moc_mainviewer.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/tim/school-21/3DViewer_v1.0/src/backend/viewer/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/tim/school-21/3DViewer_v1.0/src/backend/viewer -I/home/tim/school-21/3DViewer_v1.0/src/backend/viewer/3rdparty/QtGifImage/src/gifimage -I/home/tim/school-21/3DViewer_v1.0/src/backend/viewer/3rdparty/QtGifImage/src/3rdParty/giflib -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtOpenGL -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainviewer.h -o moc_mainviewer.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -429,7 +435,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -492,6 +498,9 @@ mainviewer.o: mainviewer.cpp mainviewer.h \
 		../backend.h \
 		ui_mainviewer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainviewer.o mainviewer.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_mainviewer.o: moc_mainviewer.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainviewer.o moc_mainviewer.cpp

@@ -23,8 +23,8 @@ MainViewer::MainViewer(QWidget* parent)
   QString imagePath2 = "../frontend/video.png";  // Replace with the actual path
 
   // Load the image into a QIcon
-  QIcon icon(imagePath);
-  QIcon icon2(imagePath2);
+  QIcon icon(":res/res/photo.png");
+  QIcon icon2(":res/res/video.png");
 
   // Set the icon for the button
   ui->saveImage->setIcon(icon);
