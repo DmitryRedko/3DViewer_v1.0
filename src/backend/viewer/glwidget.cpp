@@ -49,7 +49,7 @@ void GLWidget::initializeGLmodel() {
     draw_model();
   } else {
     many_retry_error += 1;
-    printf("%d ", many_retry_error);
+    // printf("%d ", many_retry_error);
     if (many_retry_error < 5) {
       strcpy(model_name, "../frontend/default_models/error_3d.obj");
       initializeGLmodel();
