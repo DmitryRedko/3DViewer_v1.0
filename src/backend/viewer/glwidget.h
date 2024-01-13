@@ -85,8 +85,8 @@ class GLWidget : public QGLWidget {
   QPoint cur_pos;
   QPoint new_pos;
 
-  private:
-      int  many_retry_error = 0;
+ private:
+  int many_retry_error = 0;
 };
 
 #endif  // GLWIDGET_H

@@ -20,9 +20,8 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
     return objData;
   }
 
-
   FILE *file = fopen(file_path, "r");
-//   вообще непонятно, может такая ситуация быть или нет
+  //   вообще непонятно, может такая ситуация быть или нет
 
   if (file == NULL) {
     *parse_flag = 1;
@@ -107,6 +106,5 @@ void model_destructor(ObjData *objData) {
     }
   }
 }
-
 
 void model_inicializator(ObjData *objData);
