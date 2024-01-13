@@ -47,7 +47,7 @@ gcov_report: tests
 clean:
 	rm -rf *.o *.a *.so *.gcda *.gcno *.gch rep.info *.html *.css test report *.txt test.info test.dSYM ./s21_tests
 	cd backend/viewer; make clean
-	cd backend/viewer; rm -rf .qmake.stash
+	cd backend/viewer; rm -rf .qmake.stash 3DViewer_v1.pro.*
 	rm -rf 3DViewer_v11.0.0.tar.gz
 	rm -f *.aux *.log *.pdf *.dvi
 

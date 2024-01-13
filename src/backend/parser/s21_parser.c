@@ -5,12 +5,15 @@
 #include "../backend.h"
 
 ObjData parse_obj(const char *file_path, int *parse_flag) {
-  printf("%s",file_path);
+  // printf("%s",file_path);
   ObjData objData;
   objData.vertexCount = 0;
   objData.textureCount = 0;
   // objData.normalCount = 0;
   objData.faceCount = 0;
+
+  objData.vertices = malloc(sizeof(float));
+  objData.faces = malloc(sizeof(unsigned int));
 
   if (strstr(file_path, ".obj") == NULL) {
     *parse_flag = 1;
@@ -25,9 +28,6 @@ ObjData parse_obj(const char *file_path, int *parse_flag) {
     *parse_flag = 1;
     return objData;
   }
-
-  objData.vertices = malloc(sizeof(float));
-  objData.faces = malloc(sizeof(unsigned int));
 
   char line[MAX_LINE_LENGTH];
   while (fgets(line, sizeof(line), file)) {
@@ -107,3 +107,6 @@ void model_destructor(ObjData *objData) {
     }
   }
 }
+
+
+void model_inicializator(ObjData *objData);

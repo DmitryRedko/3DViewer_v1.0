@@ -84,6 +84,9 @@ class GLWidget : public QGLWidget {
   // void wheelEvent(QWheelEvent *event) override;
   QPoint cur_pos;
   QPoint new_pos;
+
+  private:
+      int  many_retry_error = 0;
 };
 
 #endif  // GLWIDGET_H

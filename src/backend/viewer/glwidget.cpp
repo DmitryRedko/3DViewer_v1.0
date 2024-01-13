@@ -43,13 +43,18 @@ void GLWidget::initializeGLmodel() {
   baseData = parse_obj(model_name, &parse_flag);
 
   if (parse_flag == 0) {
+    many_retry_error = 0;
     normalize_model(&baseData);
     normalize_model(&objData);
     draw_model();
   } else {
-    strcpy(model_name, "../frontend/default_models/error_3d.obj");
+    many_retry_error+=1;
+    printf("%d ",many_retry_error);
+    if(many_retry_error < 5){
+        strcpy(model_name, "../frontend/default_models/error_3d.obj");
+        initializeGLmodel();
+    }
     parse_flag = 0;
-    initializeGLmodel();
   }
 }
 
